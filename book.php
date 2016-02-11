@@ -6,17 +6,17 @@ $guest_num_default = 2;
 $open_hour_begin = 10 * 60 + 30;    # 10:30
 $open_hour_end = 20 * 60 + 0;       # 20:00
 $open_hour_slot = 30;
+$open_hour_day = 7;
     
 function minutes_to_clock_str($mins)
 {
-    $h = $mins / 60;
+    $h = abs($mins / 60);
     $m = $mins % 60;
     
     return str_pad($h, 2, "0", STR_PAD_LEFT) . ":" . str_pad($m, 2, "0", STR_PAD_LEFT);
 }
     
 $right_now_day = date("Y-m-d l");
-$right_now_hour = date("H:00");
 
 ?>
 
@@ -94,11 +94,11 @@ $right_now_hour = date("H:00");
             </div>
             <div class="datetime-sel">
                 <div class="date-sel J-date-trigger">
-                    <span class="value" id="J-input-date"><?php echo $right_now_day ?></span>
+                    <span class="value" id="J-input-date"><?php echo $right_now_day; ?></span>
                     <i class="caret"></i>
                 </div>
                 <div class="time-sel J-time-trigger">
-                    <span class="value" id="J-input-time"><?php echo $right_now_hour ?></span>
+                    <span class="value" id="J-input-time"><?php echo minutes_to_clock_str($open_hour_begin); ?></span>
                     <i class="caret"></i>
                     <select class="select-overlay" id="J-time-select">
                         <?php
