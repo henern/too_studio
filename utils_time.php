@@ -1,11 +1,11 @@
 <?php
     
 $g_sec_per_day = 24 * 60 * 60;
-#$g_days_of_week = array("星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天");
+$g_days_of_week = array("星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天");
 
-function day_of_week($timestamp=time())
+function day_of_week($ts=time())
 {
-    $indx = date("N", $timestamp);
+    $indx = date("N", $ts);
     
     if ($indx > 0 && $indx < 8)
     {
