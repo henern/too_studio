@@ -2,7 +2,7 @@
     
 function log_base_path()
 {
-    $ret = dirname(__FILE__) . "../log/";
+    $ret = dirname(__FILE__) . "/../log/";
     return $ret;
 }
     
