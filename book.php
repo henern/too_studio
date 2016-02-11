@@ -9,7 +9,10 @@
 		<meta name="format-detection" content="telephone=no" />
 		<meta name="format-detection" content="email=no" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
-<link rel="stylesheet" href="//www.dpfile.com/mod/app-booking-m/0.5.21/css/base.css" type="text/css"/><link rel="stylesheet" href="//www.dpfile.com/mod/app-booking-m/0.5.21/css/book-default.css" type="text/css"/><script src="//www.dpfile.com/mod/neuron/7.1.3/neuron.js" id="neuron-js"></script>        <script>
+        <link rel="stylesheet" href="/css/base.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/book-default.css" type="text/css"/>
+
+<script>
             var _hip = [['_setPageId', 210001]];
             var executionTime = new Date().getTime();
             window.onload=function() {
@@ -37,8 +40,6 @@
 		
 	</head>
 	<body id="top">
-		
-		
             <header>
                 <div class="placeholder"></div>
                 <div class="title">我要订座</div>
@@ -60,46 +61,6 @@
                         <option value="8">8</option>
                         <option value="9">9</option>
                         <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">15</option>
-                        <option value="16">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                        <option value="31">31</option>
-                        <option value="32">32</option>
-                        <option value="33">33</option>
-                        <option value="34">34</option>
-                        <option value="35">35</option>
-                        <option value="36">36</option>
-                        <option value="37">37</option>
-                        <option value="38">38</option>
-                        <option value="39">39</option>
-                        <option value="40">40</option>
-                        <option value="41">41</option>
-                        <option value="42">42</option>
-                        <option value="43">43</option>
-                        <option value="44">44</option>
-                        <option value="45">45</option>
-                        <option value="46">46</option>
-                        <option value="47">47</option>
-                        <option value="48">48</option>
-                        <option value="49">49</option>
-                        <option value="50">50</option>
                 </select>
             </div>
             <div class="datetime-sel">
@@ -249,7 +210,6 @@
 <footer class="footer">
     <p class="copyright">Copyright ©2016 Too-Studio</p>
 </footer>     
-<script>neuron.config({path: "//www.dpfile.com/mod", loaded:["app-booking-m@0.5.21/pages/booking.js","json@1.0.1","util@1.0.5","asap@1.0.0","events@1.0.5","clone@0.1.13","underscore@1.5.3","promise@6.1.0","mix@1.0.1","asset@1.0.2","class@2.0.5","lang@1.0.1","dpapp-core@1.1.2","cookie@0.2.0","request@1.0.7","hippo@1.2.15","unified-share@0.3.1","dpapp@1.2.4","huatuo-transaction@1.0.0","base-env@0.1.3","moment@2.8.0","whereami@0.1.19","tpl@0.2.1","easy-login@0.2.9","unified-share-wx@0.1.0","huatuo@0.1.10","openapp2@1.1.5","iscroll@5.0.11"], graph:{"0":["0.5.21",{"huatuo-transaction@^1.0.0":1,"tpl@~0.2.1":2,"unified-share-wx@~0.1.0":3,"hippo@~1.2.2":4,"request@^1.0.7":5,"whereami@~0.1.12":14,"huatuo@~0.1.5":23,"zepto@~1.1.3":24,"dpapp@^1.0.0":17,"moment@^2.7.0":25,"iscroll@^5.0.10":26,"unified-share@~0.3.0":27,"class@~2.0.5":8,"base-env@~0.1.3":28,"openapp2@^1.1.3":29,"easy-login@~0.2.5":30}],"1":["1.0.0"],"2":["0.2.1"],"3":["0.1.0"],"4":["1.2.15"],"5":["1.0.7",{"json@~1.0.0":6,"lang@~1.0.0":7,"class@~2.0.0":8,"asset@~1.0.0":13}],"6":["1.0.1"],"7":["1.0.1"],"8":["2.0.5",{"util@~1.0.0":9,"clone@~0.1.11":10,"events@~1.0.0":11,"underscore@~1.5.2":12}],"9":["1.0.5",{"json@~1.0.0":6}],"10":["0.1.13",{"util@~1.0.2":9}],"11":["1.0.5",{"util@~1.0.0":9}],"12":["1.5.3"],"13":["1.0.2"],"14":["0.1.19",{"cookie@~0.2.0":15,"weixin-js-sdk-loader@~0.1.0":16,"dpapp@^1.1.11":17}],"15":["0.2.0"],"16":["0.1.1"],"17":["1.2.4",{"dpapp-core@^1.1.1":18,"mix@^1.0.1":21,"dpapp-share@~0.1.0":22}],"18":["1.1.2",{"promise@^6.1.0":19,"mix@^1.0.1":21}],"19":["6.1.0",{"asap@^1.0.0":20}],"20":["1.0.0"],"21":["1.0.1"],"22":["0.1.0"],"23":["0.1.10"],"24":["1.1.5"],"25":["2.8.0"],"26":["5.0.11"],"27":["0.3.1"],"28":["0.1.3"],"29":["1.1.5"],"30":["0.2.9"],"_":{"app-booking-m@*":0}}})</script>
 <script type="text/javascript">
 
 		//得到焦点触发事件

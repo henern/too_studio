@@ -1,0 +1,732 @@
+.Hide {
+    display: none !important
+}
+
+.hide {
+    display: none
+}
+
+.Fix:after {
+    display: block;
+    content: '';
+    height: 0;
+    clear: both
+}
+
+.Left {
+    float: left !important
+}
+
+.Right {
+    float: right !important
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0
+}
+
+:not(input, textarea) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none
+}
+
+body {
+    font-family: Hiragino Sans GB, Arial, Helvetica, "宋体", sans-serif;
+    font-size: 14px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    background-color: #f0f0f0
+}
+
+button, input, select, textarea {
+    font-size: 100%;
+    outline: 0
+}
+
+a, input, textarea {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+input, textarea {
+    resize: none
+}
+
+ol, ul {
+    list-style: none
+}
+
+a {
+    text-decoration: none
+}
+
+del {
+    text-decoration: line-through
+}
+
+.star {
+    display: inline-block;
+    width: 66px;
+    height: 12px;
+    vertical-align: middle;
+    background: url(//www.dpfile.com/mod/app-booking-m/0.5.21/css/baseimg/remark.png) no-repeat;
+    background-size: 86px auto
+}
+
+.star.star-0 {
+    background-position: 0 -334px
+}
+
+.star.star-10 {
+    background-position: 0 -317px
+}
+
+.star.star-20 {
+    background-position: 0 -300px
+}
+
+.star.star-30 {
+    background-position: 0 -283px
+}
+
+.star.star-35 {
+    background-position: 0 -266px
+}
+
+.star.star-40 {
+    background-position: 0 -249px
+}
+
+.star.star-45 {
+    background-position: 0 -232px
+}
+
+.star.star-50 {
+    background-position: 0 -215px
+}
+
+.big-star {
+    display: inline-block;
+    width: 92px;
+    height: 16px;
+    vertical-align: middle;
+    background: url(//www.dpfile.com/mod/app-booking-m/0.5.21/css/baseimg/remark.png) no-repeat;
+    background-size: 86px auto
+}
+
+.big-star.star-0 {
+    background-position: 0 -175px
+}
+
+.big-star.star-10 {
+    background-position: 0 -154px
+}
+
+.big-star.star-20 {
+    background-position: 0 -133px
+}
+
+.big-star.star-30 {
+    background-position: 0 -112px
+}
+
+.big-star.star-35 {
+    background-position: 0 -91px
+}
+
+.big-star.star-40 {
+    background-position: 0 -70px
+}
+
+.big-star.star-45 {
+    background-position: 0 -49px
+}
+
+.big-star.star-50 {
+    background-position: 0 -28px
+}
+
+.rank-star {
+    background: url(//www.dpfile.com/mod/app-booking-m/0.5.21/css/baseimg/rank-star.png) no-repeat;
+    display: inline-block;
+    overflow: hidden;
+    height: 17px
+}
+
+.gold-star10 {
+    background-position: 0 -85px;
+    width: 17px
+}
+
+.gold-star20 {
+    background-position: 0 -68px;
+    width: 32px
+}
+
+.gold-star30 {
+    background-position: 0 -51px;
+    width: 52px
+}
+
+.gold-star40 {
+    background-position: 0 -34px;
+    width: 67px
+}
+
+.gold-star45 {
+    background-position: 0 -17px;
+    width: 85px
+}
+
+.gold-star50 {
+    width: 85px
+}
+
+.gold-star60 {
+    background-position: 0 -104px;
+    width: 17px
+}
+
+.link-btn {
+    height: 45px;
+    line-height: 45px;
+    color: #333;
+    text-align: center;
+    font-size: 16px;
+    display: block;
+    background-color: #FFF
+}
+
+.calendar-wraps {
+    padding: 15px 1px 15px 0;
+    background-color: #f1f1f1;
+    border: 1px solid #b2b2b2;
+    width: 302px;
+    left: 50%;
+    top: 100px;
+    margin-left: -154px;
+    z-index: 1001;
+    position: absolute
+}
+
+.calendar-top {
+    position: relative
+}
+
+.calendar-top .arrow-lt, .calendar-top .arrow-rt {
+    border-top: 1px solid #323232;
+    border-left: 1px solid #323232;
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    font-size: 0;
+    background-color: transparent
+}
+
+.calendar-top .arrow-lt {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    margin-right: 3px
+}
+
+.calendar-top .arrow-rt {
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+    margin-left: 3px
+}
+
+.calendar-top .next-moth, .calendar-top .prv-moth {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: -5px;
+    line-height: 30px;
+    text-align: center
+}
+
+.calendar-top .prv-moth {
+    left: 6px
+}
+
+.calendar-top .next-moth {
+    right: 6px
+}
+
+.calendar-wraps h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #323232;
+    text-align: center;
+    font-weight: 400
+}
+
+.calendar-wraps table {
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: center
+}
+
+.calendar-wraps table a {
+    color: #323232
+}
+
+.calendar-wraps table th {
+    padding-bottom: 8px;
+    background-color: #f1f1f1
+}
+
+.calendar-wraps table td {
+    border: 1px solid #e1e1e1;
+    background-color: #fff
+}
+
+.calendar-wraps table td:first-child {
+    border-left: none
+}
+
+.calendar-wraps table td:last-child {
+    border-right-color: #b2b2b2
+}
+
+.calendar-wraps table td a {
+    display: block;
+    height: 43px;
+    line-height: 43px
+}
+
+.calendar-wraps table .dayon {
+    background-color: #ececec
+}
+
+.calendar-wraps table .daychose {
+    background-color: #f63;
+    color: #fff
+}
+
+.calendar-wraps table .gray-day {
+    color: #aeaeae;
+    cursor: default
+}
+
+header {
+    height: 45px;
+    line-height: 45px;
+    background: #f0f0f0 url(//www.dpfile.com/mod/app-booking-m/0.5.21/css/baseimg/header-repeat-x.png) repeat-x 0 bottom;
+    background-size: auto 1px;
+    padding: 0 10px;
+    text-align: center;
+    color: #333;
+    position: relative;
+    display: box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    z-index: 300
+}
+
+header .back {
+    padding-left: 18px;
+    position: relative;
+    color: #333;
+    display: block
+}
+
+header .back:before {
+    border: #666 solid 3px;
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    margin-top: -8px;
+    display: block;
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-top: none;
+    border-right: none;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+header .city {
+    position: relative;
+    padding-right: 17px;
+    color: #333;
+    max-width: 3em;
+    white-space: nowrap;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block
+}
+
+header .city:after {
+    border: #333 solid 1px;
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    margin-top: -8px;
+    display: block;
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-top: none;
+    border-right: none;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+header .search {
+    height: 30px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 8px 0 8px 10px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border: solid 1px #c8c8c8
+}
+
+header .placeholder {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -ms-box-flex: 1;
+    -ms-flex: 1
+}
+
+header .title {
+    font-size: 16px;
+    position: absolute;
+    width: 180px;
+    height: 100%;
+    text-align: center;
+    left: 50%;
+    margin-left: -90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+footer {
+    text-align: center;
+    padding: 10px 5px;
+    font-weight: 400;
+    font-size: 12px;
+    padding-top: 15px
+}
+
+footer a {
+    color: #adadad;
+    line-height: 28px
+}
+
+footer em {
+    color: #8c8c8c;
+    padding: 0 12px;
+    font-weight: 400;
+    font-style: normal
+}
+
+footer .copyright {
+    color: #d1d1d1;
+    margin-top: 20px;
+    text-shadow: 0 1px 1px #fff
+}
+
+.bord, .group-list .col-list a, .group-list .hide-more, .group-list .sub,
+.group-list .view-more, .hotel-booking, .hotel-list a, .hotel-note,
+.index-category, .index-event, .index-rec .tit, .info-hotel, .link-list .item,
+.list-nav .cat, .list-nav .full .item, .list-nav .sub .item, .modebox,
+.modebox .tit, .shop-details .shop-info, .shop-list .item, .shop-tuan-list,
+.sort-list .triggers, .suggest_list a {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDg0NjJGODhFOUY3MTFFMzgyNDZBNkRCNjM5MDI2MzkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDg0NjJGODdFOUY3MTFFMzgyNDZBNkRCNjM5MDI2MzkiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjZCQ0M0ODFERjAyMTFFMzg5RDE4NENEQUZENTUzNEYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QjZCQ0M0ODJERjAyMTFFMzg5RDE4NENEQUZENTUzNEYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5EbLiBAAAAGUlEQVR42mL6//8/AwizPHr06D8DEAAEGABriwmmt+2WgAAAAABJRU5ErkJggg==) repeat-x 0 bottom;
+    background-size: auto 1px
+}
+
+.group-list img, .index-rec img {
+    background: #efefef
+}
+
+.index-category .food .icon {
+    background-color: #ffa54b;
+    background-position: center 10px
+}
+
+.index-category .movie .icon {
+    background-color: #9bcd46;
+    background-position: center -24px
+}
+
+.index-category .ktv .icon {
+    background-color: #9669e1;
+    background-position: center -54px
+}
+
+.index-category .hotel .icon {
+    background-color: #41b9f5;
+    background-position: center -85px
+}
+
+.index-category .tuan .icon {
+    background-color: #f57d6e;
+    background-position: center -115px
+}
+
+.index-category .beauty .icon {
+    background-color: #fa82a5;
+    background-position: center -148px
+}
+
+.index-category .massage .icon {
+    background-color: #41c8cd;
+    background-position: center -179px
+}
+
+.index-category .more .icon {
+    background-color: #5f9be6;
+    background-position: center -210px
+}
+
+.index-category .travel .icon {
+    background-color: #9bcd46;
+    background-position: center -381px
+}
+
+.index-category .takeaway .icon {
+    background-color: #41c8cd;
+    background-position: center -432px
+}
+
+.index-category .hot, .index-category .icon, .index-head .me {
+    background: url(//www.dpfile.com/mod/app-booking-m/0.5.21/css/baseimg/index.png) no-repeat;
+    background-size: 25px auto
+}
+
+.search_container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 999
+}
+
+.search_container header {
+    display: block
+}
+
+.search_container .head_cnt {
+    padding: 0 65px 0 5px;
+    text-align: left
+}
+
+.search_container .head_cnt .head_cnt_input {
+    position: relative
+}
+
+.search_container input[type=text] {
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    font-size: 14px
+}
+
+.search_container input[type=submit] {
+    height: 30px;
+    width: 30px;
+    background: url(//www.dpfile.com/mod/app-booking-m/0.5.21/css/baseimg/search.png) no-repeat 5px center;
+    background-size: 14px auto;
+    border: none;
+    text-indent: -999em;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -15px
+}
+
+.search_container .cancel {
+    color: #ff8400;
+    position: absolute;
+    right: 20px;
+    top: 0
+}
+
+.search_container .key_list {
+    padding: 15px
+}
+
+.search_container .key_list a {
+    float: left;
+    margin: 0 10px 10px 0;
+    padding: 10px 18px;
+    background: #e6e6e6;
+    color: #666
+}
+
+.search_container .suggest_list {
+    padding: 0 10px 0 15px
+}
+
+.search_container .suggest_list a {
+    padding: 10px 10px 10px 0;
+    display: block;
+    color: #333;
+    font-size: 14px;
+    line-height: 14px
+}
+
+.search_container .suggest_list a .number {
+    float: right;
+    color: #666;
+    font-size: 12px
+}
+
+.tuan-list {
+    background-color: #fff
+}
+
+.tuan-list .item {
+    position: relative;
+    display: block;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDg0NjJGODhFOUY3MTFFMzgyNDZBNkRCNjM5MDI2MzkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDg0NjJGODdFOUY3MTFFMzgyNDZBNkRCNjM5MDI2MzkiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjZCQ0M0ODFERjAyMTFFMzg5RDE4NENEQUZENTUzNEYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QjZCQ0M0ODJERjAyMTFFMzg5RDE4NENEQUZENTUzNEYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5EbLiBAAAAGUlEQVR42mL6//8/AwizPHr06D8DEAAEGABriwmmt+2WgAAAAABJRU5ErkJggg==) repeat-x 0 bottom;
+    background-size: auto 1px;
+    padding-left: 12px
+}
+
+.tuan-list .cnt {
+    padding: 10px 10px 10px 0;
+    display: box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    height: 65px
+}
+
+.tuan-list .pic {
+    margin-right: 15px
+}
+
+.tuan-list img {
+    width: 104px;
+    height: 65px
+}
+
+.tuan-list .content {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -ms-box-flex: 1;
+    -ms-flex: 1;
+    padding-top: 8px
+}
+
+.tuan-list .title {
+    color: #333;
+    line-height: 20px;
+    font-size: 16px;
+    max-width: 11em;
+    white-space: nowrap;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.tuan-list .info {
+    margin-top: 15px;
+    color: #666;
+    font-size: 12px;
+    position: relative;
+    line-height: 10px;
+    display: box;
+    display: -webkit-box;
+    display: -ms-flexbox
+}
+
+.tuan-list .distance, .tuan-list .o-price, .tuan-list .price, .tuan-list .sale {
+    display: block;
+    line-height: 16px
+}
+
+.tuan-list .price {
+    color: #f60;
+    font-size: 19px;
+    line-height: 10px;
+    margin-right: 3px
+}
+
+.tuan-list .sale {
+    color: #f63;
+    border: solid 1px #ff916e;
+    padding: 3px 2px 2px;
+    font-size: 10px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    margin-left: 5px;
+    line-height: 10px;
+    height: 10px
+}
+
+.tuan-list .distance {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -ms-box-flex: 1;
+    -ms-flex: 1;
+    text-align: right;
+    line-height: 16px
+}
+
+.arrow-ent {
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    border-right: 2px solid #bab5ad;
+    border-bottom: 2px solid #bab5ad;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.link-list .item {
+    padding: 15px 30px 15px 10px;
+    position: relative;
+    display: block;
+    color: #323232
+}
+
+.link-list .item .arrow-ent {
+    top: 50%;
+    margin-top: -5px;
+    right: 10px
+}
+
+.link-list .item .tip {
+    float: right;
+    font-size: 12px;
+    color: #999
+}
+
+.captcha-wrap .control-input {
+    overflow: hidden
+}
+
+.captcha-wrap .control-input input.captcha-code {
+    height: 24px;
+    vertical-align: top;
+    padding: 0 15px
+}
+
+.captcha-wrap .error-msg {
+    position: relative;
+    font-size: 15px;
+    line-height: 24px;
+    padding: 12px 0;
+    margin-left: 15px;
+    border-bottom: 1px solid #e9e9e9
+}
+
+.captcha-wrap img {
+    position: absolute;
+    top: 7px;
+    right: 10px
+}
+
+/*# sourceMappingURL=base.css.map */
+
+
