@@ -1,6 +1,6 @@
 <?php
     
-setlocale(LC_TIME, "Chinese_PRC");
+require "utils_time.php"
 
 $sec_per_day = 24 * 60 * 60;
 
@@ -12,15 +12,7 @@ $open_hour_end = 20 * 60 + 0;       # 20:00
 $open_hour_slot = 30;
 $open_hour_day = 7;
     
-function minutes_to_clock_str($mins)
-{
-    $h = floor($mins / 60);
-    $m = $mins % 60;
-    
-    return str_pad($h, 2, "0", STR_PAD_LEFT) . ":" . str_pad($m, 2, "0", STR_PAD_LEFT);
-}
-    
-$right_now_day = strftime("%Y-%m-%d %A");
+$right_now_day = full_date();
 
 ?>
 
@@ -106,7 +98,8 @@ $right_now_day = strftime("%Y-%m-%d %A");
                         $clock_cur = time();
                         for ($k = 0; $k < $open_hour_day; $k++)
                         {
-                            $str = date("Y-m-d l", $clock_cur + $k * $sec_per_day);
+                            $ts = $clock_cur + $k * $sec_per_day;
+                            $str = full_date($ts);
                             
                             if ($str == $right_now_day)
                             {
