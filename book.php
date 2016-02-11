@@ -10,7 +10,7 @@ $open_hour_day = 7;
     
 function minutes_to_clock_str($mins)
 {
-    $h = abs($mins / 60);
+    $h = floor($mins / 60);
     $m = $mins % 60;
     
     return str_pad($h, 2, "0", STR_PAD_LEFT) . ":" . str_pad($m, 2, "0", STR_PAD_LEFT);
