@@ -1,5 +1,7 @@
 <?php
 
+require "./utils_log.php";
+
 function log_error($err2display, $err2file)
 {
     error_reporting(E_ALL);
@@ -12,7 +14,7 @@ function log_error($err2display, $err2file)
     if ($err2file)
     {
         $today_str = date("Ymd");
-        ini_set('error_log', dirname(__FILE__) . '/log/error/log_err_$today_str.txt');
+        ini_set('error_log', log_error_path("log_err_$today_str.txt"));
     }
 }
 
@@ -52,7 +54,7 @@ function log_visitor_info($extra_arr=array())
     $v_info = visitor_info($extra_arr);
     
     $today_str = date("Ymd");
-    $log_fname = dirname(__FILE__) . "/log/visitor/log_vistor_$today_str.txt";
+    $log_fname = log_visitor_path("log_vistor_$today_str.txt");
     
     $handle_file = fopen($log_fname, "a") or die("ERROR TO OPEN $log_fname!");
     
