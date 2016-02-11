@@ -30,6 +30,11 @@ function locale_day_of_week($ts=null)
     
 function full_date($ts=null)
 {
+    if ($ts == null)
+    {
+        $ts = time();
+    }
+    
     return date("Y-m-d ", $ts) . locale_day_of_week($ts);
 }
 
