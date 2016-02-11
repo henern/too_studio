@@ -96,7 +96,7 @@ $right_now_day = full_date();
                         $clock_cur = time();
                         for ($k = 0; $k < $open_hour_day; $k++)
                         {
-                            $ts = $clock_cur + $k * $g_sec_per_day;
+                            $ts = $clock_cur + $k * SEC_PER_DAY;
                             $str = full_date($ts);
                             
                             if ($str == $right_now_day)

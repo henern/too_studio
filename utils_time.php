@@ -1,7 +1,6 @@
 <?php
     
-$g_sec_per_day = 24 * 60 * 60;
-$g_days_of_week = array("星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天");
+define("SEC_PER_DAY", 24 * 60 * 60);
 
 function minutes_to_clock_str($mins)
 {
@@ -22,7 +21,8 @@ function locale_day_of_week($ts=null)
     
     if ($indx > 0 && $indx < 8)
     {
-        return $g_days_of_week[$indx];
+        $days_of_week = array("星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天");
+        return $days_of_week[$indx];
     }
     
     return "";
