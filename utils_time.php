@@ -2,7 +2,6 @@
     
 $g_sec_per_day = 24 * 60 * 60;
 #$g_days_of_week = array("星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天");
-$g_days_of_week = array("1", "2", "3", "4", "5", "6", "7");
 
 function day_of_week($timestamp=time())
 {
