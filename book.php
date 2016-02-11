@@ -1,6 +1,6 @@
 <?php
     
-$minutes_per_day = 24 * 60;
+$sec_per_day = 24 * 60 * 60;
 
 $guest_num_max = 10;
 $guest_num_default = 2;
@@ -102,9 +102,9 @@ $right_now_day = date("Y-m-d l");
                         <?php
                             
                         $clock_cur = time();
-                        for ($k = 0; $k <= $open_hour_day; $k++)
+                        for ($k = 0; $k < $open_hour_day; $k++)
                         {
-                            $str = date("Y-m-d l", $clock_cur + $k * $minutes_per_day);
+                            $str = date("Y-m-d l", $clock_cur + $k * $sec_per_day);
                             
                             if ($str == $right_now_day)
                             {
