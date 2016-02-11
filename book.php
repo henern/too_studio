@@ -3,7 +3,6 @@
 	<head>
 		<title>在线订座</title>
 		
-		
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -41,11 +40,8 @@
 		
 		
             <header>
-                <a  id="J-exit-book" class="back">商户详情
-                </a>
                 <div class="placeholder"></div>
                 <div class="title">我要订座</div>
-				    <a class="tuangou-booking J-groupon">团购订座</a>
 			</header>
 		<!--内容-->
                 <section class="info">
@@ -216,29 +212,7 @@
             </div>
             <div class="msg msg-full hide">该时间段已订满，请换个时间</div>
         </section>
-        
-          <!--大厅和包房-->
-         <!--if exists-->
-        <section class="room">
-		    <div class="row">
-		        我要订包房<span class="remark min-people-tip">(<span class="person-limit">2</span>人起订)</span>
-                <div class="room-desc J-room-consumption Hide">
-                </div>
-		        <label class="label-switch">
-		            <input id="js-room-selected" type="checkbox" />
-		            <div class="checkbox"></div>
-		        </label>
-		    </div>
-		    <div class="row J-accept-hall hide">
-		        <label class="round-checkbox">
-		            <input id="J-input-check-room" type="checkbox"/>
-		            <div class="checkbox">包房订不上也可接受大厅</div>
-		        </label>
-		    </div>
-		</section>
-		
-		  <!--大厅和包房-->
-                
+                        
         <section class="contact">
             <div class="row-group">
                 <div class="row">
@@ -273,16 +247,7 @@
 		</div>
 		<!--内容 end-->
 <footer class="footer">
-    <a href="javascript:window.location='/my'" title="">我的</a><em>|</em>
-    <a href="javascript:window.location='/history'" title="">最近浏览</a><em>|</em>
-    <a href="javascript:window.location='/shop/addshop'">添加商户</a><em>|</em>
-    <a href="javascript:window.location='/feedback'" title="">意见反馈</a>
-    <br>
-    <a id="j-computer" href="http://www.dianping.com" title="">电脑版</a><em>|</em>
-    <a onclick="document.cookie='wapredirecttom=1; domain=.dianping.com; path=/';" href="http://wap.dianping.com" title="">标准版</a><em>|</em>
-    <a id="F_download" href="javascript:void(0)" title="">客户端</a>
-    <br>
-    <p class="copyright">copyright ©2014 dianping.com</p>
+    <p class="copyright">Copyright ©2016 Too-Studio</p>
 </footer><script>neuron.config({path: "//www.dpfile.com/mod", loaded:["app-booking-m@0.5.21/pages/booking.js","json@1.0.1","util@1.0.5","asap@1.0.0","events@1.0.5","clone@0.1.13","underscore@1.5.3","promise@6.1.0","mix@1.0.1","asset@1.0.2","class@2.0.5","lang@1.0.1","dpapp-core@1.1.2","cookie@0.2.0","request@1.0.7","hippo@1.2.15","unified-share@0.3.1","dpapp@1.2.4","huatuo-transaction@1.0.0","base-env@0.1.3","moment@2.8.0","whereami@0.1.19","tpl@0.2.1","easy-login@0.2.9","unified-share-wx@0.1.0","huatuo@0.1.10","openapp2@1.1.5","iscroll@5.0.11"], graph:{"0":["0.5.21",{"huatuo-transaction@^1.0.0":1,"tpl@~0.2.1":2,"unified-share-wx@~0.1.0":3,"hippo@~1.2.2":4,"request@^1.0.7":5,"whereami@~0.1.12":14,"huatuo@~0.1.5":23,"zepto@~1.1.3":24,"dpapp@^1.0.0":17,"moment@^2.7.0":25,"iscroll@^5.0.10":26,"unified-share@~0.3.0":27,"class@~2.0.5":8,"base-env@~0.1.3":28,"openapp2@^1.1.3":29,"easy-login@~0.2.5":30}],"1":["1.0.0"],"2":["0.2.1"],"3":["0.1.0"],"4":["1.2.15"],"5":["1.0.7",{"json@~1.0.0":6,"lang@~1.0.0":7,"class@~2.0.0":8,"asset@~1.0.0":13}],"6":["1.0.1"],"7":["1.0.1"],"8":["2.0.5",{"util@~1.0.0":9,"clone@~0.1.11":10,"events@~1.0.0":11,"underscore@~1.5.2":12}],"9":["1.0.5",{"json@~1.0.0":6}],"10":["0.1.13",{"util@~1.0.2":9}],"11":["1.0.5",{"util@~1.0.0":9}],"12":["1.5.3"],"13":["1.0.2"],"14":["0.1.19",{"cookie@~0.2.0":15,"weixin-js-sdk-loader@~0.1.0":16,"dpapp@^1.1.11":17}],"15":["0.2.0"],"16":["0.1.1"],"17":["1.2.4",{"dpapp-core@^1.1.1":18,"mix@^1.0.1":21,"dpapp-share@~0.1.0":22}],"18":["1.1.2",{"promise@^6.1.0":19,"mix@^1.0.1":21}],"19":["6.1.0",{"asap@^1.0.0":20}],"20":["1.0.0"],"21":["1.0.1"],"22":["0.1.0"],"23":["0.1.10"],"24":["1.1.5"],"25":["2.8.0"],"26":["5.0.11"],"27":["0.3.1"],"28":["0.1.3"],"29":["1.1.5"],"30":["0.2.9"],"_":{"app-booking-m@*":0}}})</script>
 <script async src="//www.dpfile.com/mod/cookie/0.2.0/cookie.js"></script>
 <script async src="//www.dpfile.com/mod/iscroll/5.0.11/iscroll.js"></script>
