@@ -1,5 +1,7 @@
 <?php
     
+setlocale(LC_TIME, "Chinese_PRC");
+
 $sec_per_day = 24 * 60 * 60;
 
 $guest_num_max = 10;
