@@ -11,8 +11,13 @@ function minutes_to_clock_str($mins)
     return str_pad($h, 2, "0", STR_PAD_LEFT) . ":" . str_pad($m, 2, "0", STR_PAD_LEFT);
 }
 
-function locale_day_of_week($ts=time())
+function locale_day_of_week($ts=null)
 {
+    if ($ts == null)
+    {
+        $ts = time();
+    }
+    
     $indx = date("N", $ts);
     
     if ($indx > 0 && $indx < 8)
@@ -23,7 +28,7 @@ function locale_day_of_week($ts=time())
     return "";
 }
     
-function full_date($ts=time())
+function full_date($ts=null)
 {
     return date("Y-m-d ", $ts) . locale_day_of_week($ts);
 }
