@@ -1,7 +1,7 @@
 <?php
     
-#$g_sec_per_day = 24 * 60 * 60;
-#$g_days_of_week = array("星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天");
+$g_sec_per_day = 24 * 60 * 60;
+$g_days_of_week = array("星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天");
 
 function minutes_to_clock_str($mins)
 {
@@ -11,7 +11,7 @@ function minutes_to_clock_str($mins)
     return str_pad($h, 2, "0", STR_PAD_LEFT) . ":" . str_pad($m, 2, "0", STR_PAD_LEFT);
 }
 
-function day_of_week($ts=time())
+function locale_day_of_week($ts=time())
 {
     $indx = date("N", $ts);
     
@@ -25,7 +25,7 @@ function day_of_week($ts=time())
     
 function full_date($ts=time())
 {
-    return date("Y-m-d ", $ts) . day_of_week($ts);
+    return date("Y-m-d ", $ts) . locale_day_of_week($ts);
 }
 
 ?>
