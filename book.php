@@ -18,7 +18,7 @@ function minutes_to_clock_str($mins)
     return str_pad($h, 2, "0", STR_PAD_LEFT) . ":" . str_pad($m, 2, "0", STR_PAD_LEFT);
 }
     
-$right_now_day = date("Y-m-d l");
+$right_now_day = strftime("%Y-%m-%d %A");
 
 ?>
 
