@@ -1,5 +1,26 @@
-<!DOCTYPE html>
-<html class="G_N">
+<?php
+    
+$guest_num_max = 10;
+$guest_num_default = 2;
+    
+$open_hour_begin = 10 * 60 + 30;    # 10:30
+$open_hour_end = 20 * 60 + 0;       # 20:00
+$open_hour_slot = 30;
+    
+function minutes_to_clock_str($mins)
+{
+    $h = $mins / 60;
+    $m = $mins % 60;
+    
+    return str_pad($h, 2, "0", STR_PAD_LEFT) . ":" . str_pad($m, 2, "0", STR_PAD_LEFT);
+}
+    
+$right_now_day = date("Y-m-d l");
+$right_now_hour = date("H:00");
+
+?>
+
+<html>
 	<head>
 		<title>在线订座</title>
 		
@@ -49,130 +70,55 @@
             <div class="placeholder"></div>
             <div class="title">我要预定</div>
         </header>
-		<!--内容-->
-                <section class="info">
+
+        <section class="info">
             <div class="people-sel J-person-trigger">
                 <label>人数</label>
-                <span class="value" id="J-input-person">4</span>
+                <span class="value" id="J-input-person"><?php echo $guest_num_default ?></span>
                 <i class="caret"></i>
                 <select class="select-overlay" id="J-person-select">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4" selected>4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
+                    <?php
+                        for ($j = 1; $j <= $guest_num_max; $j++)
+                        {
+                            if ($j == $guest_num_default)
+                            {
+                                echo "<option value='$j' selected>$j</option>"
+                            }
+                            else
+                            {
+                                echo "<option value='$j'>$j</option>"
+                            }
+                        }
+                    ?>
                 </select>
             </div>
             <div class="datetime-sel">
                 <div class="date-sel J-date-trigger">
-                    <span class="value" id="J-input-date">2016-02-12 星期五</span>
+                    <span class="value" id="J-input-date"><?php echo $right_now_day ?></span>
                     <i class="caret"></i>
                 </div>
                 <div class="time-sel J-time-trigger">
-                    <span class="value" id="J-input-time">11:00</span>
+                    <span class="value" id="J-input-time"><?php echo $right_now_hour ?></span>
                     <i class="caret"></i>
                     <select class="select-overlay" id="J-time-select">
-                            <option value="00:00">00:00</option>
-                            <option value="00:15">00:15</option>
-                            <option value="00:30">00:30</option>
-                            <option value="00:45">00:45</option>
-                            <option value="01:00">01:00</option>
-                            <option value="01:15">01:15</option>
-                            <option value="01:30">01:30</option>
-                            <option value="01:45">01:45</option>
-                            <option value="02:00">02:00</option>
-                            <option value="02:15">02:15</option>
-                            <option value="02:30">02:30</option>
-                            <option value="02:45">02:45</option>
-                            <option value="03:00">03:00</option>
-                            <option value="03:15">03:15</option>
-                            <option value="03:30">03:30</option>
-                            <option value="03:45">03:45</option>
-                            <option value="04:00">04:00</option>
-                            <option value="04:15">04:15</option>
-                            <option value="04:30">04:30</option>
-                            <option value="04:45">04:45</option>
-                            <option value="05:00">05:00</option>
-                            <option value="05:15">05:15</option>
-                            <option value="05:30">05:30</option>
-                            <option value="05:45">05:45</option>
-                            <option value="06:00">06:00</option>
-                            <option value="06:15">06:15</option>
-                            <option value="06:30">06:30</option>
-                            <option value="06:45">06:45</option>
-                            <option value="07:00">07:00</option>
-                            <option value="07:15">07:15</option>
-                            <option value="07:30">07:30</option>
-                            <option value="07:45">07:45</option>
-                            <option value="08:00">08:00</option>
-                            <option value="08:15">08:15</option>
-                            <option value="08:30">08:30</option>
-                            <option value="08:45">08:45</option>
-                            <option value="09:00">09:00</option>
-                            <option value="09:15">09:15</option>
-                            <option value="09:30">09:30</option>
-                            <option value="09:45">09:45</option>
-                            <option value="10:00">10:00</option>
-                            <option value="10:15">10:15</option>
-                            <option value="10:30">10:30</option>
-                            <option value="10:45">10:45</option>
-                            <option value="11:00" selected>11:00</option>
-                            <option value="11:15">11:15</option>
-                            <option value="11:30">11:30</option>
-                            <option value="11:45">11:45</option>
-                            <option value="12:00">12:00</option>
-                            <option value="12:15">12:15</option>
-                            <option value="12:30">12:30</option>
-                            <option value="12:45">12:45</option>
-                            <option value="13:00">13:00</option>
-                            <option value="13:15">13:15</option>
-                            <option value="13:30">13:30</option>
-                            <option value="13:45">13:45</option>
-                            <option value="14:00">14:00</option>
-                            <option value="14:15">14:15</option>
-                            <option value="14:30">14:30</option>
-                            <option value="14:45">14:45</option>
-                            <option value="15:00">15:00</option>
-                            <option value="15:15">15:15</option>
-                            <option value="15:30">15:30</option>
-                            <option value="15:45">15:45</option>
-                            <option value="16:00">16:00</option>
-                            <option value="16:15">16:15</option>
-                            <option value="16:30">16:30</option>
-                            <option value="16:45">16:45</option>
-                            <option value="17:00">17:00</option>
-                            <option value="17:15">17:15</option>
-                            <option value="17:30">17:30</option>
-                            <option value="17:45">17:45</option>
-                            <option value="18:00">18:00</option>
-                            <option value="18:15">18:15</option>
-                            <option value="18:30">18:30</option>
-                            <option value="18:45">18:45</option>
-                            <option value="19:00">19:00</option>
-                            <option value="19:15">19:15</option>
-                            <option value="19:30">19:30</option>
-                            <option value="19:45">19:45</option>
-                            <option value="20:00">20:00</option>
-                            <option value="20:15">20:15</option>
-                            <option value="20:30">20:30</option>
-                            <option value="20:45">20:45</option>
-                            <option value="21:00">21:00</option>
-                            <option value="21:15">21:15</option>
-                            <option value="21:30">21:30</option>
-                            <option value="21:45">21:45</option>
-                            <option value="22:00">22:00</option>
-                            <option value="22:15">22:15</option>
-                            <option value="22:30">22:30</option>
-                            <option value="22:45">22:45</option>
-                            <option value="23:00">23:00</option>
-                            <option value="23:15">23:15</option>
-                            <option value="23:30">23:30</option>
-                            <option value="23:45">23:45</option>
+                        <?php
+                            
+                        for ($cur = $open_hour_begin; $cur <= $open_hour_end; $cur += $open_hour_slot)
+                        {
+                            $clock_str = minutes_to_clock_str($cur);
+                            
+                            if ($clock_str == $right_now_hour)
+                            {
+                                echo "<option value='$clock_str' selected>$clock_str</option>"
+                            }
+                            else
+                            {
+                                echo "<option value='$clock_str'>$clock_str</option>"
+                            }
+                            
+                        }
+                        
+                        ?>
                     </select>
                 </div>
             </div>
