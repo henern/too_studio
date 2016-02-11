@@ -1,7 +1,7 @@
 <?php
 
 require "./wx_common.php";
-require "../wx_private/wx_private.php"
+require "../wx_private/wx_private.php";
 require "./utils.php";
 
 function too_wx_check_sign()
