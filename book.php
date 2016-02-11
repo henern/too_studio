@@ -161,18 +161,7 @@ $right_now_day = full_date();
             <div class="msg msg-contact-err hide"></div>
         </section>
         
-        <a id="J_submit" class="btn-huge" href="javascript:;">马上订座</a>
-        <div class="pop-main-wrap hide" id="J-groupon-select">
-			<div class="pop-main pop-tuanph J-pop-tuanph hide">
-				<div class="pop-con">
-					<h5>团购预订请拨打商户电话</h5>
-					<ul>
-								<li><a href="tel:010-64300028" class="J-groupon-phone">拨打电话 010-64300028</a></li>
-								<li><a href="tel:13371682135" class="J-groupon-phone">拨打电话 13371682135</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
+        <a id="J_submit" class="btn-huge" href="javascript:;">马上预订</a>
 		<!--内容 end-->
 <footer class="footer">
     <p class="copyright">Copyright ©2016 Too-Studio</p>
