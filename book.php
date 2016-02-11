@@ -1,5 +1,7 @@
 <?php
     
+$minutes_per_day = 24 * 60;
+
 $guest_num_max = 10;
 $guest_num_default = 2;
     
@@ -96,6 +98,27 @@ $right_now_day = date("Y-m-d l");
                 <div class="date-sel J-date-trigger">
                     <span class="value" id="J-input-date"><?php echo $right_now_day; ?></span>
                     <i class="caret"></i>
+                    <select class="select-overlay" id="J-date-select">
+                        <?php
+                            
+                        $clock_cur = time();
+                        for ($k = 0; $k <= $open_hour_day; $k++)
+                        {
+                            $str = date("Y-m-d l", $clock_cur + $k * $minutes_per_day);
+                            
+                            if ($str == $right_now_day)
+                            {
+                                echo "<option value='$str' selected>$str</option>";
+                            }
+                            else
+                            {
+                                echo "<option value='$str'>$str</option>";
+                            }
+                            
+                        }
+                        
+                        ?>
+                    </select>
                 </div>
                 <div class="time-sel J-time-trigger">
                     <span class="value" id="J-input-time"><?php echo minutes_to_clock_str($open_hour_begin); ?></span>
