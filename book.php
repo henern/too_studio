@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="./css/base.css" type="text/css"/>
         <link rel="stylesheet" href="./css/book-default.css" type="text/css"/>
 
-<script>
+        <script>
             var _hip = [['_setPageId', 210001]];
             var executionTime = new Date().getTime();
             window.onload=function() {
@@ -40,10 +40,15 @@
 		
 	</head>
 	<body id="top">
-            <header>
-                <div class="placeholder"></div>
-                <div class="title">我要订座</div>
-			</header>
+        <!--icon for wechat-->
+        <div style='display:none;'>
+            <img src='./img/too-icon.jpeg'/>
+        </div>
+        
+        <header>
+            <div class="placeholder"></div>
+            <div class="title">我要预定</div>
+        </header>
 		<!--内容-->
                 <section class="info">
             <div class="people-sel J-person-trigger">
