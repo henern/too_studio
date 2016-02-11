@@ -14,18 +14,8 @@ if (too_wx_echo_if_require())
     return;
 }
 
+require "book.php";
+
 ?>
 
-<html>
-<head>
-<title>Welcome to Too-Studio!</title>
-</head>
-<body>
-
-<?php
-echo "Too-Studio!";
-?>
-
-</body>
-</html>
 
