@@ -82,11 +82,11 @@ $right_now_hour = date("H:00");
                         {
                             if ($j == $guest_num_default)
                             {
-                                echo "<option value='$j' selected>$j</option>"
+                                echo "<option value='$j' selected>$j</option>";
                             }
                             else
                             {
-                                echo "<option value='$j'>$j</option>"
+                                echo "<option value='$j'>$j</option>";
                             }
                         }
                     ?>
@@ -109,11 +109,11 @@ $right_now_hour = date("H:00");
                             
                             if ($clock_str == $right_now_hour)
                             {
-                                echo "<option value='$clock_str' selected>$clock_str</option>"
+                                echo "<option value='$clock_str' selected>$clock_str</option>";
                             }
                             else
                             {
-                                echo "<option value='$clock_str'>$clock_str</option>"
+                                echo "<option value='$clock_str'>$clock_str</option>";
                             }
                             
                         }
