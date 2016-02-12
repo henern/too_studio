@@ -29,7 +29,7 @@ class GuestUID
                      KEY_GUID_VALUE => $this->val);
     }
     
-    function GuestUID($arr)
+    function __construct1($arr)
     {
         if (array_key_exists(KEY_GUID_TYPE, $arr))
         {
@@ -42,7 +42,7 @@ class GuestUID
         }
     }
     
-    function GuestUID($val, $type)
+    function __construct2($val, $type)
     {
         $this->type = $this->valid_type($type);
         $this->val = $val;
@@ -85,7 +85,7 @@ class ReservationTicket
                      KEY_RTICKET_V_MINS_SLOT    => $this->visit_mins_slot);
     }
     
-    function ReservationTicket($guid, $num, $v_date, $v_mins_slot)
+    function __construct($guid, $num, $v_date, $v_mins_slot)
     {
         $this->guid = $guid;
         $this->num = $num + 0;
