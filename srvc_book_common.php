@@ -29,7 +29,7 @@ class GuestUID
                      KEY_GUID_VALUE => $this->val);
     }
     
-    function __construct1($arr)
+    function from_array($arr)
     {
         if (array_key_exists(KEY_GUID_TYPE, $arr))
         {
@@ -42,7 +42,7 @@ class GuestUID
         }
     }
     
-    function __construct2($val, $type)
+    function __construct($val, $type)
     {
         $this->type = $this->valid_type($type);
         $this->val = $val;

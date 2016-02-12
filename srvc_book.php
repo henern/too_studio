@@ -45,7 +45,7 @@ function srvc_book_reserve($guid, $guest_num, $visit_date, $visit_slot_in_mins)
         $guid = new GuestUID($wx_id, TYPE_GUID_WX_ID);
     }
     
-    if ($guid == null || $guid->is_valid())
+    if ($guid == null || !$guid->is_valid())
     {
         $err = BOOK_CODE_ERR_INVALID;
         goto ERROR;

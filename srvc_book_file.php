@@ -33,7 +33,7 @@ function impl_book_do_reserve($rticket, $max_per_slot=10)
     }
     else
     {
-        $orig_json_str = '{ KEY_FILE_JSON_RTICKET_COUNT : 0, KEY_FILE_JSON_RTICKET_LIST : {} }';
+        $orig_json_str = '{ ' . KEY_FILE_JSON_RTICKET_COUNT . ' : 0, ' . KEY_FILE_JSON_RTICKET_LIST . ' : {} }';
     }
     
     $json = json_decode($orig_json_str, true);
@@ -62,6 +62,7 @@ function impl_book_do_reserve($rticket, $max_per_slot=10)
     
     array_push($arr_rtickets, $rticket->to_array());
     $json[KEY_FILE_JSON_RTICKET_COUNT] += $rticket->num;
+    $json[KEY_FILE_JSON_RTICKET_LIST] = $arr_rtickets;
     $new_json_str = json_encode($json);
     
     // flush
