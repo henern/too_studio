@@ -1,10 +1,10 @@
 <?php
     
+require_once "utils.php";
+utils_init();
+
 require_once "srvc_book_common.php";
 require_once "srvc_book_file.php";
-require_once "utils.php";
-    
-utils_init();
     
 // trace the visitor
 log_visitor_info();

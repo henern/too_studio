@@ -14,10 +14,8 @@ function IS_BOOK_OK($code)
 define("KEY_GUID_TYPE",     "GUID_TYPE");
 define("KEY_GUID_VALUE",    "GUID_VAL");
 
-define("TYPE_GUID_MIN",     1000);
 define("TYPE_GUID_PHONE",   1000);
 define("TYPE_GUID_WX_ID",   1001);
-define("TYPE_GUID_MAX",     TYPE_GUID_WX_ID + 1);
 
 class GuestUID
 {
@@ -62,7 +60,7 @@ class GuestUID
     
     function is_valid()
     {
-        return (TYPE_GUID_MIN <= $this->type && $this->type < TYPE_GUID_MAX &&
+        return (TYPE_GUID_PHONE <= $this->type && $this->type <= TYPE_GUID_WX_ID &&
                 is_string($this->val));
     }
 }
