@@ -14,7 +14,10 @@ if (too_wx_echo_if_require())
     return;
 }
 
-require "book.php";
+// jump to book.php
+Header("HTTP/1.1 303 See Other"); 
+Header("Location: book.php"); 
+exit;
 
 ?>
 
