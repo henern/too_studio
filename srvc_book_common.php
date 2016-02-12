@@ -42,7 +42,7 @@ class GuestUID
         }
     }
     
-    function GuestUID($val, $type=TYPE_GUID_PHONE)
+    function GuestUID($val, $type)
     {
         $this->type = $this->valid_type($type);
         $this->val = $val;
