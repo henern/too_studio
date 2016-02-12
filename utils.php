@@ -1,6 +1,7 @@
 <?php
 
 require "./utils_log.php";
+require "utils_time.php";
 
 function array_to_string($arr)
 {

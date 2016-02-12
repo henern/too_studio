@@ -7,7 +7,7 @@ function visitor_info($extra_arr)
     $remote_ua = $_SERVER['HTTP_USER_AGENT'];
     $extra_str = "[ " . array_to_string($extra_arr) . " ]";
     $time_str = date("Y-m-d H:i:s");
-    $page_url = $_SERVER['SCRIPT_URI'];
+    $page_url = $_SERVER['REQUEST_URI'];
 
     $ret = "$page_url;   \n" .
            "$time_str;   \n" .

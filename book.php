@@ -1,6 +1,9 @@
 <?php
     
-require "utils_time.php";
+require "utils.php";
+
+# trace the visitor
+log_visitor_info();
 
 $guest_num_max = 10;
 $guest_num_default = 2;
