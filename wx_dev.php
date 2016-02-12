@@ -1,8 +1,8 @@
 <?php
 
-require "./wx_common.php";
-require "../wx_private/wx_private.php";
-require "./utils.php";
+require_once "./wx_common.php";
+require_once "../wx_private/wx_private.php";
+require_once "utils.php";
 
 function too_wx_check_sign()
 {

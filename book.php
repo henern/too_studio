@@ -1,6 +1,6 @@
 <?php
     
-require "utils.php";
+require_once "utils.php";
 
 # trace the visitor
 log_visitor_info();
