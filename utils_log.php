@@ -1,5 +1,24 @@
 <?php
     
+function visitor_info($extra_arr)
+{
+    $remote_ip = $_SERVER['REMOTE_ADDR'];
+    $get_params = "[ " . array_to_string($_GET) . " ]";
+    $remote_ua = $_SERVER['HTTP_USER_AGENT'];
+    $extra_str = "[ " . array_to_string($extra_arr) . " ]";
+    $time_str = date("Y-m-d H:i:s");
+    $page_url = $_SERVER['SCRIPT_URI'];
+
+    $ret = "$page_url;   \n" .
+           "$time_str;   \n" .
+           "$remote_ip;  \n" . 
+           "$remote_ua;  \n" . 
+           "$get_params; \n" .
+           "$extra_str;  \n";
+    
+    return $ret;
+}
+
 function log_base_path()
 {
     $ret = dirname(__FILE__) . "/../log/";
