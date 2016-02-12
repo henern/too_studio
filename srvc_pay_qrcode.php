@@ -1,5 +1,7 @@
 <?php
 
+// wechat doc: https://pay.weixin.qq.com/wiki/doc/api/index.html
+
 require_once "utils.php";
 
 # trace the visitor
