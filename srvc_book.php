@@ -6,6 +6,9 @@ require_once "utils.php";
     
 utils_init();
     
+// trace the visitor
+log_visitor_info();
+
 function srvc_book_max_per_slot()
 {
     return 10;
