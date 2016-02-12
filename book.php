@@ -161,7 +161,7 @@ $right_now_day = full_date();
             <div class="msg msg-contact-err hide"></div>
         </section>
         
-        <a id="J_submit" class="btn-huge" href="javascript:;">马上预订</a>
+        <a id="J_submit" class="btn-huge" href="./srvc_pay.php">马上预订</a>
 		<!--内容 end-->
 <footer class="footer">
     <p class="copyright">Copyright ©2016 Too-Studio</p>
