@@ -34,6 +34,7 @@ function srvc_book_reserve($guid, $guest_num, $visit_date, $visit_slot_in_mins)
     $action = array_string4key($_GET, "action");
     $phone = array_string4key($_GET, "phone");
     $wx_id = array_string4key($_GET, "wx_id");
+    $guid = null;
     
     if ($phone != null)
     {

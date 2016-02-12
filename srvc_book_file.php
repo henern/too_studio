@@ -27,8 +27,23 @@ function impl_book_do_reserve($rticket, $max_per_slot=10)
     $path = __impl_book_file_rticket_path($rticket);
     
     // read json from file
-    $orig_json_str = file_get_contents($path);
+    if (file_exists($path))
+    {
+        $orig_json_str = file_get_contents($path);
+    }
+    else
+    {
+        $orig_json_str = '{ "COUNT" : 0, "ALL" : {} }';
+    }
+    
     $json = json_decode($orig_json_str);
+    
+    // check
+    if (!array_key_exists(KEY_FILE_JSON_RTICKET_COUNT, $json) ||
+        !array_key_exists(KEY_FILE_JSON_RTICKET_LIST, $json))
+    {
+        return BOOK_CODE_ERR_CORRUPT;
+    }
     
     // check if full
     $count_rtickets = $json[KEY_FILE_JSON_RTICKET_COUNT];
@@ -39,6 +54,11 @@ function impl_book_do_reserve($rticket, $max_per_slot=10)
     
     // update json count & list
     $arr_rtickets = $json[KEY_FILE_JSON_RTICKET_LIST];
+    if (!is_array($arr_rtickets))
+    {
+        return BOOK_CODE_ERR_CORRUPT;
+    }
+    
     array_push($arr_rtickets, $rticket->to_array);
     $json[KEY_FILE_JSON_RTICKET_COUNT] += $rtickets->num;
     $new_json_str = json_encode($arr_rtickets);
