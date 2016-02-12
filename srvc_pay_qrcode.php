@@ -1,5 +1,9 @@
 <?php
 
+require "utils.php";
+
+# trace the visitor
+log_visitor_info();
 
 ?>
 <html>
