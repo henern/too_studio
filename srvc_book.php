@@ -4,6 +4,8 @@ require_once "srvc_book_common.php";
 require_once "srvc_book_file.php";
 require_once "utils.php";
     
+utils_init();
+    
 function srvc_book_max_per_slot()
 {
     return 10;
