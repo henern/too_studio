@@ -95,7 +95,7 @@ class ReservationTicket
     
     function is_valid()
     {
-        return $this->guid instanceof GuestUID) &&
+        return ($this->guid instanceof GuestUID) &&
                is_int($this->num) &&
                is_numeric($this->visit_date) &&
                is_numeric($this->visit_mins_slot);
