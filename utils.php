@@ -2,7 +2,8 @@
 
 require "./utils_log.php";
 require "utils_time.php";
-
+require "utils_array.php";
+    
 function array_to_string($arr)
 {
     $ret = "";
