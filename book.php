@@ -27,7 +27,7 @@ $right_now_day = full_date();
 		<meta name="format-detection" content="telephone=no" />
 		<meta name="format-detection" content="email=no" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
-        <script src="./js/book-toolkit.js"/>
+        <script src="./js/book-toolkit.js"></script>
         <link rel="stylesheet" href="./css/base.css" type="text/css"/>
         <link rel="stylesheet" href="./css/book-default.css" type="text/css"/>
 
