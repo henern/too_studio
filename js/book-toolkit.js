@@ -1,5 +1,3 @@
-<script type="text/javascript">
-
 function book_do_reserve(phone, num, vdate, vmins_slot, callback)
 {
     var xhr = new XMLHttpRequest();
@@ -20,5 +18,3 @@ function book_do_reserve(phone, num, vdate, vmins_slot, callback)
     xhr.open("GET", url, true);
     xhr.send(null);
 }
-
-</script>
