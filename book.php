@@ -27,6 +27,7 @@ $right_now_day = full_date();
 		<meta name="format-detection" content="telephone=no" />
 		<meta name="format-detection" content="email=no" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
+        <script src="./js/book_toolkit.js"/>
         <link rel="stylesheet" href="./css/base.css" type="text/css"/>
         <link rel="stylesheet" href="./css/book-default.css" type="text/css"/>
 
@@ -54,6 +55,19 @@ $right_now_day = full_date();
                     }, 300);
                 }
             };
+            
+            function on_click_to_reserve()
+            {
+                var g_phone = document.getElementById("J-input-phone").value;
+                var g_num   = document.getElementById("J-person-select").value;
+                var v_date  = document.getElementById("J-date-select").value;
+                var v_slot  = document.getElementById("J-time-select").value;
+                
+                book_do_reserve(g_phone, g_num, v_date, v_slot, function(result_code){
+                    
+                    alert(result_code);
+                });
+            }
         </script>
 		
 	</head>
@@ -101,14 +115,15 @@ $right_now_day = full_date();
                         {
                             $ts = $clock_cur + $k * SEC_PER_DAY;
                             $str = full_date($ts);
+                            $date_val = date("Ymd", $ts);
                             
                             if ($str == $right_now_day)
                             {
-                                echo "<option value='$str' selected>$str</option>";
+                                echo "<option value='$date_val' selected>$str</option>";
                             }
                             else
                             {
-                                echo "<option value='$str'>$str</option>";
+                                echo "<option value='$date_val'>$str</option>";
                             }
                             
                         }
@@ -128,11 +143,11 @@ $right_now_day = full_date();
                             
                             if ($clock_str == $right_now_hour)
                             {
-                                echo "<option value='$clock_str' selected>$clock_str</option>";
+                                echo "<option value='$cur' selected>$clock_str</option>";
                             }
                             else
                             {
-                                echo "<option value='$clock_str'>$clock_str</option>";
+                                echo "<option value='$cur'>$clock_str</option>";
                             }
                             
                         }
@@ -164,7 +179,7 @@ $right_now_day = full_date();
             <div class="msg msg-contact-err hide"></div>
         </section>
         
-        <a id="J_submit" class="btn-huge" href="./srvc_pay.php">马上预订</a>
+        <a id="J_submit" class="btn-huge" href="javascript:on_click_to_reserve();">马上预订</a>
 		<!--内容 end-->
 <footer class="footer">
     <p class="copyright">Copyright ©2016 Too-Studio</p>
