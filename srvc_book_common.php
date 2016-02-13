@@ -10,6 +10,31 @@ function IS_BOOK_OK($code)
 {
     return $code >= BOOK_CODE_OK;
 }
+
+function srvc_book_description_4_code($code)
+{
+    if (IS_BOOK_OK($code))
+    {
+        return "OK";
+    }
+    else if ($code == BOOK_CODE_ERR_FULL)
+    {
+        return "该时段已经爆满了";
+    }
+    else if ($code == BOOK_CODE_ERR_INVALID)
+    {
+        return "参数错误";
+    }
+    else if ($code == BOOK_CODE_ERR_CORRUPT)
+    {
+        return "数据库错误";
+    }
+    else
+    {
+        // maybe BOOK_CODE_ERR_UNKNOWN
+        return "内部错误";
+    }
+}
     
 define("KEY_GUID_TYPE",     "GUID_TYPE");
 define("KEY_GUID_VALUE",    "GUID_VAL");

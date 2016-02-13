@@ -12,7 +12,11 @@ function book_do_reserve(phone, num, vdate, vmins_slot, callback)
         
         if (xhr.readyState == 4 && xhr.status == 200)
         {
-            callback(xhr.responseText);
+            var json = JSON.parse(xhr.responseText);
+            var code = json["ERROR"];
+            var description = json["DESC"];
+            
+            callback(code, description);
         }
     };
     xhr.open("GET", url, true);

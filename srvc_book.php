@@ -71,10 +71,11 @@ function srvc_book_reserve($guid, $guest_num, $visit_date, $visit_slot_in_mins)
     }
     
 DONE:
-    exit;
+    $err = BOOK_CODE_OK;
     
 ERROR:
-    echo "{ ERROR : $err }";
+    $desc = srvc_book_description_4_code($err);
+    echo '{ "ERROR" : $err, "DESC" : $desc }';
     exit;
 }
 ?>

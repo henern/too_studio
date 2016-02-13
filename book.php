@@ -19,7 +19,7 @@ $right_now_day = full_date();
 
 <html>
 	<head>
-		<title>在线订座</title>
+		<title>Too-Studio在线预定</title>
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -63,9 +63,22 @@ $right_now_day = full_date();
                 var v_date  = document.getElementById("J-date-select").value;
                 var v_slot  = document.getElementById("J-time-select").value;
                 
-                book_do_reserve(g_phone, g_num, v_date, v_slot, function(result_code){
+                var btn_reserve = document.getElementById("J_submit");
+                btn_reserve.innerHTML = "正在努力预定...";
+                
+                book_do_reserve(g_phone, g_num, v_date, v_slot, function(result_code, result_desc){
                     
-                    alert(result_code);
+                    if (result_code >= 0)
+                    {
+                        btn_reserve.innerHTML = "预定成功";
+                        setTimeout(function(){
+                            window.location.assign("./srvc_pay.php");
+                        }, 1500);
+                    }
+                    else
+                    {
+                        btn_reserve.innerHTML = "预定失败（" + result_desc + "）";
+                    }
                 });
             }
         </script>
