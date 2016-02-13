@@ -56,6 +56,16 @@ $right_now_day = full_date();
                 }
             };
             
+            function on_select_changed(select_id, binding2_id)
+            {
+                var element_select = document.getElementById(select_id);
+                var indx_selected = element_select.selectedIndex;
+                
+                var element_bind2 = document.getElementById(binding2_id);
+                
+                element_bind2.innerHTML = element_select.options[indx_selected].innerHTML;
+            }
+            
             function on_click_to_reserve()
             {
                 var g_phone = document.getElementById("J-input-phone").value;
@@ -100,7 +110,7 @@ $right_now_day = full_date();
                 <label>人数</label>
                 <span class="value" id="J-input-person"><?php echo $guest_num_default ?></span>
                 <i class="caret"></i>
-                <select class="select-overlay" id="J-person-select">
+                <select class="select-overlay" id="J-person-select" onchange="javascript:on_select_changed('J-person-select', 'J-input-person')">
                     <?php
                         for ($j = 1; $j <= $guest_num_max; $j++)
                         {
@@ -120,7 +130,7 @@ $right_now_day = full_date();
                 <div class="date-sel J-date-trigger">
                     <span class="value" id="J-input-date"><?php echo $right_now_day; ?></span>
                     <i class="caret"></i>
-                    <select class="select-overlay" id="J-date-select">
+                    <select class="select-overlay" id="J-date-select" onchange="javascript:on_select_changed('J-date-select', 'J-input-date')">
                         <?php
                             
                         $clock_cur = time();
@@ -147,7 +157,7 @@ $right_now_day = full_date();
                 <div class="time-sel J-time-trigger">
                     <span class="value" id="J-input-time"><?php echo minutes_to_clock_str($open_hour_begin); ?></span>
                     <i class="caret"></i>
-                    <select class="select-overlay" id="J-time-select">
+                    <select class="select-overlay" id="J-time-select" onchange="javascript:on_select_changed('J-time-select', 'J-input-time')">
                         <?php
                             
                         for ($cur = $open_hour_begin; $cur <= $open_hour_end; $cur += $open_hour_slot)
