@@ -75,7 +75,7 @@ DONE:
     
 ERROR:
     $desc = srvc_book_description_4_code($err);
-    echo '{ "ERROR" : $err, "DESC" : $desc }';
+    echo "{ \"ERROR\" : $err, \"DESC\" : $desc }";
     exit;
 }
 ?>
