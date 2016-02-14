@@ -42,27 +42,28 @@ function srvc_book_query_schedule($next_n_days)
     
     // GET param ==> function
     $action = array_string4key($_GET, "action");
-    $phone = array_string4key($_GET, "phone");
-    $wx_id = array_string4key($_GET, "wx_id");
-    $guid = null;
-    
-    if ($phone != null)
-    {
-        $guid = new GuestUID($phone, TYPE_GUID_PHONE);
-    }
-    else if ($wx_id != null)
-    {
-        $guid = new GuestUID($wx_id, TYPE_GUID_WX_ID);
-    }
-    
-    if ($guid == null || !$guid->is_valid())
-    {
-        $err = BOOK_CODE_ERR_INVALID;
-        goto ERROR;
-    }
     
     if ($action == "reserve")
     {
+        $phone = array_string4key($_GET, "phone");
+        $wx_id = array_string4key($_GET, "wx_id");
+        $guid = null;
+    
+        if ($phone != null)
+        {
+            $guid = new GuestUID($phone, TYPE_GUID_PHONE);
+        }
+        else if ($wx_id != null)
+        {
+            $guid = new GuestUID($wx_id, TYPE_GUID_WX_ID);
+        }
+    
+        if ($guid == null || !$guid->is_valid())
+        {
+            $err = BOOK_CODE_ERR_INVALID;
+            goto ERROR;
+        }
+        
         $guest_num = array_number4key($_GET, "gnum");
         $visit_date = array_number4key($_GET, "vdate");
         $visit_mins_slot = array_number4key($_GET, "vmins");
