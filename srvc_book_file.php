@@ -104,7 +104,7 @@ function impl_book_query_schedule($prev_n, $next_n)
             $fpath = $dir . $fname;
             
             // skip folders
-            if (isdir($fpath))
+            if (is_dir($fpath))
             {
                 continue;
             }
