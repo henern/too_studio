@@ -48,6 +48,21 @@ class GuestUID
     var $type;       // PHONE, WXID, etc.
     var $val;
     
+    function to_string()
+    {
+        $ret = "UNKNOWN";
+        if (TYPE_GUID_PHONE == $type)
+        {
+            $ret = "PHONE";
+        }
+        else if (TYPE_GUID_WX_ID == $type)
+        {
+            $ret = "WX";
+        }
+        
+        return $ret . "_" . $val;
+    }
+    
     function to_array()
     {
         return array(KEY_GUID_TYPE  => $this->type, 
@@ -108,6 +123,18 @@ class ReservationTicket
                      KEY_RTICKET_NUM            => $this->num,
                      KEY_RTICKET_V_DATE         => $this->visit_date,
                      KEY_RTICKET_V_MINS_SLOT    => $this->visit_mins_slot);
+    }
+    
+    function from_array($arr)
+    {
+        $this->guid = new GuestUID();
+        $this->guid->from_array($arr[KEY_RTICKET_GUID]);
+        
+        $this->num = $arr[KEY_RTICKET_NUM];
+        $this->visit_date = $arr[KEY_RTICKET_V_DATE];
+        $this->visit_mins_slot = $arr[KEY_RTICKET_V_MINS_SLOT];
+        
+        return $this->is_valid();
     }
     
     function __construct($guid, $num, $v_date, $v_mins_slot)

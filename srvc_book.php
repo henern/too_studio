@@ -26,6 +26,16 @@ function srvc_book_reserve($guid, $guest_num, $visit_date, $visit_slot_in_mins)
     return impl_book_do_reserve($rticket, srvc_book_max_per_slot());
 }
 
+function srvc_book_query_schedule($next_n_days)
+{
+    if ($next_n_days >= 0)
+    {
+        return impl_book_query_schedule(1, $next_n_days);
+    }
+    
+    return BOOK_CODE_ERR_INVALID;
+}
+
 // main
 {
     $err = BOOK_CODE_OK;
@@ -58,6 +68,11 @@ function srvc_book_reserve($guid, $guest_num, $visit_date, $visit_slot_in_mins)
         $visit_mins_slot = array_number4key($_GET, "vmins");
         
         $err = srvc_book_reserve($guid, $guest_num, $visit_date, $visit_mins_slot);
+    }
+    else if ($action == "query_schedule")
+    {
+        // by default, query the reservations for the next 2 weeks
+        $err = srvc_book_query_schedule(7 * 2);
     }
     else
     {
