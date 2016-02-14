@@ -88,7 +88,7 @@ function impl_book_query_schedule($prev_n, $next_n)
         $cur = $begin_day + $k * SEC_PER_DAY;
         $dir = __impl_book_file_dir_4_name(date("Ymd", $cur));
         
-        if (!isdir($dir))
+        if (!is_dir($dir))
         {
             continue;
         }
