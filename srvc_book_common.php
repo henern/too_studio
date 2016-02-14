@@ -51,16 +51,16 @@ class GuestUID
     function to_string()
     {
         $ret = "UNKNOWN";
-        if (TYPE_GUID_PHONE == $type)
+        if (TYPE_GUID_PHONE == $this->type)
         {
             $ret = "PHONE";
         }
-        else if (TYPE_GUID_WX_ID == $type)
+        else if (TYPE_GUID_WX_ID == $this->type)
         {
             $ret = "WX";
         }
         
-        return $ret . "_" . $val;
+        return $ret . "_" . $this->val;
     }
     
     function to_array()
