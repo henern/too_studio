@@ -149,7 +149,7 @@ function impl_book_query_schedule($prev_n, $next_n)
                 $guid_str = $guid->to_string();
                 $guest_num = $rticket->num;
                 
-                echo "    #$guest_num: $guid_str.\n"
+                echo "    #$guest_num: $guid_str.\n";
             }
         }
         
