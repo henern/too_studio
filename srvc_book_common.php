@@ -23,11 +23,11 @@ function srvc_book_description_4_code($code)
     }
     else if ($code == BOOK_CODE_ERR_INVALID)
     {
-        return "参数错误";
+        return "无效请求";
     }
     else if ($code == BOOK_CODE_ERR_CORRUPT)
     {
-        return "数据库错误";
+        return "数据库挂了";
     }
     else
     {
