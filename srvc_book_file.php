@@ -100,7 +100,7 @@ function impl_book_query_schedule($prev_n, $next_n)
             continue;
         }
         
-        echo "$subdir :";
+        echo "$subdir :</br>";
         
         while (($fname = readdir($dh)) != false)
         {
@@ -136,7 +136,7 @@ function impl_book_query_schedule($prev_n, $next_n)
                 continue;
             }
             
-            echo "    $visit_clock ==> $count_rtickets.\n";
+            echo "    $visit_clock ==> $count_rtickets.</br>";
             
             // go through each reservation
             $arr_rtickets = $json[KEY_FILE_JSON_RTICKET_LIST];
@@ -152,7 +152,7 @@ function impl_book_query_schedule($prev_n, $next_n)
                 $guid_str = $guid->to_string();
                 $guest_num = $rticket->num;
                 
-                echo "        #$guest_num: $guid_str.\n";
+                echo "        #$guest_num: $guid_str.</br>";
             }
         }
         
