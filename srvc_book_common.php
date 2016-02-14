@@ -127,7 +127,7 @@ class ReservationTicket
     
     function from_array($arr)
     {
-        $this->guid = new GuestUID();
+        $this->guid = new GuestUID("", 0);
         $this->guid->from_array($arr[KEY_RTICKET_GUID]);
         
         $this->num = $arr[KEY_RTICKET_NUM];

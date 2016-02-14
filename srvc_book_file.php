@@ -142,7 +142,7 @@ function impl_book_query_schedule($prev_n, $next_n)
             $arr_rtickets = $json[KEY_FILE_JSON_RTICKET_LIST];
             foreach ($arr_rtickets as $arr_rt)
             {
-                $rticket = new ReservationTicket();
+                $rticket = new ReservationTicket(null, 0, "", "");
                 if (!$rticket->from_array($arr_rt))
                 {
                     continue;
