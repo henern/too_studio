@@ -101,7 +101,7 @@ function impl_book_query_schedule($prev_n, $next_n)
         
         while (($fname = readdir($dh)) != false)
         {
-            $fpath = $dir . $fname;
+            $fpath = $dir . "/" . $fname;
             
             // skip folders
             if (is_dir($fpath))
