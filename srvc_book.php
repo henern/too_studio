@@ -26,7 +26,7 @@ function srvc_book_reserve($guid, $guest_num, $visit_date, $visit_slot_in_mins)
     return impl_book_do_reserve($rticket, srvc_book_max_per_slot());
 }
 
-function srvc_book_query_schedule($next_n_days, $result_arr)
+function srvc_book_query_schedule($next_n_days, &$result_arr)
 {
     if ($next_n_days >= 0)
     {

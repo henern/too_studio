@@ -79,7 +79,7 @@ function impl_book_do_reserve($rticket, $max_per_slot=10)
     return BOOK_CODE_OK;
 }
     
-function impl_book_query_schedule($prev_n, $next_n, $result_arr)
+function impl_book_query_schedule($prev_n, $next_n, &$result_arr)
 {
     $begin_day = time() - $prev_n * SEC_PER_DAY;
     
