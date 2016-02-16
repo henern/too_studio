@@ -5,6 +5,7 @@ define("BOOK_CODE_ERR_UNKNOWN",     -10);
 define("BOOK_CODE_ERR_FULL",        -11);
 define("BOOK_CODE_ERR_INVALID",     -12);
 define("BOOK_CODE_ERR_CORRUPT",     -13);
+define("BOOK_CODE_ERR_DUP",         -14);
 
 function IS_BOOK_OK($code)
 {
@@ -28,6 +29,10 @@ function srvc_book_description_4_code($code)
     else if ($code == BOOK_CODE_ERR_CORRUPT)
     {
         return "数据库挂了";
+    }
+    else if ($code == BOOK_CODE_ERR_DUP)
+    {
+        return "已预约过啦";
     }
     else
     {

@@ -59,13 +59,29 @@ function impl_book_do_reserve($rticket, $max_per_slot=10)
         return BOOK_CODE_ERR_FULL;
     }
     
-    // update json count & list
+    // check reservation list
     $arr_rtickets = $json[KEY_FILE_JSON_RTICKET_LIST];
     if (!is_array($arr_rtickets))
     {
         return BOOK_CODE_ERR_CORRUPT;
     }
     
+    // any dup?
+    foreach ($arr_rtickets as $arr_rt)
+    {
+        $rt = new ReservationTicket(null, 0, "", "");
+        if (!$rt->from_array($arr_rt))
+        {
+            return BOOK_CODE_ERR_CORRUPT;
+        }
+        
+        if ($rt->guid == $rticket->guid)
+        {
+            return BOOK_CODE_ERR_DUP;
+        }
+    }
+    
+    // update json count & list
     array_push($arr_rtickets, $rticket->to_array());
     $json[KEY_FILE_JSON_RTICKET_COUNT] += $rticket->num;
     $json[KEY_FILE_JSON_RTICKET_LIST] = $arr_rtickets;
