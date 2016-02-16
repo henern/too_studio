@@ -3,6 +3,30 @@
 require_once "srvc_book_common.php";
 require_once "utils_time.php";
 
+function __lock_file_until_ms($fh, $mseconds)
+{
+    $ret = false;
+    
+    while ($fh)
+    {
+        $ret = flock($fh, LOCK_EX | LOCK_NB);
+        if (!$ret && $mseconds > 0)
+        {
+            //Lock not acquired
+            usleep($mseconds * 1000));
+            
+            // retry once
+            $mseconds = 0;
+        }
+        else
+        {
+            break;
+        }
+    }
+    
+    return $ret;
+}
+
 function __impl_book_file_base_dir()
 {
     return dirname(__FILE__) . "/../reservation/";
@@ -90,7 +114,7 @@ function impl_book_do_reserve($rticket, $max_per_slot=10)
     // flush
     $handle_f = fopen($path, "w") or die ("ERROR to open $path!");
     $wouldLock = 1;
-    if (!flock($handle_f, LOCK_EX, $wouldLock))
+    if (!__lock_file_until_ms($handle_f, 100))
     {
         return BOOK_CODE_ERR_UNKNOWN;
     }
