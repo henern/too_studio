@@ -19,7 +19,7 @@ $right_now_day = full_date();
 
 <html>
 	<head>
-		<title>Too-Studio在线预定</title>
+		<title>Too塗Studio在线预定</title>
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -205,7 +205,7 @@ $right_now_day = full_date();
         <a id="J_submit" class="btn-huge" href="javascript:on_click_to_reserve();">马上预订</a>
 		<!--内容 end-->
 <footer class="footer">
-    <p class="copyright">Copyright ©2016 Too-Studio</p>
+    <p class="copyright">Copyright ©2016 Too塗Studio</p>
 </footer>     
 <script type="text/javascript">
 
