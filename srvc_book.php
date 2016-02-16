@@ -39,7 +39,8 @@ function srvc_book_query_schedule($next_n_days, &$result_arr)
 // main
 {
     $err = BOOK_CODE_OK;
-	$result_arr = array();
+    $result_arr = array();
+    $result_json_str = json_encode($result_arr);
     
     // GET param ==> function
     $action = array_string4key($_GET, "action");
