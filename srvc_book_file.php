@@ -75,7 +75,7 @@ function impl_book_do_reserve($rticket, $max_per_slot=10)
             return BOOK_CODE_ERR_CORRUPT;
         }
         
-        if ($rt->guid == $rticket->guid)
+        if ($rt->guid->is_equal_to($rticket->guid))
         {
             return BOOK_CODE_ERR_DUP;
         }

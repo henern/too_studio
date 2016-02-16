@@ -53,6 +53,18 @@ class GuestUID
     var $type;       // PHONE, WXID, etc.
     var $val;
     
+    function is_equal_to($guid)
+    {
+        if (($guid instanceof GuestUID) &&
+            $this->type == $guid->type &&
+            strcmp($this->val, $guid->val) == 0)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+    
     function to_string()
     {
         $ret = "UNKNOWN";
