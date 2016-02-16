@@ -12,8 +12,8 @@ function __lock_file_until_ms($fh, $mseconds)
         $ret = flock($fh, LOCK_EX | LOCK_NB);
         if (!$ret && $mseconds > 0)
         {
-            //Lock not acquired
-            usleep($mseconds * 1000));
+            // lock not acquired
+            usleep($mseconds * 1000);
             
             // retry once
             $mseconds = 0;
