@@ -26,11 +26,11 @@ function srvc_book_reserve($guid, $guest_num, $visit_date, $visit_slot_in_mins)
     return impl_book_do_reserve($rticket, srvc_book_max_per_slot());
 }
 
-function srvc_book_query_schedule($next_n_days)
+function srvc_book_query_schedule($next_n_days, $result_arr)
 {
     if ($next_n_days >= 0)
     {
-        return impl_book_query_schedule(1, $next_n_days);
+        return impl_book_query_schedule(1, $next_n_days, $result_arr);
     }
     
     return BOOK_CODE_ERR_INVALID;
@@ -39,6 +39,7 @@ function srvc_book_query_schedule($next_n_days)
 // main
 {
     $err = BOOK_CODE_OK;
+	$result_arr = array();
     
     // GET param ==> function
     $action = array_string4key($_GET, "action");
@@ -73,7 +74,7 @@ function srvc_book_query_schedule($next_n_days)
     else if ($action == "query_schedule")
     {
         // by default, query the reservations for the next 2 weeks
-        $err = srvc_book_query_schedule(7 * 2);
+        $err = srvc_book_query_schedule(7 * 2, $result_arr);
     }
     else
     {
@@ -88,10 +89,11 @@ function srvc_book_query_schedule($next_n_days)
     
 DONE:
     $err = BOOK_CODE_OK;
-    
+    $result_json_str = json_encode($result_arr);
+	
 ERROR:
     $desc = srvc_book_description_4_code($err);
-    echo "{ \"ERROR\" : $err, \"DESC\" : \"$desc\" }";
+    echo "{ \"ERROR\" : $err, \"DESC\" : \"$desc\", \"RESULT\" : $result_json_str }";
     exit;
 }
 ?>

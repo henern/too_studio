@@ -79,7 +79,7 @@ function impl_book_do_reserve($rticket, $max_per_slot=10)
     return BOOK_CODE_OK;
 }
     
-function impl_book_query_schedule($prev_n, $next_n)
+function impl_book_query_schedule($prev_n, $next_n, $result_arr)
 {
     $begin_day = time() - $prev_n * SEC_PER_DAY;
     
@@ -100,7 +100,8 @@ function impl_book_query_schedule($prev_n, $next_n)
             continue;
         }
         
-        echo "$subdir :</br>";
+        // all slots in one array
+        $all_slots = array();
         
         while (($fname = readdir($dh)) != false)
         {
@@ -136,7 +137,10 @@ function impl_book_query_schedule($prev_n, $next_n)
                 continue;
             }
             
-            echo "    $visit_clock ==> $count_rtickets.</br>";
+            // put all reservations of this slot in one array
+            $slot_inf = array();
+            // e.g. COUNT ==> N
+            $slot_inf["COUNT"]  = $count_rtickets;
             
             // go through each reservation
             $arr_rtickets = $json[KEY_FILE_JSON_RTICKET_LIST];
@@ -152,11 +156,18 @@ function impl_book_query_schedule($prev_n, $next_n)
                 $guid_str = $guid->to_string();
                 $guest_num = $rticket->num;
                 
-                echo "        #$guest_num: $guid_str.</br>";
+                // e.g. [N] ==> #2, PHONE_138xxxxxxxx
+                $slot_inf[] = "#$guest_num, $guid_str";
             }
+            
+            // e.g. 15:30 ==> [ xxx ]
+            $all_slots[$visit_clock] = $slot_inf;
         }
         
         closedir($dh);
+        
+        // e.g. 20160210 ==> [ xxx ]
+        $result_arr[$subdir] = $all_slots; 
     }
     
     return BOOK_CODE_OK;
