@@ -29,13 +29,13 @@ $pay_inf->openid = "oUpF8uMuAJO_M2pxb1Q9zNjWeS6o";  // ???
 $pay_inf->notify_url = "http://120.25.202.38/wx/pay/srvc_pay_api_notify_test.php";
 $var = $pay_inf->to_xml_str();
 
-echo "request xml\n";
+echo "request xml</br>";
 var_dump($var);
 
 $ret = __curl_post_ssl("https://api.mch.weixin.qq.com/pay/unifiedorder", 
                        $vars,
                        $err);
-echo "\nresponse xml\n";
+echo "</br>response xml</br>";
 var_dump($ret);
 
 ?>
