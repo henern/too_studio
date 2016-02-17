@@ -79,7 +79,7 @@ class PayInfo
     function to_string()
     {
         $plain = null;
-        foreach ($this->to_array() as $key ==> $val)
+        foreach ($this->to_array() as $key => $val)
         {
             if ($plain == null)
             {
@@ -103,7 +103,7 @@ class PayInfo
     function to_xml_str()
     {
         $xml = "<xml>";
-        foreach ($this->to_array() as $key ==> $val)
+        foreach ($this->to_array() as $key => $val)
         {
             $xml .= "<$key>$val</$key>";
         }
