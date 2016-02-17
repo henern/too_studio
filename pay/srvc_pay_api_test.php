@@ -1,6 +1,6 @@
 <?php
     
-require_once '../srvc_book_api.php';
+require_once '../srvc_pay_api.php';
 
 utils_init();
     
