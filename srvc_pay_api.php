@@ -108,7 +108,7 @@ class PayInfo
             $xml .= "<$key>$val</$key>";
         }
         
-        $xml .= "</xml>"
+        $xml .= "</xml>";
         return $xml;
     }
 }
