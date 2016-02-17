@@ -61,7 +61,7 @@ class PayInfo
     
     function to_array()
     {
-        $ret = array("app_id"           => $this->app_id(),
+        $ret = array("appid"           => $this->app_id(),
                      "mch_id"           => $this->mch_id(),
                      "body"             => $this->body,
                      "attach"           => $this->attach,
