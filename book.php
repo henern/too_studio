@@ -1,6 +1,7 @@
 <?php
     
 require_once "utils.php";
+utils_init();
 
 # trace the visitor
 log_visitor_info();
