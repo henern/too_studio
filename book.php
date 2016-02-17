@@ -160,11 +160,13 @@ $right_now_day = full_date();
                     <select class="select-overlay" id="J-time-select" onchange="javascript:on_select_changed('J-time-select', 'J-input-time')">
                         <?php
                             
+                        $right_now_hour = $open_hour_begin; // TODO: should be in the future
+                        
                         for ($cur = $open_hour_begin; $cur <= $open_hour_end; $cur += $open_hour_slot)
                         {
                             $clock_str = minutes_to_clock_str($cur);
                             
-                            if ($clock_str == $right_now_hour)
+                            if ($cur == $right_now_hour)
                             {
                                 echo "<option value='$cur' selected>$clock_str</option>";
                             }
