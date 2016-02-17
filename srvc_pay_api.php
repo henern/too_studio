@@ -2,10 +2,7 @@
 /*
 请确保您的libcurl版本是否支持双向认证，版本高于7.20.1
 */
-
-define("WX_PATH_API_PEM_CERT",      "wx_private/cert/apiclient_cert.pem");
-define("WX_PATH_API_PEM_KEY",       "wx_private/cert/apiclient_key.pem");
-define("WX_SSL_CERT_TYPE",          "PEM");
+require_once '../wx_dev.php';
 
 function __curl_post_ssl($url, $vars, &$error, $second = 30, $headers = array())
 {

@@ -1,6 +1,8 @@
 <?php
     
 require_once '../srvc_book_api.php';
+
+utils_init();
     
 $err = null;
 $ret = __curl_post_ssl("https://api.mch.weixin.qq.com/pay/unifiedorder", 
