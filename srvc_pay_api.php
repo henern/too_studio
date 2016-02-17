@@ -64,7 +64,7 @@ class PayInfo
         $ret = array("app_id"           => $this->app_id(),
                      "mch_id"           => $this->mch_id(),
                      "body"             => $this->body,
-                     "attach"           => $this->$attach,
+                     "attach"           => $this->attach,
                      "notify_url"       => $this->notify_url,
                      "openid"           => $this->openid,
                      "out_trade_no"     => $this->out_trade_no(),
