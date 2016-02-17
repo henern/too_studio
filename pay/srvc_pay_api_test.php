@@ -20,9 +20,22 @@ $vars = "
     <trade_type>JSAPI</trade_type>
     <sign>0CB01533B8C1EF103065174F50BCA001</sign>
     </xml>";
+    
+$pay_inf = new PayInfo();
+$pay_inf->attach = "支付测试";
+$pay_inf->body = "JSAPI支付测试";
+$pay_inf->total_fee = 2;
+$pay_inf->openid = "oUpF8uMuAJO_M2pxb1Q9zNjWeS6o";  // ???
+$pay_inf->notify_url = "http://120.25.202.38/wx/pay/srvc_pay_api_notify_test.php";
+$var = $pay_inf->to_xml_str();
+
+echo "request xml\n";
+var_dump($var);
+
 $ret = __curl_post_ssl("https://api.mch.weixin.qq.com/pay/unifiedorder", 
                        $vars,
                        $err);
+echo "\nresponse xml\n";
 var_dump($ret);
 
 ?>

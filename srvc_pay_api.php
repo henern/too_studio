@@ -108,7 +108,8 @@ class PayInfo
             $xml .= "<$key>$val</$key>";
         }
         
-        $xml .= "</xml>";
+        $sign_ret = $this->sign();
+        $xml .= "<sign>$sign_ret</sign></xml>";
         return $xml;
     }
 }
