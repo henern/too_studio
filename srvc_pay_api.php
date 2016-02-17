@@ -72,8 +72,9 @@ class PayInfo
                      "total_fee"        => $this->total_fee,
                      "nonce_str"        => $this->nonce_str(),
                      "trade_type"       => $this->trade_type());
-        
-        return ksort($ret);
+                     
+        ksort($ret);
+        return $ret;
     }
     
     function to_string()
