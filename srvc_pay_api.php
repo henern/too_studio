@@ -2,7 +2,7 @@
 /*
 请确保您的libcurl版本是否支持双向认证，版本高于7.20.1
 */
-require_once '../wx_dev.php';
+require_once 'wx_dev.php';
 
 function __curl_post_ssl($url, $vars, &$error, $second = 30, $headers = array())
 {
@@ -26,7 +26,7 @@ function __curl_post_ssl($url, $vars, &$error, $second = 30, $headers = array())
 	curl_setopt($ch, CURLOPT_SSLKEYTYPE, WX_SSL_CERT_TYPE);
 	curl_setopt($ch, CURLOPT_SSLKEY, getcwd() . '../' . WX_PATH_API_PEM_KEY);
  
-    if (count($aHeader) >= 1)
+    if (count($headers) >= 1)
     {
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     }
