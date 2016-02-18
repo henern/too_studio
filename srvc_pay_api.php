@@ -15,8 +15,6 @@ class PayInfo
     var $attach;
     // 接收微信支付异步通知回调地址，通知url必须为直接可访问的url，不能携带参数。
     var $notify_url;
-    // trade_type=JSAPI，此参数必传，用户在商户appid下的唯一标识。
-    var $openid;
     // 订单总金额，单位为分，
     var $total_fee;
     
@@ -62,14 +60,49 @@ class PayInfo
         return TOO_WX_PAY_API_SIGN_KEY;
     }
     
+    // trade_type=JSAPI，此参数必传，用户在商户appid下的唯一标识。
+    function openid()
+    {
+        $oid = "";
+        
+        if (!array_key_exists("code", $_GET))
+        {
+            return "";
+        }
+        
+        $code = $_GET["code"]; 
+        $get_token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=' . TOO_WX_APPID . 
+                         '&secret=' . TOO_WX_APPSECRET . 
+                         '&code=' . $code . 
+                         '&grant_type=authorization_code';
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $get_token_url); 
+        curl_setopt($ch, CURLOPT_HEADER, 0); 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10); 
+        $ret = curl_exec($ch); 
+        curl_close($ch); 
+        
+        $json = json_decode($res, true); 
+        if (is_array($json))
+        {
+            //根据openid和access_token查询用户信息 
+            $access_token = $json['access_token']; 
+            $oid = $json['openid']; 
+        }
+
+        return $oid;
+    }
+    
     function to_array()
     {
-        $ret = array("appid"           => $this->app_id(),
+        $ret = array("appid"            => $this->app_id(),
                      "mch_id"           => $this->mch_id(),
                      "body"             => $this->body,
                      "attach"           => $this->attach,
                      "notify_url"       => $this->notify_url,
-                     "openid"           => $this->openid,
+                     "openid"           => $this->openid(),
                      "out_trade_no"     => $this->out_trade_no(),
                      "spbill_create_ip" => $this->spbill_create_ip(),
                      "total_fee"        => $this->total_fee,
@@ -180,7 +213,7 @@ function srvc_pay_api_order($body, $fee_CNY, $openid = "", $attach = "", $notify
     $err = null;
     $resp_xml = __curl_post_ssl(PAY_API_ORDER_URL, $req_xml, $err);
     
-    return $resp_xml;
+    return simplexml_load_string($resp_xml);
 }
 
 ?>
