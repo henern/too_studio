@@ -4,6 +4,9 @@
 */
 require_once 'wx_dev.php';
 
+define("PAY_API_DEFAULT_NOTIFY_URL",    "http://120.25.202.38/wx/srvc_pay_api_notify.php");
+define("PAY_API_ORDER_URL",             "https://api.mch.weixin.qq.com/pay/unifiedorder");
+
 class PayInfo
 {
     // 商品或支付单简要描述
@@ -156,6 +159,28 @@ function __curl_post_ssl($url, $vars, &$error, $second = 30, $headers = array())
     $error = curl_errno($ch);
     curl_close($ch);
     return null;
+}
+
+function srvc_pay_api_order($body, $fee_CNY, $openid = "", $attach = "", $notify_url = null)
+{
+    $pay_inf = new PayInfo();
+    $pay_inf->body = $body;
+    $pay_inf->total_fee = $fee_CNY;
+    $pay_inf->attach = $attach;
+    $pay_inf->openid = $openid;
+    
+    if ($notify_url == null)
+    {
+        $notify_url = PAY_API_DEFAULT_NOTIFY_URL; 
+    }
+    $pay_inf->notify_url = $notify_url;
+    
+    $req_xml = $pay_inf->to_xml_str();
+    
+    $err = null;
+    $resp_xml = __curl_post_ssl(PAY_API_ORDER_URL, $req_xml, $err);
+    
+    return $resp_xml;
 }
 
 ?>
