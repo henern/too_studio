@@ -1,6 +1,6 @@
 <?php
     
-function __lock_file_until_ms($fh, $mseconds)
+function lock_file_until_ms($fh, $mseconds)
 {
     $ret = false;
     

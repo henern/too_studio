@@ -90,8 +90,9 @@ function impl_book_do_reserve($rticket, $max_per_slot=10)
     // flush
     $handle_f = fopen($path, "w") or die ("ERROR to open $path!");
     $wouldLock = 1;
-    if (!__lock_file_until_ms($handle_f, 100))
+    if (!lock_file_until_ms($handle_f, 100))
     {
+        fclose($handle_f);
         return BOOK_CODE_ERR_UNKNOWN;
     }
     

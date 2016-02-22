@@ -1,4 +1,5 @@
 <?php
+require_once 'utils_file.php';
     
 function visitor_info($extra_arr)
 {
@@ -43,6 +44,12 @@ function log_visitor_info($extra_arr=array())
     $log_fname = log_visitor_path("log_vistor_$today_str.txt");
     
     $handle_file = fopen($log_fname, "a") or die("ERROR TO OPEN $log_fname!");
+    
+    if (!lock_file_until_ms($handle_file, 300))
+    {
+        fclose($handle_file);
+        return false;
+    }
     
     fwrite($handle_file, "[VISITOR-INFO-BEGIN]\n");
     fwrite($handle_file, $v_info);
