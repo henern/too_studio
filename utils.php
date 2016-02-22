@@ -3,6 +3,7 @@
 require_once "utils_log.php";
 require_once "utils_time.php";
 require_once "utils_array.php";
+require_once 'utils_file.php';
     
 function array_to_string($arr)
 {
