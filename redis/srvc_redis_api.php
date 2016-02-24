@@ -2,6 +2,7 @@
     
 function srvc_redis_dump_info()
 {
+    // https://github.com/phpredis/phpredis#close
     $redis = new Redis();
     $redis->connect('127.0.0.1');
     $redis_info = $redis->info();
