@@ -35,8 +35,11 @@ function srvc_maria_setup()
     )";
     mysql_query($sql, $con);
 
-    $ret = mysql_query("describe $DB_TABLE_TICKECTS", $con);
-    echo "$ret";
+    $query_res = mysql_query("describe $DB_TABLE_TICKECTS", $con);
+    $ret = mysql_fetch_array($query_res);
+    var_dump($ret);
+    
+    mysql_query("DROP DATABASE $DB_NAME", $con);
     
     mysql_close($con);
 }
