@@ -2,7 +2,11 @@
     
 function srvc_maria_setup()
 {
+    # yum install mariadb-server mariadb-client
+    # yum install php-mysql
+    # https://mariadb.com/kb/en/mariadb/a-mariadb-primer/
     $DB_NAME = "DB_TOO_STUDIO";
+    $DB_TABLE_TICKECTS = "TICKETS";
     
     $con = mysql_connect("localhost", "root", "");
     if (!$con)
@@ -11,7 +15,7 @@ function srvc_maria_setup()
     }
 
     // Create database
-    if (mysql_query("CREATE DATABASE $DB_NAME", $con))
+    if (mysql_query("CREATE DATABASE $DB_NAME IF NOT EXISTS", $con))
     {
     }
     else
@@ -21,7 +25,7 @@ function srvc_maria_setup()
 
     // Create table in my_db database
     mysql_select_db("$DB_NAME", $con);
-    $sql = "CREATE TABLE TICKETS 
+    $sql = "CREATE TABLE $DB_TABLE_TICKECTS IF NOT EXISTS
     (
     TID int NOT NULL AUTO_INCREMENT,
     PRIMARY KEY(TID),
@@ -31,6 +35,8 @@ function srvc_maria_setup()
     )";
     mysql_query($sql, $con);
 
+    mysql_query("describe $$DB_TABLE_TICKECTS", $con);
+    
     mysql_close($con);
 }
     
