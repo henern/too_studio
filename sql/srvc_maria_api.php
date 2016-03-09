@@ -35,7 +35,8 @@ function srvc_maria_setup()
     )";
     mysql_query($sql, $con);
 
-    mysql_query("describe $$DB_TABLE_TICKECTS", $con);
+    $ret = mysql_query("describe $DB_TABLE_TICKECTS", $con);
+    echo "$ret";
     
     mysql_close($con);
 }
