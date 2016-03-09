@@ -15,7 +15,7 @@ function srvc_maria_setup()
     }
 
     // Create database
-    if (mysql_query("CREATE DATABASE $DB_NAME IF NOT EXISTS", $con))
+    if (mysql_query("CREATE DATABASE IF NOT EXISTS $DB_NAME", $con))
     {
     }
     else
@@ -25,7 +25,7 @@ function srvc_maria_setup()
 
     // Create table in my_db database
     mysql_select_db("$DB_NAME", $con);
-    $sql = "CREATE TABLE $DB_TABLE_TICKECTS IF NOT EXISTS
+    $sql = "CREATE TABLE IF NOT EXISTS $DB_TABLE_TICKECTS
     (
     TID int NOT NULL AUTO_INCREMENT,
     PRIMARY KEY(TID),
