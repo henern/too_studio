@@ -30,7 +30,6 @@ $ret = srvc_pay_api_order("JSAPI支付测试",
                           "",   // ???
                           "支付测试",
                           TOO_HOME_URL . "/wx/pay/srvc_pay_api_notify_test.php");
-echo "</br>response xml</br>";
-var_dump($ret);
+echo "</br>$ret";
 
 ?>

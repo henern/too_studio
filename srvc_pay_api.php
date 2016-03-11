@@ -225,6 +225,50 @@ function __curl_post_ssl($url, $vars, &$error, $second = 30, $headers = array())
     return null;
 }
 
+function srvc_pay_api_invoke_js($appid, $prepay_id, $nonceStr, $paySign)
+{
+    $timestamp = time();
+    $js = "<script>
+            function onBridgeReady()
+            {
+            WeixinJSBridge.invoke(
+                'getBrandWCPayRequest', {
+                    \"appId\" ： \"$appid\",
+                    \"timeStamp\" ：\"$timestamp\",
+                    \"nonceStr\" ： \"$nonceStr\",
+                    \"package\" ： \"prepay_id=$prepay_id\",
+                    \"signType\" ： \"MD5\",
+                    \"paySign\" ： \"$paySign\"
+                },
+                function(res)
+                {     
+                    if(res.err_msg == \"get_brand_wcpay_request：ok\" ) 
+                    {
+                    } 
+                }
+            ); 
+            }
+            if (typeof WeixinJSBridge == \"undefined\")
+            {
+                if( document.addEventListener )
+                {
+                    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                }
+                else if (document.attachEvent)
+                {
+                    document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+                    document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                }
+            }
+            else
+            {
+                onBridgeReady();
+            }
+            </scrip>";
+    
+    return $js;
+}
+
 function srvc_pay_api_order($body, $fee_CNY, $openid = "", $attach = "", $notify_url = null)
 {
     $pay_inf = new PayInfo();
@@ -243,7 +287,10 @@ function srvc_pay_api_order($body, $fee_CNY, $openid = "", $attach = "", $notify
     $err = null;
     $resp_xml = __curl_post_ssl(PAY_API_ORDER_URL, $req_xml, $err);
     
-    return simplexml_load_string($resp_xml, null, LIBXML_NOCDATA);
+    $xml = simplexml_load_string($resp_xml, null, LIBXML_NOCDATA);
+    $js_pay = srvc_pay_api_invoke_js($xml["appid"], $xml["prepay_id"], $xml["nonce_str"], $xml["sign"]);
+    
+    return $js_pay;
 }
 
 ?>
