@@ -4,7 +4,7 @@
 */
 require_once 'wx_dev.php';
 
-define("PAY_API_DEFAULT_NOTIFY_URL",    "http://120.25.202.38/wx/srvc_pay_api_notify.php");
+define("PAY_API_DEFAULT_NOTIFY_URL",    TOO_HOME_URL . "/wx/srvc_pay_api_notify.php");
 define("PAY_API_ORDER_URL",             "https://api.mch.weixin.qq.com/pay/unifiedorder");
 
 class PayInfo
@@ -84,7 +84,7 @@ class PayInfo
         $ret = curl_exec($ch); 
         curl_close($ch); 
         
-        $json = json_decode($res, true); 
+        $json = json_decode($ret, true); 
         if (is_array($json))
         {
             //根据openid和access_token查询用户信息 
