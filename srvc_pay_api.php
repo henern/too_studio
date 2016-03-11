@@ -200,7 +200,6 @@ function srvc_pay_api_order($body, $fee_CNY, $openid = "", $attach = "", $notify
     $pay_inf->body = $body;
     $pay_inf->total_fee = $fee_CNY;
     $pay_inf->attach = $attach;
-    $pay_inf->openid = $openid;
     
     if ($notify_url == null)
     {
