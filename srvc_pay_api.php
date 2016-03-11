@@ -17,6 +17,9 @@ class PayInfo
     var $notify_url;
     // 订单总金额，单位为分，
     var $total_fee;
+    // oauth授权获得的code和openid
+    var $code_cached;
+    var $openid_cached;
     
     // 微信分配的公众账号ID（企业号corpid即为此appId）
     function app_id()
@@ -71,6 +74,13 @@ class PayInfo
         }
         
         $code = $_GET["code"]; 
+        
+        // return the openid in cache
+        if ($code_cached == $code && strlen($openid_cached) > 0)
+        {
+            return $openid_cached;
+        }
+        
         $get_token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=' . TOO_WX_APPID . 
                          '&secret=' . TOO_WX_APPSECRET . 
                          '&code=' . $code . 
