@@ -264,7 +264,7 @@ function srvc_pay_api_invoke_js($appid, $prepay_id, $nonceStr, $paySign)
             {
                 onBridgeReady();
             }
-            </scrip>";
+            </script>";
     
     return $js;
 }
@@ -288,7 +288,7 @@ function srvc_pay_api_order($body, $fee_CNY, $openid = "", $attach = "", $notify
     $resp_xml = __curl_post_ssl(PAY_API_ORDER_URL, $req_xml, $err);
     
     $xml = simplexml_load_string($resp_xml, null, LIBXML_NOCDATA);
-    $js_pay = srvc_pay_api_invoke_js($xml["appid"], $xml["prepay_id"], $xml["nonce_str"], $xml["sign"]);
+    $js_pay = srvc_pay_api_invoke_js($xml->appid, $xml->prepay_id, $xml->nonce_str, $xml->sign);
     
     return $js_pay;
 }
