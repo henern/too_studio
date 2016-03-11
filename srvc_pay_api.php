@@ -233,12 +233,12 @@ function srvc_pay_api_invoke_js($appid, $prepay_id, $nonceStr, $paySign)
             {
             WeixinJSBridge.invoke(
                 'getBrandWCPayRequest', {
-                    \"appId\" ： \"$appid\",
-                    \"timeStamp\" ：\"$timestamp\",
-                    \"nonceStr\" ： \"$nonceStr\",
-                    \"package\" ： \"prepay_id=$prepay_id\",
-                    \"signType\" ： \"MD5\",
-                    \"paySign\" ： \"$paySign\"
+                    \"appId\" : \"$appid\",
+                    \"timeStamp\" : \"$timestamp\",
+                    \"nonceStr\" : \"$nonceStr\",
+                    \"package\" : \"prepay_id=$prepay_id\",
+                    \"signType\" : \"MD5\",
+                    \"paySign\" : \"$paySign\"
                 },
                 function(res)
                 {     

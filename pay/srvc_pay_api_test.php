@@ -21,15 +21,16 @@ $vars = "
     <trade_type>JSAPI</trade_type>
     <sign>0CB01533B8C1EF103065174F50BCA001</sign>
     </xml>";
-
-echo "<br>parameters</br>";    
-var_dump($_GET);
 	
-$ret = srvc_pay_api_order("JSAPI支付测试", 
+$js_pay = srvc_pay_api_order("JSAPI支付测试", 
                           2, 
                           "",   // ???
                           "支付测试",
                           TOO_HOME_URL . "/wx/pay/srvc_pay_api_notify_test.php");
-echo "</br>$ret";
 
 ?>
+<html>
+<head>
+    <?php echo $js_pay ?>
+</head>
+</html>
