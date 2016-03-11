@@ -76,11 +76,15 @@ class PayInfo
         $code = $_GET["code"]; 
         
         // return the openid in cache
-        if ($code_cached == $code && strlen($openid_cached) > 0)
+        if ($code_cached != null && 
+            $code_cached == $code && 
+            $openid_cached != null &&
+            strlen($openid_cached) > 0)
         {
             return $openid_cached;
         }
         
+        $code_cached = $code;
         $get_token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=' . TOO_WX_APPID . 
                          '&secret=' . TOO_WX_APPSECRET . 
                          '&code=' . $code . 
@@ -112,6 +116,7 @@ class PayInfo
             $oid = $json['openid']; 
         }
 
+        $openid_cached = $oid;
         return $oid;
     }
     
