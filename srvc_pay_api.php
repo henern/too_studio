@@ -243,7 +243,7 @@ function srvc_pay_api_order($body, $fee_CNY, $openid = "", $attach = "", $notify
     $err = null;
     $resp_xml = __curl_post_ssl(PAY_API_ORDER_URL, $req_xml, $err);
     
-    return simplexml_load_string($resp_xml);
+    return simplexml_load_string($resp_xml, null, LIBXML_NOCDATA);
 }
 
 ?>
