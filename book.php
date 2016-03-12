@@ -83,7 +83,7 @@ $right_now_day = full_date();
                     {
                         btn_reserve.innerHTML = "预定成功";
                         setTimeout(function(){
-                            window.location.assign("./srvc_pay.php?count=" + g_num + "&visit_day=" + v_date + "&time_slot=" + v_slot + "&phone=" + g_phone);
+                            window.location.assign("./srvc_pay_auth.php?count=" + g_num + "&visit_day=" + v_date + "&time_slot=" + v_slot + "&phone=" + g_phone);
                         }, 1500);
                     }
                     else
