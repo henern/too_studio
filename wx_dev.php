@@ -43,4 +43,34 @@ function too_wx_echo_if_require()
     return true;
 }
 
+function wx_array_to_string($arr)
+{
+    $plain = null;
+    foreach ($arr as $key => $val)
+    {
+        if ($plain == null)
+        {
+            $plain = "$key=$val";
+        }
+        else
+        {
+            $plain .= "&$key=$val";
+        }
+    }
+    
+    return $plain;
+}
+
+function wx_sign_array($array_to_sign, $key)
+{
+    $plain = wx_array_to_string($array_to_sign);
+    if ($plain != "")
+    {
+        $plain = $plain . "&";
+    }
+    
+    $plain = $plain . "key=" . $key;
+    return strtoupper(md5($plain));
+}
+
 ?>

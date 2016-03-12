@@ -144,28 +144,9 @@ class PayInfo
         return $ret;
     }
     
-    function to_string()
-    {
-        $plain = null;
-        foreach ($this->to_array() as $key => $val)
-        {
-            if ($plain == null)
-            {
-                $plain = "$key=$val";
-            }
-            else
-            {
-                $plain .= "&$key=$val";
-            }
-        }
-        
-        return $plain;
-    }
-    
     function sign()
     {
-        $plain = $this->to_string() . "&key=" . $this->pay_api_sign_key();
-        return strtoupper(md5($plain));
+        return wx_sign_array($this->to_array(), $this->pay_api_sign_key());
     }
     
     function to_xml_str()
