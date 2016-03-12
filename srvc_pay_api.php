@@ -214,8 +214,8 @@ function srvc_pay_api_order($body, $fee_CNY, $openid = "", $attach = "", $notify
     $err = null;
     $resp_xml = __curl_post_ssl(PAY_API_ORDER_URL, $req_xml, $err);
     
-    $xml = simplexml_load_string($resp_xml, null, LIBXML_NOCDATA);
-    $js_pay = srvc_pay_api_invoke_js(TOO_WX_APPID, $xml->prepay_id, $xml->nonce_str[0]);
+    $xml = (array)simplexml_load_string($resp_xml, null, LIBXML_NOCDATA);
+    $js_pay = srvc_pay_api_invoke_js(TOO_WX_APPID, $xml["prepay_id"], $xml["nonce_str"]);
     
     return $js_pay;
 }
