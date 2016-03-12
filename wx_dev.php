@@ -116,4 +116,40 @@ function __curl_post_ssl($url, $vars, &$error, $second = 30, $headers = array())
     return null;
 }
 
+function __curl_get_ssl($url, &$error, $second = 10, $headers = array())
+{
+    $ch = curl_init();
+    
+    curl_setopt($ch, CURLOPT_URL, $url); 
+    curl_setopt($ch, CURLOPT_HEADER, 0); 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $second); 
+	
+    if (count($headers) >= 1)
+    {
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    }
+    
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+	//第一种方法，cert 与 key 分别属于两个.pem文件
+	curl_setopt($ch, CURLOPT_SSLCERTTYPE, WX_SSL_CERT_TYPE);
+	curl_setopt($ch, CURLOPT_SSLCERT, getcwd() . '../' . WX_PATH_API_PEM_CERT);
+	curl_setopt($ch, CURLOPT_SSLKEYTYPE, WX_SSL_CERT_TYPE);
+	curl_setopt($ch, CURLOPT_SSLKEY, getcwd() . '../' . WX_PATH_API_PEM_KEY);
+	
+    $data = curl_exec($ch);  
+    
+    if ($data)
+    {
+        curl_close($ch);
+        return $data;
+	}
+
+    $error = curl_errno($ch);
+    curl_close($ch);
+    return null;
+}
+
 ?>

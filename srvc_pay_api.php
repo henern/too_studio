@@ -96,23 +96,8 @@ class PayInfo
                          '&code=' . $code . 
                          '&grant_type=authorization_code';
         
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $get_token_url); 
-        curl_setopt($ch, CURLOPT_HEADER, 0); 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10); 
-		
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-	
-		//第一种方法，cert 与 key 分别属于两个.pem文件
-		curl_setopt($ch, CURLOPT_SSLCERTTYPE, WX_SSL_CERT_TYPE);
-		curl_setopt($ch, CURLOPT_SSLCERT, getcwd() . '../' . WX_PATH_API_PEM_CERT);
-		curl_setopt($ch, CURLOPT_SSLKEYTYPE, WX_SSL_CERT_TYPE);
-		curl_setopt($ch, CURLOPT_SSLKEY, getcwd() . '../' . WX_PATH_API_PEM_KEY);
-		
-        $ret = curl_exec($ch); 
-        curl_close($ch); 
+        $err = null;
+        __curl_get_ssl($get_token_url, $err);
         
         $json = json_decode($ret, true); 
         if (is_array($json))
