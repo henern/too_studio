@@ -20,7 +20,7 @@ $right_now_day = full_date();
 
 <html>
 	<head>
-		<title>Too塗Studio在线预定</title>
+		<title>Too塗画室在线预定</title>
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
