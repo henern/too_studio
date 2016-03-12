@@ -22,7 +22,7 @@ if ($count > 0 && $price > 0)
     $param = array("count"          => "$count",
                    "total"          => "$total",
                    "visit_day"      => "$visit_day",
-                   "time_slot"      => "$time_slot"
+                   "time_slot"      => "$time_slot",
                    "phone"          => "$phone");
     $json = json_encode($param);
                    
