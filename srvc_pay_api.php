@@ -97,7 +97,7 @@ class PayInfo
                          '&grant_type=authorization_code';
         
         $err = null;
-        __curl_get_ssl($get_token_url, $err);
+        $ret = __curl_get_ssl($get_token_url, $err);
         
         $json = json_decode($ret, true); 
         if (is_array($json))
@@ -159,7 +159,7 @@ function srvc_pay_api_invoke_js($appid, $prepay_id, $nonceStr)
     
     $paySign = wx_sign_array($req_array, TOO_WX_PAY_API_SIGN_KEY);
     $req_array["paySign"] = $paySign;
-    $json = json_decode($req_array, true);
+    $json = json_encode($req_array);
     
     $js = "<script>
             function onBridgeReady()
