@@ -148,21 +148,25 @@ class PayInfo
     }
 }
 
-function srvc_pay_api_invoke_js($appid, $prepay_id, $nonceStr, $paySign)
+function srvc_pay_api_invoke_js($appid, $prepay_id, $nonceStr)
 {
     $timestamp = time();
+    $req_array = array("appId"          => $appid,
+                       "timeStamp"      => "$timestamp",
+                       "nonceStr"       => $nonceStr,
+                       "package"        => "prepay_id=$prepay_id",
+                       "signType"       => "MD5");
+    
+    $paySign = wx_sign_array($req_array, TOO_WX_PAY_API_SIGN_KEY);
+    $req_array["paySign"] = $paySign;
+    $json = json_decode($req_array, true);
+    
     $js = "<script>
             function onBridgeReady()
             {
             WeixinJSBridge.invoke(
-                'getBrandWCPayRequest', {
-                    \"appId\" : \"$appid\",
-                    \"timeStamp\" : \"$timestamp\",
-                    \"nonceStr\" : \"$nonceStr\",
-                    \"package\" : \"prepay_id=$prepay_id\",
-                    \"signType\" : \"MD5\",
-                    \"paySign\" : \"$paySign\"
-                },
+                'getBrandWCPayRequest', 
+                $json,
                 function(res)
                 {     
                     if(res.err_msg == \"get_brand_wcpay_request：ok\" ) 
@@ -211,7 +215,7 @@ function srvc_pay_api_order($body, $fee_CNY, $openid = "", $attach = "", $notify
     $resp_xml = __curl_post_ssl(PAY_API_ORDER_URL, $req_xml, $err);
     
     $xml = simplexml_load_string($resp_xml, null, LIBXML_NOCDATA);
-    $js_pay = srvc_pay_api_invoke_js($xml->appid, $xml->prepay_id, $xml->nonce_str, $xml->sign);
+    $js_pay = srvc_pay_api_invoke_js($xml->appid, $xml->prepay_id, $xml->nonce_str);
     
     return $js_pay;
 }
