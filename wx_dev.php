@@ -61,8 +61,13 @@ function wx_array_to_string($arr)
     return $plain;
 }
 
-function wx_sign_array($array_to_sign, $key)
+function wx_sign_array($array_to_sign, $key, $need_sort = false)
 {
+    if ($need_sort)
+    {
+        ksort($array_to_sign);
+    }
+    
     $plain = wx_array_to_string($array_to_sign);
     if ($plain != "")
     {

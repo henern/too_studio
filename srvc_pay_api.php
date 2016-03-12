@@ -157,7 +157,7 @@ function srvc_pay_api_invoke_js($appid, $prepay_id, $nonceStr)
                        "package"        => "prepay_id=$prepay_id",
                        "signType"       => "MD5");
     
-    $paySign = wx_sign_array($req_array, TOO_WX_PAY_API_SIGN_KEY);
+    $paySign = wx_sign_array($req_array, TOO_WX_PAY_API_SIGN_KEY, true);
     $req_array["paySign"] = $paySign;
     $json = json_encode($req_array);
     
