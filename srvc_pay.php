@@ -1,6 +1,6 @@
 <?php
     
-require "srvc_pay_api.php"
+require_once "srvc_pay_api.php";
     
 define("TOO_WX_PRICE_PER_PERSON_SMALL",     18800);
 define("TOO_WX_PRICE_PER_PERSON_MED",       21800);
