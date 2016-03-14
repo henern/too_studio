@@ -169,7 +169,7 @@ function srvc_pay_api_invoke_js($appid, $prepay_id, $nonceStr)
                 $json,
                 function(res)
                 {     
-					var div_pay_status = document.getElementById("div_pay_status");
+					var div_pay_status = document.getElementById(\"div_pay_status\");
                     if(res.err_msg == \"get_brand_wcpay_request：ok\" ) 
                     {
 						div_pay_status.innerText = "付款成功，恭候大驾。";
