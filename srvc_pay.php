@@ -26,7 +26,7 @@ if ($count > 0 && $price > 0)
                    "phone"          => "$phone");
     $json = json_encode($param);
                    
-    $js_pay = srvc_pay_api_order("Too塗画室$count人券", 
+    $js_pay = srvc_pay_api_order("Too塗画室" . "$count" . "人券", 
                                  $total, 
                                  "",   // ???
                                  $json,
