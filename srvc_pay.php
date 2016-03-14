@@ -51,7 +51,7 @@ if ($count > 0 && $price > 0)
 </head>
 <body>
     <header>
-        <div class="title-fullwidth">正在准备付款，请稍等...</div>
+        <div class="title-fullwidth" id="div_pay_status">正在准备付款，请稍等...</div>
     </header>
 
     <section class="content">
