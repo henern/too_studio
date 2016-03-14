@@ -60,6 +60,33 @@ function log_visitor_info($extra_arr=array())
     return true;
 }
 
+function log_pay_path($file_name="")
+{
+    return log_base_path() . "pay/$file_name";
+}
+
+function log_pay_info($pay_inf = "")
+{
+    $today_str = date("Ymd");
+    $log_fname = log_pay_path("log_pay_$today_str.txt");
+    
+    $handle_file = fopen($log_fname, "a") or die("ERROR TO OPEN $log_fname!");
+    
+    if (!lock_file_until_ms($handle_file, 300))
+    {
+        fclose($handle_file);
+        return false;
+    }
+    
+    fwrite($handle_file, "[PAY-INFO-BEGIN]\n");
+    fwrite($handle_file, $pay_inf);
+    fwrite($handle_file, "[PAY-INFO-END]\n\n");
+
+    fclose($handle_file);
+
+    return true;
+}
+
 function log_error($err2display, $err2file)
 {
     error_reporting(E_ALL);

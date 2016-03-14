@@ -49,7 +49,7 @@ class PayInfo
     function out_trade_no()
     {
         $clock_now = time();
-        return "TOOWX" . date("Ymd", $clock_now) . "$clock_now";
+        return "TOOWX" . $this->openid() . date("Ymd", $clock_now) . "$clock_now";
     }
     
     // 随机字符串，不长于32位。
