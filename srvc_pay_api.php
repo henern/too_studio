@@ -162,7 +162,6 @@ function srvc_pay_api_invoke_js($appid, $prepay_id, $nonceStr, $ttoken)
     $paySign = wx_sign_array($req_array, TOO_WX_PAY_API_SIGN_KEY, true);
     $req_array["paySign"] = $paySign;
     $json = json_encode($req_array);
-    $ttoken_str = "订单号：$ttoken";
     
     $js = "<script>
             function onBridgeReady()
@@ -175,18 +174,21 @@ function srvc_pay_api_invoke_js($appid, $prepay_id, $nonceStr, $ttoken)
 					var div_pay_status = document.getElementById(\"div_pay_status\");
                     if(res.err_msg == \"get_brand_wcpay_request:ok\" ) 
                     {
-						div_pay_status.innerHTML = \"付款成功，恭候大驾。</br>$ttoken_str\";
+						div_pay_status.innerHTML = \"付款成功，恭候大驾。\";
                     }
 					 
                     else if(res.err_msg == \"get_brand_wcpay_request:cancel\" ) 
                     {
-						div_pay_status.innerHTML = \"付款已取消，您可以到店支付。</br>$ttoken_str\";
+						div_pay_status.innerHTML = \"付款已取消，您可以到店支付。\";
                     } 
 					
                     else if(res.err_msg == \"get_brand_wcpay_request:fail\" ) 
                     {
-						div_pay_status.innerHTML = \"付款失败，请联系客服小妹。</br>$ttoken_str\";
+						div_pay_status.innerHTML = \"付款失败，请联系客服小妹。\";
                     } 
+                    
+                    var label_ttoken = document.getElementById(\"label_trade_token\");
+                    label_ttoken.innerText = "订单号：$ttoken";
                 }
             ); 
             }

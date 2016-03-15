@@ -81,7 +81,7 @@ $right_now_day = full_date();
                     
                     if (result_code >= 0)
                     {
-                        btn_reserve.innerHTML = "预定成功";
+                        btn_reserve.innerHTML = "预定成功，正在准备支付...";
                         setTimeout(function(){
                             window.location.assign("./srvc_pay_auth.php?count=" + g_num + "&visit_day=" + v_date + "&time_slot=" + v_slot + "&phone=" + g_phone + "&ttoken=" + result_ttoken);
                         }, 1500);

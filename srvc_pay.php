@@ -63,6 +63,7 @@ if ($count > 0 && $price > 0 && strlen($ttoken) > 16)
 
     <section class="content">
         <div align=center>
+            <label id="label_trade_token"></label>
             <img src='./img/too-icon.jpeg'/>
         </div>
     </section>
