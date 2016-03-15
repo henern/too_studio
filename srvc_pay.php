@@ -2,7 +2,7 @@
     
 require_once "srvc_pay_api.php";
     
-utils_init()
+utils_init();
     
 // trace the visitor
 log_visitor_info();
