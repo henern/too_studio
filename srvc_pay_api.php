@@ -188,7 +188,7 @@ function srvc_pay_api_invoke_js($appid, $prepay_id, $nonceStr, $ttoken)
                     } 
                     
                     var label_ttoken = document.getElementById(\"label_trade_token\");
-                    label_ttoken.innerText = "订单号：$ttoken";
+                    label_ttoken.innerText = \"订单号：$ttoken\";
                 }
             ); 
             }
