@@ -18,7 +18,7 @@ function __verify_xml($xml_arr)
     return false;
 }
 
-define("REDIS_DB_INDEX_SRVC_PAY_API",       117);
+define("REDIS_DB_INDEX_SRVC_PAY_API",       10);
 function __archive_pay_notification($xml_str, $key)
 {
     $redis = new Redis();
