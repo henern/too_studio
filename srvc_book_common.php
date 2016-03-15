@@ -128,6 +128,7 @@ define("KEY_RTICKET_NUM",           "RTICKET_NUM");
 define("KEY_RTICKET_V_DATE",        "RTICKET_V_DATE");
 define("KEY_RTICKET_V_MINS_SLOT",   "RTICKET_V_MINS_SLOT");
 define("KEY_RTICKET_TRADE_TOKEN",   "RTICKET_TRADE_TOKEN");
+define("PREFIX_TRADE_TOKEN",        "TOOWX");
 class ReservationTicket
 {
     var $guid;
@@ -150,6 +151,8 @@ class ReservationTicket
         $this->guid = new GuestUID("", 0);
         $this->guid->from_array($arr[KEY_RTICKET_GUID]);
         
+        $this->trade_token = $arr[KEY_RTICKET_TRADE_TOKEN];
+        
         $this->num = $arr[KEY_RTICKET_NUM];
         $this->visit_date = $arr[KEY_RTICKET_V_DATE];
         $this->visit_mins_slot = $arr[KEY_RTICKET_V_MINS_SLOT];
@@ -164,7 +167,7 @@ class ReservationTicket
             return "";
         }
         
-        $prefix_STR5 = "TOOWX";
+        $prefix_STR5 = PREFIX_TRADE_TOKEN;
         
         $guid_md5_STR8 = md5($guid->to_string());
         if (strlen($guid_md5_STR8) > 8)
@@ -192,6 +195,8 @@ class ReservationTicket
     {
         return ($this->guid instanceof GuestUID) &&
                is_int($this->num) &&
+               strlen($this->trade_token) > 0 &&
+               strpos($this->trade_token, PREFIX_TRADE_TOKEN) == 0 &&
                is_numeric($this->visit_date) &&
                is_numeric($this->visit_mins_slot);
     }
