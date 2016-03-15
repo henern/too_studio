@@ -178,9 +178,10 @@ function impl_book_query_schedule($prev_n, $next_n, &$result_arr)
                 $guid = $rticket->guid;
                 $guid_str = $guid->to_string();
                 $guest_num = $rticket->num;
+                $ttoken = $rticket->trade_token;
                 
                 // e.g. [N] ==> #2, PHONE_138xxxxxxxx
-                $slot_inf[] = "#$guest_num, $guid_str";
+                $slot_inf[] = "#$guest_num, $guid_str, $ttoken";
             }
             
             // e.g. 15:30 ==> [ xxx ]
