@@ -127,17 +127,20 @@ define("KEY_RTICKET_GUID",          "RTICKET_GUID");
 define("KEY_RTICKET_NUM",           "RTICKET_NUM");
 define("KEY_RTICKET_V_DATE",        "RTICKET_V_DATE");
 define("KEY_RTICKET_V_MINS_SLOT",   "RTICKET_V_MINS_SLOT");
+define("KEY_RTICKET_TRADE_TOKEN",   "RTICKET_TRADE_TOKEN");
 class ReservationTicket
 {
     var $guid;
     var $num;
     var $visit_date;
     var $visit_mins_slot;
+    var $trade_token;
     
     function to_array()
     {
         return array(KEY_RTICKET_GUID           => $this->guid->to_array(),
                      KEY_RTICKET_NUM            => $this->num,
+                     KEY_RTICKET_TRADE_TOKEN    => $this->trade_token,
                      KEY_RTICKET_V_DATE         => $this->visit_date,
                      KEY_RTICKET_V_MINS_SLOT    => $this->visit_mins_slot);
     }
@@ -154,12 +157,30 @@ class ReservationTicket
         return $this->is_valid();
     }
     
+    function __trade_token($guid)
+    {
+        $prefix_STR5 = "TOOWX";
+        
+        $guid_md5_STR8 = md5($guid->to_string());
+        if (strlen($guid_md5_STR8) > 8)
+        {
+            $guid_md5_STR8 = substr($guid_md5_STR8, -8);
+        }
+        
+        $clock_now = time();
+        $date_STR14 = date("YmdHis", $clock_now);
+        $clock_STR5 = substr("$clock_now", -5);
+        
+        return $prefix_STR5 . $date_STR14 . $guid_md5_STR8 . $clock_STR5;
+    }
+    
     function __construct($guid, $num, $v_date, $v_mins_slot)
     {
         $this->guid = $guid;
         $this->num = $num + 0;
         $this->visit_date = $v_date;
         $this->visit_mins_slot = $v_mins_slot;
+        $this->trade_token = $this->__trade_token($guid);
     }
     
     function is_valid()

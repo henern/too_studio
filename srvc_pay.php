@@ -13,9 +13,10 @@ $discount_rate = 1.0;
 $visit_day=$_GET["visit_day"];
 $time_slot = $_GET["time_slot"];
 $phone = $_GET["phone"];
+$ttoken = $_GET["ttoken"];
 
 $js_pay = "";
-if ($count > 0 && $price > 0)
+if ($count > 0 && $price > 0 && strlen($ttoken) > 16)
 {
     $total = $count * $price * $discount_rate;
     
@@ -28,6 +29,7 @@ if ($count > 0 && $price > 0)
                    
     $js_pay = srvc_pay_api_order("Too塗画室" . "$count" . "人券", 
                                  $total, 
+                                 $ttoken,
                                  "",   // ???
                                  $json,
                                  TOO_HOME_URL . "/wx/srvc_pay_api_notify.php");

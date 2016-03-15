@@ -20,11 +20,14 @@ class PayInfo
     // oauth授权获得的code和openid
     var $code_cached;
     var $openid_cached;
+    // 交易唯一token
+    var $trade_token;
     
-    function __construct()
+    function __construct($ttoken)
     {
         $this->code_cached = "";
         $this->openid_cached = "";
+        $this->trade_token = $ttoken;
     }
     
     // 微信分配的公众账号ID（企业号corpid即为此appId）
@@ -48,8 +51,7 @@ class PayInfo
     // 商户系统内部的订单号,32个字符内、可包含字母
     function out_trade_no()
     {
-        $clock_now = time();
-        return "TOOWX" . date("Ymd", $clock_now) . "$clock_now";
+        return $this->trade_token;
     }
     
     // 随机字符串，不长于32位。
@@ -208,9 +210,9 @@ function srvc_pay_api_invoke_js($appid, $prepay_id, $nonceStr)
     return $js;
 }
 
-function srvc_pay_api_order($body, $fee_CNY, $openid = "", $attach = "", $notify_url = null)
+function srvc_pay_api_order($body, $fee_CNY, $trade_token, $openid = "", $attach = "", $notify_url = null)
 {
-    $pay_inf = new PayInfo();
+    $pay_inf = new PayInfo($trade_token);
     $pay_inf->body = $body;
     $pay_inf->total_fee = $fee_CNY;
     $pay_inf->attach = $attach;

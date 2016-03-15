@@ -15,8 +15,9 @@ function book_do_reserve(phone, num, vdate, vmins_slot, callback)
             var json = JSON.parse(xhr.responseText);
             var code = json["ERROR"];
             var description = json["DESC"];
+            var ttoken = json["TTOKEN"];
             
-            callback(code, description);
+            callback(code, ttoken, description);
         }
     };
     xhr.open("GET", url, true);

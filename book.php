@@ -77,13 +77,13 @@ $right_now_day = full_date();
                 var btn_reserve = document.getElementById("J_submit");
                 btn_reserve.innerHTML = "正在努力预定...";
                 
-                book_do_reserve(g_phone, g_num, v_date, v_slot, function(result_code, result_desc){
+                book_do_reserve(g_phone, g_num, v_date, v_slot, function(result_code, result_ttoken, result_desc){
                     
                     if (result_code >= 0)
                     {
                         btn_reserve.innerHTML = "预定成功";
                         setTimeout(function(){
-                            window.location.assign("./srvc_pay_auth.php?count=" + g_num + "&visit_day=" + v_date + "&time_slot=" + v_slot + "&phone=" + g_phone);
+                            window.location.assign("./srvc_pay_auth.php?count=" + g_num + "&visit_day=" + v_date + "&time_slot=" + v_slot + "&phone=" + g_phone + "&ttoken=" + result_ttoken);
                         }, 1500);
                     }
                     else

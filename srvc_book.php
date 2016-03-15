@@ -14,9 +14,10 @@ function srvc_book_max_per_slot()
     return 10;
 }
     
-function srvc_book_reserve($guid, $guest_num, $visit_date, $visit_slot_in_mins)
+function srvc_book_reserve($guid, $guest_num, $visit_date, $visit_slot_in_mins, &$trade_token)
 {
     $rticket = new ReservationTicket($guid, $guest_num, $visit_date, $visit_slot_in_mins);
+    $trade_token = $rticket->trade_token;
     
     if (!$rticket->is_valid())
     {
@@ -41,6 +42,7 @@ function srvc_book_query_schedule($next_n_days, &$result_arr)
     $err = BOOK_CODE_OK;
     $result_arr = array();
     $result_json_str = json_encode($result_arr);
+    $trade_token = "";
     
     // GET param ==> function
     $action = array_string4key($_GET, "action");
@@ -70,7 +72,7 @@ function srvc_book_query_schedule($next_n_days, &$result_arr)
         $visit_date = array_number4key($_GET, "vdate");
         $visit_mins_slot = array_number4key($_GET, "vmins");
         
-        $err = srvc_book_reserve($guid, $guest_num, $visit_date, $visit_mins_slot);
+        $err = srvc_book_reserve($guid, $guest_num, $visit_date, $visit_mins_slot, $trade_token);
     }
     else if ($action == "query_schedule")
     {
@@ -85,6 +87,7 @@ function srvc_book_query_schedule($next_n_days, &$result_arr)
     
     if (!IS_BOOK_OK($err))
     {
+        $trade_token = "";
         goto ERROR;
     }
     
@@ -94,7 +97,7 @@ DONE:
 	
 ERROR:
     $desc = srvc_book_description_4_code($err);
-    echo "{ \"ERROR\" : $err, \"DESC\" : \"$desc\", \"RESULT\" : $result_json_str }";
+    echo "{ \"ERROR\" : $err, \"DESC\" : \"$desc\", \"TTOKEN\" : \"$trade_token\", \"RESULT\" : $result_json_str }";
     exit;
 }
 ?>

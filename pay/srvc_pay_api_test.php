@@ -24,6 +24,7 @@ $vars = "
 	
 $js_pay = srvc_pay_api_order("JSAPI支付测试", 
                           2, 
+                          "TOOWXTEST" . date("YmdHis", time()),
                           "",   // ???
                           "支付测试",
                           TOO_HOME_URL . "/wx/pay/srvc_pay_api_notify_test.php");
