@@ -2,6 +2,9 @@
     
 require_once "srvc_pay_api.php";
     
+// trace the visitor
+log_visitor_info();
+
 define("TOO_WX_PRICE_PER_PERSON_SMALL",     18800);
 define("TOO_WX_PRICE_PER_PERSON_MED",       21800);
 define("TOO_WX_PRICE_PER_PERSON_BIG",       25800);
