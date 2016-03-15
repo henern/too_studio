@@ -159,6 +159,11 @@ class ReservationTicket
     
     function __trade_token($guid)
     {
+        if ($guid == null)
+        {
+            return "";
+        }
+        
         $prefix_STR5 = "TOOWX";
         
         $guid_md5_STR8 = md5($guid->to_string());
