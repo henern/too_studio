@@ -8,13 +8,16 @@ utils_init();
 log_visitor_info();
 
 // handle special action first
-$action = $_GET["action"];
-$ttoken = $_GET["ttoken"];
-if ($action == "query_ttoken")
+if (array_key_exists("action", $_GET))
 {
-    $json = impl_srvc_pay_api_get_notification($ttoken);
-    echo "$json";
-    exit;
+    $action = $_GET["action"];
+    if ($action == "query_ttoken")
+    {
+        $ttoken = $_GET["ttoken"];
+        $json = impl_srvc_pay_api_get_notification($ttoken);
+        echo "$json";
+        exit;
+    }
 }
 
 // by default, try to pay by wx
