@@ -7,6 +7,17 @@ utils_init();
 // trace the visitor
 log_visitor_info();
 
+// handle special action first
+$action = $_GET["action"];
+$ttoken = $_GET["ttoken"];
+if ($action == "query_ttoken")
+{
+    $json = impl_srvc_pay_api_get_notification($ttoken);
+    echo "$json";
+    exit;
+}
+
+// by default, try to pay by wx
 define("TOO_WX_PRICE_PER_PERSON_SMALL",     18800);
 define("TOO_WX_PRICE_PER_PERSON_MED",       21800);
 define("TOO_WX_PRICE_PER_PERSON_BIG",       25800);

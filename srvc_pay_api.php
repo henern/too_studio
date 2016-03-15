@@ -237,5 +237,34 @@ function srvc_pay_api_order($body, $fee_CNY, $trade_token, $openid = "", $attach
     return $js_pay;
 }
 
+define("REDIS_DB_INDEX_SRVC_PAY_API",       10);
+define("REDIS_DB_HOST_IP",                  "127.0.0.1");
+function impl_srvc_pay_api_archive_notification($xml_json, $key)
+{
+    $redis = new Redis();
+    $redis->connect(REDIS_DB_HOST_IP);
+    $redis->select(REDIS_DB_INDEX_SRVC_PAY_API);
+    
+    if ($redis->get($key) == FALSE)
+    {
+        $redis->set($key, $xml_json);
+        $redis->bgSave();
+    }
+    
+    $redis->close();
+}
+
+function impl_srvc_pay_api_get_notification($key)
+{
+    $redis = new Redis();
+    $redis->connect(REDIS_DB_HOST_IP);
+    $redis->select(REDIS_DB_INDEX_SRVC_PAY_API);
+    
+    $ret = $redis->get($key);
+    $redis->close();
+    
+    return $ret;
+}
+
 ?>
 
