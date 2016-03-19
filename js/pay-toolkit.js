@@ -8,9 +8,18 @@ function pay_do_query_ttoken(ttoken, callback)
         
         if (xhr.readyState == 4 && xhr.status == 200)
         {
-            var json = JSON.parse(xhr.responseText);
-            var code = json["result_code"];
-            var fee = json["total_fee"];
+            var code = "ERROR";
+            var fee = 0;
+            try
+            {
+                var json = JSON.parse(xhr.responseText);
+                code = json["result_code"];
+                fee = json["total_fee"];
+            }
+            catch(err)
+            {
+                code = "ERROR";
+            }
             
             callback(code, fee);
         }
