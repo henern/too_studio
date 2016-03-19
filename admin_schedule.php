@@ -37,14 +37,14 @@
                 html2go += "<h1>" + vday.DATE + "</h1>";
                 
                 var j;
-                for (j = 0; j < vday.SLOTS; j++)
+                for (j = 0; j < vday.SLOTS.length; j++)
                 {
                     var vclock = vday.SLOTS[j];
                     html2go += "</br>";
                     html2go += "<h3>" + vclock.CLOCK + "</h3>, 共" + vclock.COUNT + "人";
                     
                     var i;
-                    for (i = 0; i < vclock.VISITORs; i++)
+                    for (i = 0; i < vclock.VISITORs.length; i++)
                     {
                         var vistor = vclock.VISITORs[i];
                         html2go += "</br>";
