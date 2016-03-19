@@ -24,7 +24,7 @@ function book_do_reserve(phone, num, vdate, vmins_slot, callback)
     xhr.send(null);
 }
 
-function book_do_query()
+function book_do_query(callback)
 {
     var xhr = new XMLHttpRequest();
     

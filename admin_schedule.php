@@ -26,7 +26,8 @@
         <h1>正在加载数据...</h1>
         
         <script>
-            var json_list = book_do_query();
+            book_do_query(function(code, description, json_list) {
+                
             var html2go = "";
             
             var k;
@@ -57,6 +58,8 @@
             }
             
             document.body.innerHTML = html2go;
+            
+            });
         </script>
         
 	</body>
