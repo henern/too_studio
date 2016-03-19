@@ -22,15 +22,41 @@
 
         </script>
 	</head>
-	<body id="top">
+	<body>
+        <h1>正在加载数据...</h1>
+        
         <script>
-            var k =0;
             var json_list = book_do_query();
+            var html2go = "";
             
+            var k;
             for (k = 0; k < json_list.length; k++)
             {
+                var vday = json_list[k];
+                html2go += "<h1>" + vday.DATE + "</h1>";
                 
+                var j;
+                for (j = 0; j < vday.SLOTS; j++)
+                {
+                    var vclock = vday.SLOTS[j];
+                    html2go += "</br>";
+                    html2go += "<h3>" + vclock.CLOCK + "</h3>, 共" + vclock.COUNT + "人";
+                    
+                    var i;
+                    for (i = 0; i < vclock.VISITORs; i++)
+                    {
+                        var vistor = vclock.VISITORs[i];
+                        html2go += "</br>";
+                        html2go += visitor.GUID_STR + ": 预定" + visitor.GUEST_NUM + "人";
+                        html2go += " [" + visitor.T_TOKEN + "]";
+                    }
+                    html2go += "</br>";
+                }
+                
+                html2go += "<hr></br>";
             }
+            
+            document.body.innerHTML = html2go;
         </script>
         
 	</body>
