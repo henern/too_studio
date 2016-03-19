@@ -15,11 +15,25 @@
 		<meta name="format-detection" content="email=no" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
         <script src="./js/book-toolkit.js"></script>
+        <script src="./js/pay-toolkit.js"></script>
         <link rel="stylesheet" href="./css/base.css" type="text/css"/>
         <link rel="stylesheet" href="./css/book-default.css" type="text/css"/>
 
         <script>
-
+            function on_query_pay(ttoken)
+            {
+                pay_do_query_ttoken(ttoken, function(code, fee){
+                    
+                    if (code == "SUCCESS")
+                    {
+                        alert("该预定已支付 ￥" + fee / 100.0 + "元");
+                    }
+                    else
+                    {
+                        alert("该预定尚未支付");
+                    }
+                });
+            }
         </script>
 	</head>
 	<body>
@@ -49,7 +63,7 @@
                         var visitor = vclock.VISITORs[i];
                         html2go += "</br>";
                         html2go += visitor.GUID_STR + ": 预定" + visitor.GUEST_NUM + "人";
-                        html2go += " [<a href='./srvc_pay.php?action=query_ttoken&ttoken=" + visitor.T_TOKEN + "'>订单</a>] | [<a href='javascript:void'>退订</a>]";
+                        html2go += " [<a href=\"javascript:on_query_pay('" + visitor.T_TOKEN + "');\">订单</a>] | [<a href='javascript:void'>退订</a>]";
                     }
                     html2go += "</br>";
                 }
