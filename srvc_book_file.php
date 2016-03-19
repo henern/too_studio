@@ -181,7 +181,9 @@ function impl_book_query_schedule($prev_n, $next_n, &$result_arr)
                 $ttoken = $rticket->trade_token;
                 
                 // e.g. [N] ==> #2, PHONE_138xxxxxxxx
-                $slot_inf[] = "#$guest_num, $guid_str, $ttoken";
+                $slot_inf[] = array("GUEST_NUM"         => $guest_num,
+                                    "GUID_STR"          => $guid_str,
+                                    "TRADE_TOKEN"       => $ttoken);
             }
             
             // e.g. 15:30 ==> [ xxx ]
