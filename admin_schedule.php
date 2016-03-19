@@ -46,7 +46,7 @@
                     var i;
                     for (i = 0; i < vclock.VISITORs.length; i++)
                     {
-                        var vistor = vclock.VISITORs[i];
+                        var visitor = vclock.VISITORs[i];
                         html2go += "</br>";
                         html2go += visitor.GUID_STR + ": 预定" + visitor.GUEST_NUM + "人";
                         html2go += " [" + visitor.T_TOKEN + "]";
