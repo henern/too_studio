@@ -162,8 +162,6 @@ function impl_book_query_schedule($prev_n, $next_n, &$result_arr)
             
             // put all reservations of this slot in one array
             $slot_inf = array();
-            // e.g. COUNT ==> N
-            $slot_inf["COUNT"]  = $count_rtickets;
             
             // go through each reservation
             $arr_rtickets = $json[KEY_FILE_JSON_RTICKET_LIST];
@@ -181,19 +179,22 @@ function impl_book_query_schedule($prev_n, $next_n, &$result_arr)
                 $ttoken = $rticket->trade_token;
                 
                 // e.g. [N] ==> #2, PHONE_138xxxxxxxx
-                $slot_inf[] = array("GUEST_NUM"         => $guest_num,
-                                    "GUID_STR"          => $guid_str,
-                                    "TRADE_TOKEN"       => $ttoken);
+                $slot_inf = array("GUEST_NUM"         => $guest_num,
+                                  "GUID_STR"          => $guid_str,
+                                  "T_TOKEN"           => $ttoken);
             }
             
             // e.g. 15:30 ==> [ xxx ]
-            $all_slots[$visit_clock] = $slot_inf;
+            $all_slots[] = array("CLOCK"            => $visit_clock,
+                                 "COUNT"            => $count_rtickets,
+                                 "VISITORs"         => $slot_inf);
         }
         
         closedir($dh);
         
         // e.g. 20160210 ==> [ xxx ]
-        $result_arr[$subdir] = $all_slots; 
+        $result_arr[] = array("DATE"            => $subdir,
+                              "SLOTS"           => $all_slots); 
     }
     
     return BOOK_CODE_OK;
