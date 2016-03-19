@@ -34,14 +34,14 @@
             for (k = 0; k < json_list.length; k++)
             {
                 var vday = json_list[k];
-                html2go += "<h1>" + vday.DATE + "</h1>";
+                html2go += "<h3>" + vday.DATE + "</h3>";
                 
                 var j;
                 for (j = 0; j < vday.SLOTS.length; j++)
                 {
                     var vclock = vday.SLOTS[j];
                     html2go += "</br>";
-                    html2go += "<h3>" + vclock.CLOCK + "</h3>, 共" + vclock.COUNT + "人";
+                    html2go += "<b>时间: " + vclock.CLOCK + ",  人数: " + vclock.COUNT + "</b>";
                     
                     var i;
                     for (i = 0; i < vclock.VISITORs.length; i++)
