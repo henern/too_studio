@@ -49,7 +49,7 @@
                         var visitor = vclock.VISITORs[i];
                         html2go += "</br>";
                         html2go += visitor.GUID_STR + ": 预定" + visitor.GUEST_NUM + "人";
-                        html2go += " [" + visitor.T_TOKEN + "]";
+                        html2go += " [<a href='./srvc_pay.php?action=query_ttoken&ttoken=" + visitor.T_TOKEN + "'>订单</a>] | [<a href='javascript:void'>退订</a>]";
                     }
                     html2go += "</br>";
                 }
