@@ -205,10 +205,10 @@ $right_now_day = full_date();
             <div class="msg msg-contact-err hide"></div>
         </section>
         		
-		<table id="board-group" style="border:none">
+		<table id="board-group" style="border:none" cellspacing="0" width="100%">
 		<!--小画板-->
 		<tr>
-			<td><img width="307" src='./img/too-board-small.jpg'/></td>
+			<td width="307"><img width="307" src='./img/too-board-small.jpg'/></td>
 			<td align="center">
                 <span class="value" id="J-input-board-small">0</span>
                 <i class="caret"></i>
@@ -222,7 +222,7 @@ $right_now_day = full_date();
 		</tr>	
 		<!--中画板-->
 		<tr>
-			<td><img width="307" src='./img/too-board-medium.jpg'/></td>
+			<td width="307"><img width="307" src='./img/too-board-medium.jpg'/></td>
 			<td align="center">
                 <span class="value" id="J-input-board-medium">1</span>
                 <i class="caret"></i>
@@ -236,7 +236,7 @@ $right_now_day = full_date();
 		</tr>
 		<!--大画板-->
 		<tr>
-			<td><img width="307" src='./img/too-board-large.jpg'/></td>
+			<td width="307"><img width="307" src='./img/too-board-large.jpg'/></td>
 			<td align="center">
                 <span class="value" id="J-input-board-large">0</span>
                 <i class="caret"></i>
