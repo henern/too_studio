@@ -204,28 +204,51 @@ $right_now_day = full_date();
             </div>
             <div class="msg msg-contact-err hide"></div>
         </section>
-        
-        <section class="board">
-            <div class="row-group">
-                <div class="row">
-		            <div class="people-sel J-person-trigger">
-		                <label>画板</label>
-		                <span class="value" id="J-input-board-small">1</span>
-		                <i class="caret"></i>
-		                <select class="select-overlay" id="J-board-small" onchange="javascript:on_select_changed('J-board-small', 'J-input-board-small')">
-							<option value='0'>0</option>
-							<option value='1' selected>1</option>
-							<option value='2'>2</option>
-							<option value='3'>3</option>
-		                </select>
-		            </div>
-					
-                    <div>
-                        <img src='./img/too-board-small.jpg'/>
-                    </div>
-                </div>
-            </div>
-        </section>
+        		
+		<table id="board-group">
+		<!--小画板-->
+		<tr>
+			<td><img width="307" src='./img/too-board-small.jpg'/></td>
+			<td>
+                <span class="value" id="J-input-board-small">0</span>
+                <i class="caret"></i>
+                <select class="select-overlay" id="J-board-small" onchange="javascript:on_select_changed('J-board-small', 'J-input-board-small')">
+					<option value='0' selected>0</option>
+					<option value='1'>1</option>
+					<option value='2'>2</option>
+					<option value='3'>3</option>
+                </select>
+			</td>
+		</tr>	
+		<!--中画板-->
+		<tr>
+			<td><img width="307" src='./img/too-board-medium.jpg'/></td>
+			<td>
+                <span class="value" id="J-input-board-medium">1</span>
+                <i class="caret"></i>
+                <select class="select-overlay" id="J-board-medium" onchange="javascript:on_select_changed('J-board-medium', 'J-input-board-medium')">
+					<option value='0'>0</option>
+					<option value='1' selected>1</option>
+					<option value='2'>2</option>
+					<option value='3'>3</option>
+                </select>
+			</td>
+		</tr>
+		<!--大画板-->
+		<tr>
+			<td><img width="307" src='./img/too-board-large.jpg'/></td>
+			<td>
+                <span class="value" id="J-input-board-large">0</span>
+                <i class="caret"></i>
+                <select class="select-overlay" id="J-board-large" onchange="javascript:on_select_changed('J-board-large', 'J-input-board-large')">
+					<option value='0' selected>0</option>
+					<option value='1'>1</option>
+					<option value='2'>2</option>
+					<option value='3'>3</option>
+                </select>
+			</td>
+		</tr>
+		</table>
 		
         <a id="J_submit" class="btn-huge" href="javascript:on_click_to_reserve();">马上预订</a>
 		<!--内容 end-->
