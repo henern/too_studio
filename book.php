@@ -246,10 +246,13 @@ if ($wx_code == null)
                 <span class="value board_sel" id="J-input-board-small">0</span><label>张</label>
                 <i class="caret"></i>
                 <select class="select-overlay" id="J-board-small" onchange="javascript:on_select_changed('J-board-small', 'J-input-board-small')">
-					<option value='0' selected>0</option>
-					<option value='1'>1</option>
-					<option value='2'>2</option>
-					<option value='3'>3</option>
+                    <option value='0' selected>0</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                    <option value='6'>6</option>
                 </select>
 			</td>
 		</tr>	
@@ -267,7 +270,7 @@ if ($wx_code == null)
                 <select class="select-overlay" id="J-board-medium" onchange="javascript:on_select_changed('J-board-medium', 'J-input-board-medium')">
                     <?php
                         
-                    for ($cur = 0; $cur <= 3; $cur++)
+                    for ($cur = 0; $cur <= 6; $cur++)
                     {
                         if ($cur == $BOARD_M_DEFAULT)
                         {
@@ -296,10 +299,13 @@ if ($wx_code == null)
                 <span class="value board_sel" id="J-input-board-large">0</span><label>张</label>
                 <i class="caret"></i>
                 <select class="select-overlay" id="J-board-large" onchange="javascript:on_select_changed('J-board-large', 'J-input-board-large')">
-					<option value='0' selected>0</option>
-					<option value='1'>1</option>
-					<option value='2'>2</option>
-					<option value='3'>3</option>
+                    <option value='0' selected>0</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                    <option value='6'>6</option>
                 </select>
 			</td>
 		</tr>
