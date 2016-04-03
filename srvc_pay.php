@@ -51,7 +51,9 @@ if ($count > 0 &&
     $total = $small_price   * $small_board + 
              $medium_price  * $medium_board + 
              $large_price   * $large_board;
-    $total =* $discount_rate;
+    
+    // any discount?
+    $total *= $discount_rate;
     
     $param = array("count"          => "$count",
                    "total"          => "$total",
