@@ -21,7 +21,7 @@ $right_now_day = full_date();
 $wx_code = array_string4key($_GET, "code");
 if ($wx_code == null)
 {
-    redirect_to_path_with_wx_auth("wx/book.php");
+    $wx_code = "";
 }
 
 ?>

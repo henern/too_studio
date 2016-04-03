@@ -15,9 +15,12 @@ if (too_wx_echo_if_require())
 }
 
 // jump to book.php
+/*
 Header("HTTP/1.1 303 See Other"); 
 Header("Location: book.php"); 
 exit;
+*/
+redirect_to_path_with_wx_auth("wx/book.php");
 
 ?>
 
