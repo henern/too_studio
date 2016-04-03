@@ -9,7 +9,7 @@ function book_do_reserve(phone,
 {
     var xhr = new XMLHttpRequest();
     
-    var url = "srvc_book.php?action=reserve" + 
+    var url = "srvc_book_auth.php?action=reserve" + 
               "&gnum=" + num + 
               "&vdate=" + vdate + 
               "&vmins=" + vmins_slot + 

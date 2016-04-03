@@ -43,6 +43,7 @@ function srvc_book_description_4_code($code)
     
 define("KEY_GUID_TYPE",     "GUID_TYPE");
 define("KEY_GUID_VALUE",    "GUID_VAL");
+define("KEY_GUID_OID",      "GUID_OID");
 
 define("TYPE_GUID_PHONE",   1000);
 define("TYPE_GUID_WX_ID",   1001);
@@ -52,6 +53,7 @@ class GuestUID
 {
     var $type;       // PHONE, WXID, etc.
     var $val;
+    var $oid;
     
     function is_equal_to($guid)
     {
@@ -83,6 +85,7 @@ class GuestUID
     function to_array()
     {
         return array(KEY_GUID_TYPE  => $this->type, 
+                     KEY_GUID_OID   => $this->oid,
                      KEY_GUID_VALUE => $this->val);
     }
     
@@ -97,12 +100,18 @@ class GuestUID
         {
             $this->val = $arr[KEY_GUID_VALUE];
         }
+        
+        if (array_key_exists(KEY_GUID_OID, $arr))
+        {
+            $this->oid = $arr[KEY_GUID_OID];
+        }
     }
     
     function __construct($val, $type)
     {
         $this->type = $this->valid_type($type);
         $this->val = $val;
+        $this->oid = "";
     }
     
     function valid_type($type)
