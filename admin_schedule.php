@@ -66,7 +66,9 @@
                         
                         html2go += "</br>";
                         html2go += visitor.GUID_STR + ": 预定" + visitor.GUEST_NUM + "人（" + board_tips + "）";
-                        html2go += " [<a href=\"javascript:on_query_pay('" + visitor.T_TOKEN + "');\">订单</a>] | [<a href='javascript:void'>退订</a>]";
+                        html2go += " [<a href=\"javascript:on_query_pay('" + visitor.T_TOKEN + "');\">订单</a>]";
+                        html2go += " | [<a href=\"javascript:alert('" + visitor.T_TOKEN + "')\">单号</a>]";
+                        html2go += " | [<a href='javascript:void'>退订</a>]";
                     }
                     html2go += "</br>";
                 }
