@@ -205,9 +205,9 @@ class ReservationTicket
         $this->visit_mins_slot = $v_mins_slot;
         $this->trade_token = $this->__trade_token($guid);
         
-        $this->small_board = $small_b;
-        $this->medium_board = $medium_b;
-        $this->large_board = $large_b;
+        $this->small_board = $small_b + 0;
+        $this->medium_board = $medium_b + 0;
+        $this->large_board = $large_b + 0;
     }
     
     function is_valid()
