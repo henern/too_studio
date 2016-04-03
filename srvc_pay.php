@@ -55,14 +55,14 @@ if ($count > 0 &&
     // any discount?
     $total *= $discount_rate;
     
-    $param = array("count"          => "$count",
-                   "total"          => "$total",
-                   "visit_day"      => "$visit_day",
-                   "time_slot"      => "$time_slot",
-                   "small_b"        => "$small_board",
-                   "medium_b"       => "$medium_board",
-                   "large_b"        => "$large_board",
-                   "phone"          => "$phone");
+    $param = array("C"              => "$count",
+                   "T"              => "$total",
+                   "VD"             => "$visit_day",
+                   "TS"             => "$time_slot",
+                   "BS"             => "$small_board",
+                   "BM"             => "$medium_board",
+                   "BL"             => "$large_board",
+                   "PH"             => "$phone");
     $json = json_encode($param);
                    
     // X大Y中Z小

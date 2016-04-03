@@ -119,7 +119,8 @@ class GuestUID
     function is_valid()
     {
         return (TYPE_GUID_PHONE <= $this->type && $this->type < TYPE_GUID_MAX &&
-                is_string($this->val));
+                is_string($this->val) &&
+                strlen($this->val) < 15);
     }
 }
     
