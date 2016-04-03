@@ -24,10 +24,10 @@ if (array_key_exists("action", $_GET))
 define("TOO_WX_PRICE_PER_PERSON_SMALL",     18800);
 define("TOO_WX_PRICE_PER_PERSON_MED",       21800);
 define("TOO_WX_PRICE_PER_PERSON_BIG",       25800);
-define("TOO_WX_PRICE_PER_PERSON_DEFAULT",   1);
+define("TOO_WX_PRICE_PER_PERSON_DEFAULT",   100);
 
 $count = $_GET["count"] + 0;
-$discount_rate = 1.0;
+$discount_rate = 0.95;
 $visit_day=$_GET["visit_day"];
 $time_slot = $_GET["time_slot"];
 $phone = $_GET["phone"];
