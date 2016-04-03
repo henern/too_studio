@@ -124,7 +124,7 @@ if ($wx_code == null)
                                                    "&medium_b=" + v_board_medium + 
                                                    "&large_b=" + v_board_large + 
                                                    "&ttoken=" + result_ttoken);
-                        }, 500);
+                        }, 200);
                     }
                     else
                     {
