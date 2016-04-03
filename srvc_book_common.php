@@ -197,7 +197,7 @@ class ReservationTicket
         return $prefix_STR5 . $date_STR14 . $guid_md5_STR8 . $clock_STR5;
     }
     
-    function __construct($guid, $num, $v_date, $v_mins_slot, $small_b, $medium_b, $large_b)
+    function __construct($guid, $num, $v_date, $v_mins_slot, $small_b = 0, $medium_b = 0, $large_b = 0)
     {
         $this->guid = $guid;
         $this->num = $num + 0;
