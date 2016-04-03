@@ -1,5 +1,6 @@
 function book_do_reserve(phone, 
                          num, 
+                         code,
                          vdate, 
                          vmins_slot, 
                          small_board, 
@@ -9,11 +10,12 @@ function book_do_reserve(phone,
 {
     var xhr = new XMLHttpRequest();
     
-    var url = "srvc_book_auth.php?action=reserve" + 
+    var url = "srvc_book.php?action=reserve" + 
               "&gnum=" + num + 
               "&vdate=" + vdate + 
               "&vmins=" + vmins_slot + 
               "&phone=" + phone +
+              "&code=" + code +
               "&small_b=" + small_board +
               "&medium_b=" + medium_board +
               "&large_b=" + large_board;

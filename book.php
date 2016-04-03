@@ -1,6 +1,6 @@
 <?php
     
-require_once "utils.php";
+require_once "wx_dev.php";
 utils_init();
 
 # trace the visitor
@@ -16,6 +16,13 @@ $open_hour_slot = 30;
 $open_hour_day = 7;
     
 $right_now_day = full_date();
+
+// try to get wx-openid
+$wx_code = array_string4key($_GET, "code");
+if ($wx_code == null)
+{
+    redirect_to_path_with_wx_auth("wx/book.php");
+}
 
 ?>
 
@@ -84,6 +91,7 @@ $right_now_day = full_date();
                 
                 book_do_reserve(g_phone, 
                                 g_num, 
+                                <?php echo "$wx_code" ?>,
                                 v_date, 
                                 v_slot, 
                                 v_board_small, 
