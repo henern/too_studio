@@ -75,9 +75,9 @@ $right_now_day = full_date();
                 var v_date  = document.getElementById("J-date-select").value;
                 var v_slot  = document.getElementById("J-time-select").value;
                 
-                var v_board_large = document.getElementById("J-input-board-large").value;
-                var v_board_small = document.getElementById("J-input-board-small").value;
-                var v_board_medium = document.getElementById("J-input-board-medium").value;
+                var v_board_large = document.getElementById("J-board-large").value;
+                var v_board_small = document.getElementById("J-board-small").value;
+                var v_board_medium = document.getElementById("J-board-medium").value;
                 
                 var btn_reserve = document.getElementById("J_submit");
                 btn_reserve.innerHTML = "正在努力预定...";
@@ -255,10 +255,22 @@ $right_now_day = full_date();
                 <span class="value board_sel" id="J-input-board-medium"><?php echo $BOARD_M_DEFAULT ?></span><label>张</label>
                 <i class="caret"></i>
                 <select class="select-overlay" id="J-board-medium" onchange="javascript:on_select_changed('J-board-medium', 'J-input-board-medium')">
-					<option value='0'>0</option>
-					<option value='1' selected>1</option>
-					<option value='2'>2</option>
-					<option value='3'>3</option>
+                    <?php
+                        
+                    for ($cur = 0; $cur <= 3; $cur++)
+                    {
+                        if ($cur == $BOARD_M_DEFAULT)
+                        {
+                            echo "<option value='$cur' selected>$cur</option>";
+                        }
+                        else
+                        {
+                            echo "<option value='$cur'>$cur</option>";
+                        }
+                    }
+                    
+                    ?>
+                    
                 </select>
 			</td>
 		</tr>
