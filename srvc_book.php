@@ -1,6 +1,6 @@
 <?php
     
-require_once "utils.php";
+require_once "wx_dev.php";
 utils_init();
 
 require_once "srvc_book_common.php";
