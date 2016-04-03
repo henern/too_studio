@@ -75,6 +75,14 @@ if ($wx_code == null)
                 element_bind2.innerHTML = element_select.options[indx_selected].innerHTML;
             }
             
+            function confirm_to_pay(callback, timeout)
+            {
+                if (confirm("预订成功啦！在线支付更享95折哦（也可到店支付），是否在线支付？"))
+                {
+                    callback();
+                }
+            }
+            
             function on_click_to_reserve()
             {
                 var g_phone = document.getElementById("J-input-phone").value;
@@ -102,8 +110,8 @@ if ($wx_code == null)
                     
                     if (result_code >= 0)
                     {
-                        btn_reserve.innerHTML = "预定成功，正在准备支付...";
-                        setTimeout(function(){
+                        btn_reserve.innerHTML = "预定成功，恭候大驾";
+                        confirm_to_pay(function(){
                             window.location.assign("./srvc_pay_auth.php?count=" + g_num + 
                                                    "&visit_day=" + v_date + 
                                                    "&time_slot=" + v_slot + 
