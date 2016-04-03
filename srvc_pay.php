@@ -71,7 +71,7 @@ if ($count > 0 &&
     if ($medium_board > 0)  $board_tips = $board_tips . "$medium_board" . "中";
     if ($small_board > 0)   $board_tips = $board_tips . "$small_board" . "小";
     
-    $js_pay = srvc_pay_api_order("Too塗画室" . "$count" . "人券（" . $board_tips . "）", 
+    $js_pay = srvc_pay_api_order("Too塗画室" . "$count" . "人券（" . "$board_tips" . "）", 
                                  $total, 
                                  $ttoken,
                                  "",   // ???
