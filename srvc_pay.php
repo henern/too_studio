@@ -67,9 +67,9 @@ if ($count > 0 &&
                    
     // X大Y中Z小
     $board_tips = "";
-    if ($large_board > 0)   $board_tips = $board_tips . "$large_board大";
-    if ($medium_board > 0)  $board_tips = $board_tips . "$medium_board中";
-    if ($small_board > 0)   $board_tips = $board_tips . "$small_board小";
+    if ($large_board > 0)   $board_tips = $board_tips . "$large_board" . "大";
+    if ($medium_board > 0)  $board_tips = $board_tips . "$medium_board" . "中";
+    if ($small_board > 0)   $board_tips = $board_tips . "$small_board" . "小";
     
     $js_pay = srvc_pay_api_order("Too塗画室" . "$count" . "人券（" . $board_tips . "）", 
                                  $total, 
