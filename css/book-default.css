@@ -1478,7 +1478,7 @@ select.select-overlay option[disabled] {
     text-align: center;
     border-radius: 5px;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    background: #f63;
+    background: #7ebbbc;
     color: #fff
 }
 
