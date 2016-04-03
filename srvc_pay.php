@@ -71,7 +71,8 @@ if ($count > 0 &&
     if ($medium_board > 0)  $board_tips = $board_tips . "$medium_board" . "中";
     if ($small_board > 0)   $board_tips = $board_tips . "$small_board" . "小";
     
-    $js_pay = srvc_pay_api_order("Too塗画室" . "$count" . "人券（" . "$board_tips" . "）", 
+    $pay_body = "Too塗画室" . "$count" . "人券（" . "$board_tips" . "）";
+    $js_pay = srvc_pay_api_order($pay_body, 
                                  $total, 
                                  $ttoken,
                                  "",   // ???
@@ -97,7 +98,7 @@ if ($count > 0 &&
 </head>
 <body>
     <header>
-        <div class="title-fullwidth" id="div_pay_status">正在准备付款，请稍等...</div>
+        <div class="title-fullwidth" id="div_pay_status"><?php echo "$pay_body" ?>，正在准备付款...</div>
     </header>
 
     <section class="content">
