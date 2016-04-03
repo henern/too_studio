@@ -178,9 +178,16 @@ function impl_book_query_schedule($prev_n, $next_n, &$result_arr)
                 $guest_num = $rticket->num;
                 $ttoken = $rticket->trade_token;
                 
+                $small_b    = $rticket->small_board;
+                $medium_b   = $rticket->medium_board;
+                $large_b    = $rticket->large_board;
+                
                 // e.g. [N] ==> #2, PHONE_138xxxxxxxx
                 $slot_inf[] = array("GUEST_NUM"         => $guest_num,
                                     "GUID_STR"          => $guid_str,
+                                    "BOARD_S"           => $small_b,
+                                    "BOARD_M"           => $medium_b,
+                                    "BOARD_L"           => $large_b,
                                     "T_TOKEN"           => $ttoken);
             }
             

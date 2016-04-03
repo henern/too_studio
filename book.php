@@ -8,6 +8,7 @@ log_visitor_info();
 
 $guest_num_max = 10;
 $guest_num_default = 2;
+$BOARD_M_DEFAULT = $guest_num_default;
     
 $open_hour_begin = 10 * 60 + 30;    # 10:30
 $open_hour_end = 20 * 60 + 0;       # 20:00
@@ -74,16 +75,35 @@ $right_now_day = full_date();
                 var v_date  = document.getElementById("J-date-select").value;
                 var v_slot  = document.getElementById("J-time-select").value;
                 
+                var v_board_large = document.getElementById("J-input-board-large").value;
+                var v_board_small = document.getElementById("J-input-board-small").value;
+                var v_board_medium = document.getElementById("J-input-board-medium").value;
+                
                 var btn_reserve = document.getElementById("J_submit");
                 btn_reserve.innerHTML = "正在努力预定...";
                 
-                book_do_reserve(g_phone, g_num, v_date, v_slot, function(result_code, result_ttoken, result_desc){
+                book_do_reserve(g_phone, 
+                                g_num, 
+                                v_date, 
+                                v_slot, 
+                                v_board_small, 
+                                v_board_medium, 
+                                v_board_large, 
+                                function(result_code, result_ttoken, result_desc)
+                {
                     
                     if (result_code >= 0)
                     {
                         btn_reserve.innerHTML = "预定成功，正在准备支付...";
                         setTimeout(function(){
-                            window.location.assign("./srvc_pay_auth.php?count=" + g_num + "&visit_day=" + v_date + "&time_slot=" + v_slot + "&phone=" + g_phone + "&ttoken=" + result_ttoken);
+                            window.location.assign("./srvc_pay_auth.php?count=" + g_num + 
+                                                   "&visit_day=" + v_date + 
+                                                   "&time_slot=" + v_slot + 
+                                                   "&phone=" + g_phone + 
+                                                   "&small_b=" + v_board_small + 
+                                                   "&medium_b=" + v_board_medium + 
+                                                   "&large_b=" + v_board_large + 
+                                                   "&ttoken=" + result_ttoken);
                         }, 1500);
                     }
                     else
@@ -232,7 +252,7 @@ $right_now_day = full_date();
 		<tr>
 			<td width="280"><img width="280" src='./img/too-board-medium.png'/></td>
 			<td align="center">
-                <span class="value board_sel" id="J-input-board-medium">1</span><label>张</label>
+                <span class="value board_sel" id="J-input-board-medium"><?php echo $BOARD_M_DEFAULT ?></span><label>张</label>
                 <i class="caret"></i>
                 <select class="select-overlay" id="J-board-medium" onchange="javascript:on_select_changed('J-board-medium', 'J-input-board-medium')">
 					<option value='0'>0</option>

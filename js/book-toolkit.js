@@ -1,4 +1,11 @@
-function book_do_reserve(phone, num, vdate, vmins_slot, callback)
+function book_do_reserve(phone, 
+                         num, 
+                         vdate, 
+                         vmins_slot, 
+                         small_board, 
+                         medium_board, 
+                         large_board, 
+                         callback)
 {
     var xhr = new XMLHttpRequest();
     
@@ -6,7 +13,10 @@ function book_do_reserve(phone, num, vdate, vmins_slot, callback)
               "&gnum=" + num + 
               "&vdate=" + vdate + 
               "&vmins=" + vmins_slot + 
-              "&phone=" + phone;
+              "&phone=" + phone +
+              "&small_b=" + small_board +
+              "&medium_b=" + medium_board +
+              "&large_b=" + large_board;
     
     xhr.onreadystatechange = function() {
         

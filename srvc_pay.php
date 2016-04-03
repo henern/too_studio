@@ -27,26 +27,49 @@ define("TOO_WX_PRICE_PER_PERSON_BIG",       25800);
 define("TOO_WX_PRICE_PER_PERSON_DEFAULT",   1);
 
 $count = $_GET["count"] + 0;
-$price = TOO_WX_PRICE_PER_PERSON_DEFAULT;
 $discount_rate = 1.0;
 $visit_day=$_GET["visit_day"];
 $time_slot = $_GET["time_slot"];
 $phone = $_GET["phone"];
 $ttoken = $_GET["ttoken"];
 
+$small_board    = array_number4key($_GET, "small_b");
+$medium_board   = array_number4key($_GET, "medium_b");
+$large_board    = array_number4key($_GET, "large_b");
+$board_count    = $small_board + $medium_board + $large_board;
+
+$small_price    = TOO_WX_PRICE_PER_PERSON_DEFAULT;
+$medium_price   = TOO_WX_PRICE_PER_PERSON_DEFAULT;
+$large_price    = TOO_WX_PRICE_PER_PERSON_DEFAULT;
+
 $js_pay = "";
-if ($count > 0 && $price > 0 && strlen($ttoken) > 16)
+if ($count > 0 && 
+    $board_count > 0 && 
+    $small_price > 0 && $medium_price > 0 && $large_price > 0 && 
+    strlen($ttoken) > 16)
 {
-    $total = $count * $price * $discount_rate;
+    $total = $small_price   * $small_board + 
+             $medium_price  * $medium_board + 
+             $large_price   * $large_board;
+    $total =* $discount_rate;
     
     $param = array("count"          => "$count",
                    "total"          => "$total",
                    "visit_day"      => "$visit_day",
                    "time_slot"      => "$time_slot",
+                   "small_b"        => "$small_board",
+                   "medium_b"       => "$medium_board",
+                   "large_b"        => "$large_board",
                    "phone"          => "$phone");
     $json = json_encode($param);
                    
-    $js_pay = srvc_pay_api_order("Too塗画室" . "$count" . "人券", 
+    // X大Y中Z小
+    $board_tips = "";
+    if ($large_board > 0)   $board_tips = $board_tips . "$large_board大";
+    if ($medium_board > 0)  $board_tips = $board_tips . "$medium_board中";
+    if ($small_board > 0)   $board_tips = $board_tips . "$small_board小";
+    
+    $js_pay = srvc_pay_api_order("Too塗画室" . "$count" . "人券（" . $board_tips . "）", 
                                  $total, 
                                  $ttoken,
                                  "",   // ???

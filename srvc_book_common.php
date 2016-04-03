@@ -129,6 +129,11 @@ define("KEY_RTICKET_V_DATE",        "RTICKET_V_DATE");
 define("KEY_RTICKET_V_MINS_SLOT",   "RTICKET_V_MINS_SLOT");
 define("KEY_RTICKET_TRADE_TOKEN",   "RTICKET_TRADE_TOKEN");
 define("PREFIX_TRADE_TOKEN",        "TOOWX");
+
+define("KEY_RTICKET_BOARD_SMALL",   "RTICKET_BOARD_SMALL");
+define("KEY_RTICKET_BOARD_MEDIUM",  "RTICKET_BOARD_MEDIUM");
+define("KEY_RTICKET_BOARD_LARGE",   "RTICKET_BOARD_LARGE");
+
 class ReservationTicket
 {
     var $guid;
@@ -136,6 +141,9 @@ class ReservationTicket
     var $visit_date;
     var $visit_mins_slot;
     var $trade_token;
+    var $small_board;
+    var $medium_board;
+    var $large_board;
     
     function to_array()
     {
@@ -143,6 +151,9 @@ class ReservationTicket
                      KEY_RTICKET_NUM            => $this->num,
                      KEY_RTICKET_TRADE_TOKEN    => $this->trade_token,
                      KEY_RTICKET_V_DATE         => $this->visit_date,
+                     KEY_RTICKET_BOARD_SMALL    => $this->small_board,
+                     KEY_RTICKET_BOARD_MEDIUM   => $this->medium_board,
+                     KEY_RTICKET_BOARD_LARGE    => $this->large_board,
                      KEY_RTICKET_V_MINS_SLOT    => $this->visit_mins_slot);
     }
     
@@ -156,6 +167,10 @@ class ReservationTicket
         $this->num = $arr[KEY_RTICKET_NUM];
         $this->visit_date = $arr[KEY_RTICKET_V_DATE];
         $this->visit_mins_slot = $arr[KEY_RTICKET_V_MINS_SLOT];
+        
+        $this->small_board  = $arr[KEY_RTICKET_BOARD_SMALL];
+        $this->medium_board = $arr[KEY_RTICKET_BOARD_MEDIUM];
+        $this->large_board  = $arr[KEY_RTICKET_BOARD_LARGE];
         
         return $this->is_valid();
     }
@@ -182,13 +197,17 @@ class ReservationTicket
         return $prefix_STR5 . $date_STR14 . $guid_md5_STR8 . $clock_STR5;
     }
     
-    function __construct($guid, $num, $v_date, $v_mins_slot)
+    function __construct($guid, $num, $v_date, $v_mins_slot, $small_b, $medium_b, $large_b)
     {
         $this->guid = $guid;
         $this->num = $num + 0;
         $this->visit_date = $v_date;
         $this->visit_mins_slot = $v_mins_slot;
         $this->trade_token = $this->__trade_token($guid);
+        
+        $this->small_board = $small_b;
+        $this->medium_board = $medium_b;
+        $this->large_board = $large_b;
     }
     
     function is_valid()
@@ -197,6 +216,10 @@ class ReservationTicket
                is_int($this->num) &&
                strlen($this->trade_token) > 0 &&
                strpos($this->trade_token, PREFIX_TRADE_TOKEN) == 0 &&
+               is_int($this->small_board) &&
+               is_int($this->medium_board) &&
+               is_int($this->large_board) &&
+               ($this->small_board + $this->medium_board + $this->large_board) > 0 &&
                is_numeric($this->visit_date) &&
                is_numeric($this->visit_mins_slot);
     }

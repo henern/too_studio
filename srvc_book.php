@@ -14,9 +14,22 @@ function srvc_book_max_per_slot()
     return 10;
 }
     
-function srvc_book_reserve($guid, $guest_num, $visit_date, $visit_slot_in_mins, &$trade_token)
+function srvc_book_reserve($guid, 
+                           $guest_num, 
+                           $visit_date, 
+                           $visit_slot_in_mins, 
+                           $small_board, 
+                           $medium_board, 
+                           $large_board, 
+                           &$trade_token)
 {
-    $rticket = new ReservationTicket($guid, $guest_num, $visit_date, $visit_slot_in_mins);
+    $rticket = new ReservationTicket($guid, 
+                                     $guest_num, 
+                                     $visit_date, 
+                                     $visit_slot_in_mins, 
+                                     $small_board, 
+                                     $medium_board, 
+                                     $large_board);
     $trade_token = $rticket->trade_token;
     
     if (!$rticket->is_valid())
@@ -72,7 +85,18 @@ function srvc_book_query_schedule($next_n_days, &$result_arr)
         $visit_date = array_number4key($_GET, "vdate");
         $visit_mins_slot = array_number4key($_GET, "vmins");
         
-        $err = srvc_book_reserve($guid, $guest_num, $visit_date, $visit_mins_slot, $trade_token);
+        $small_board = array_number4key($_GET, "small_b");
+        $medium_board = array_number4key($_GET, "medium_b");
+        $large_board = array_number4key($_GET, "large_b");
+        
+        $err = srvc_book_reserve($guid, 
+                                 $guest_num, 
+                                 $visit_date, 
+                                 $visit_mins_slot, 
+                                 $small_board, 
+                                 $medium_board, 
+                                 $large_board, 
+                                 $trade_token);
     }
     else if ($action == "query_schedule")
     {
