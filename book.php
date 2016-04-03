@@ -10,7 +10,7 @@ $guest_num_max = 10;
 $guest_num_default = 2;
 $BOARD_M_DEFAULT = $guest_num_default;
     
-$open_hour_begin = 10 * 60 + 30;    # 10:30
+$open_hour_begin = 14 * 60 + 0;     # 14:00
 $open_hour_end = 20 * 60 + 0;       # 20:00
 $open_hour_slot = 30;
 $open_hour_day = 7;
