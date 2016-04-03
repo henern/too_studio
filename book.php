@@ -241,7 +241,7 @@ if ($wx_code == null)
 		<table id="board-group" style="border:none" cellspacing="0" width="100%">
 		<!--小画板-->
 		<tr>
-			<td width="280"><img width="280" src='./img/too-board-small.png'/></td>
+			<td class="board_img"><img class="board_img" src='./img/too-board-small.png'/></td>
 			<td align="center">
                 <span class="value board_sel" id="J-input-board-small">0</span><label>张</label>
                 <i class="caret"></i>
@@ -260,7 +260,7 @@ if ($wx_code == null)
         <table id="board-group" style="border:none" cellspacing="0" width="100%">
 		<!--中画板-->
 		<tr>
-			<td width="280"><img width="280" src='./img/too-board-medium.png'/></td>
+			<td class="board_img"><img class="board_img" src='./img/too-board-medium.png'/></td>
 			<td align="center">
                 <span class="value board_sel" id="J-input-board-medium"><?php echo $BOARD_M_DEFAULT ?></span><label>张</label>
                 <i class="caret"></i>
@@ -291,7 +291,7 @@ if ($wx_code == null)
         <table id="board-group" style="border:none" cellspacing="0" width="100%">
 		<!--大画板-->
 		<tr>
-			<td width="280"><img width="280" src='./img/too-board-large.png'/></td>
+			<td class="board_img"><img class="board_img" src='./img/too-board-large.png'/></td>
 			<td align="center">
                 <span class="value board_sel" id="J-input-board-large">0</span><label>张</label>
                 <i class="caret"></i>
