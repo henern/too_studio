@@ -91,7 +91,7 @@ if ($wx_code == null)
                 
                 book_do_reserve(g_phone, 
                                 g_num, 
-                                <?php echo "$wx_code" ?>,
+                                <?php echo "\"" . "$wx_code" . "\"" ?>,
                                 v_date, 
                                 v_slot, 
                                 v_board_small, 
