@@ -93,21 +93,10 @@ class PayInfo
         }
         
         $this->code_cached = $code;
-        $get_token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=' . TOO_WX_APPID . 
-                         '&secret=' . TOO_WX_APPSECRET . 
-                         '&code=' . $code . 
-                         '&grant_type=authorization_code';
         
-        $err = null;
-        $ret = __curl_get_ssl($get_token_url, $err);
-        
-        $json = json_decode($ret, true); 
-        if (is_array($json))
-        {
-            //根据openid和access_token查询用户信息 
-            $access_token = $json['access_token']; 
-            $oid = $json['openid']; 
-        }
+        $access_token = "";
+        $oid = "";
+        wx_openid_from_code($code, $access_token, $oid);
 
         $this->openid_cached = $oid;
         return $oid;

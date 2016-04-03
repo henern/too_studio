@@ -171,4 +171,30 @@ function redirect_to_path_with_wx_auth($target_uri_path)
     header("Location:" . $auth_url);
 }
 
+function wx_openid_from_code($code, &$access_token, &$oid)
+{
+    $get_token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=' . TOO_WX_APPID . 
+                     '&secret=' . TOO_WX_APPSECRET . 
+                     '&code=' . $code . 
+                     '&grant_type=authorization_code';
+    
+    $err = null;
+    $ret = __curl_get_ssl($get_token_url, $err);
+    
+    $json = json_decode($ret, true); 
+    if (is_array($json))
+    {
+        //根据openid和access_token查询用户信息 
+        $access_token = $json['access_token']; 
+        $oid = $json['openid']; 
+    }
+    else
+    {
+        $access_token = "";
+        $oid = "";
+    }
+    
+    return $err;
+}
+
 ?>
