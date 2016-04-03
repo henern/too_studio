@@ -213,7 +213,7 @@ $right_now_day = full_date();
 		<tr>
 			<td width="280"><img width="280" src='./img/too-board-small.png'/></td>
 			<td align="center">
-                <span class="value" id="J-input-board-small">0</span>
+                <span class="value board_sel" id="J-input-board-small">0</span><label>张</label>
                 <i class="caret"></i>
                 <select class="select-overlay" id="J-board-small" onchange="javascript:on_select_changed('J-board-small', 'J-input-board-small')">
 					<option value='0' selected>0</option>
@@ -232,7 +232,7 @@ $right_now_day = full_date();
 		<tr>
 			<td width="280"><img width="280" src='./img/too-board-medium.png'/></td>
 			<td align="center">
-                <span class="value" id="J-input-board-medium">1</span>
+                <span class="value board_sel" id="J-input-board-medium">1</span><label>张</label>
                 <i class="caret"></i>
                 <select class="select-overlay" id="J-board-medium" onchange="javascript:on_select_changed('J-board-medium', 'J-input-board-medium')">
 					<option value='0'>0</option>
@@ -251,7 +251,7 @@ $right_now_day = full_date();
 		<tr>
 			<td width="280"><img width="280" src='./img/too-board-large.png'/></td>
 			<td align="center">
-                <span class="value" id="J-input-board-large">0</span>
+                <span class="value board_sel" id="J-input-board-large">0</span><label>张</label>
                 <i class="caret"></i>
                 <select class="select-overlay" id="J-board-large" onchange="javascript:on_select_changed('J-board-large', 'J-input-board-large')">
 					<option value='0' selected>0</option>
