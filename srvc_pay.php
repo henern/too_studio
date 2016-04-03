@@ -98,7 +98,7 @@ if ($count > 0 &&
 </head>
 <body>
     <header>
-        <div class="title-fullwidth" id="div_pay_status"><?php echo "$pay_body" ?>，正在准备付款...</div>
+        <div class="title-fullwidth" id="div_pay_status"><?php echo "$pay_body" ?>，付款中...</div>
     </header>
 
     <section class="content">
