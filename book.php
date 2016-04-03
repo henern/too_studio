@@ -207,6 +207,7 @@ $right_now_day = full_date();
                         
         <section class="contact">
             <div class="row-group">
+                <!--
                 <div class="row">
                     <div class="radio-group">
                         <span id="J-input-female" class="radio checked">女士</span>
@@ -216,6 +217,7 @@ $right_now_day = full_date();
                         <input id="J-input-name" type="text" placeholder="您贵姓" />
                     </div>
                 </div>
+                -->
                 <div class="row">
                     <div class="input">
                         <input id="J-input-phone" type="tel" placeholder="请输入手机号" />
