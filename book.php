@@ -77,10 +77,14 @@ if ($wx_code == null)
             
             function confirm_to_pay(callback, timeout)
             {
-                if (confirm("预订成功啦！在线支付更享95折哦（也可到店支付），是否在线支付？"))
-                {
-                    callback();
-                }
+                setTimeout(function(){
+                    
+                    if (confirm("预订成功啦！在线支付更享95折喔，到店支付也行，试试在线支付？"))
+                    {
+                        callback();
+                    }
+                    
+                }, timeout);
             }
             
             function on_click_to_reserve()
@@ -120,7 +124,7 @@ if ($wx_code == null)
                                                    "&medium_b=" + v_board_medium + 
                                                    "&large_b=" + v_board_large + 
                                                    "&ttoken=" + result_ttoken);
-                        }, 1500);
+                        }, 500);
                     }
                     else
                     {
