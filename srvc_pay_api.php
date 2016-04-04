@@ -175,9 +175,6 @@ function srvc_pay_api_invoke_js($appid, $prepay_id, $nonceStr, $ttoken)
                     {
 						div_pay_status.innerHTML = \"付款失败，请联系客服小妹。\";
                     } 
-                    
-                    var label_ttoken = document.getElementById(\"label_trade_token\");
-                    label_ttoken.innerText = \"订单号：$ttoken\";
                 }
             ); 
             }
