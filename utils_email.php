@@ -1,5 +1,18 @@
 <?php
     
+/*
+    Tips to work with sendmail on CentOS7
+    1. make sure sendmail is installed
+        #yum install -y sendmail
+        #yum install -y sendmail-cf
+    2. add ip-to-host mapping in /etc/hosts
+        120.2x.2xx.3x too-studio.cn
+    3. update the hostname
+        hostname too-studio.cn
+    4. restart sendmail
+        service sendmail restart
+*/
+    
 function noreply_email($host)
 {
     return "no-reply@" . $host;
