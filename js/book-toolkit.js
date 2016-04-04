@@ -57,3 +57,14 @@ function book_do_query(callback)
     xhr.open("GET", url, true);
     xhr.send(null);
 }
+
+function verify_mobile(phone_num)
+{ 
+    if ((/^1[3|4|5|8][0-9]\d{4,8}$/.test(phone_num)))
+    { 
+        return true; 
+    } 
+    
+    return false;
+} 
+

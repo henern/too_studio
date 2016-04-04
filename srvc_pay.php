@@ -104,6 +104,7 @@ if ($count > 0 &&
     <section class="content">
         <div align=center>
             <label id="label_trade_token"></label>
+            </br><span>如果您的计划有变，请联系客服小妹全额退款 +86-18050786135</span>
             <img src='./img/too-icon.jpeg'/>
         </div>
     </section>

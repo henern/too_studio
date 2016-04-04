@@ -98,6 +98,12 @@ if ($wx_code == null)
                 var v_board_small = document.getElementById("J-board-small").value;
                 var v_board_medium = document.getElementById("J-board-medium").value;
                 
+                if (verify_mobile(g_phone) == false)
+                {
+                    alert("亲，请留下手机号方便联系喔，到店报手机号即可");
+                    return;
+                }
+                
                 var btn_reserve = document.getElementById("J_submit");
                 btn_reserve.innerHTML = "正在努力预定...";
                 
