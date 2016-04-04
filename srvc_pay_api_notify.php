@@ -21,6 +21,16 @@ function __verify_xml_SUCCESS($xml_arr)
     return false;
 }
 
+function __pay_notify_by_email($ttoken, $xml_json)
+{
+    $subject = "[Too塗支付单] " 。 $ttoken;
+    
+    email_send_to_many(array(TOO_WX_MAIL_ADMIN_Y, TOO_WX_MAIL_ADMIN_W),
+                       $subject,
+                       $xml_json,
+                       notify_email(TOO_HOST_URL));
+}
+
 $post_raw = $GLOBALS["HTTP_RAW_POST_DATA"];
 
 $xml = (array)simplexml_load_string($post_raw, null, LIBXML_NOCDATA);
@@ -31,6 +41,8 @@ if (__verify_xml_SUCCESS($xml))
 {
     $ttoken = $xml["out_trade_no"];
     impl_srvc_pay_api_archive_notification($xml_json, $ttoken);
+    
+    __pay_notify_by_email($ttoken， $xml_json);
 }
 
 echo "<xml>

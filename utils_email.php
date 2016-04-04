@@ -30,6 +30,7 @@ function email_send_to($to, $subject, $msg, $from = null)
     if ($from != null)
     {
         $headers = "From: " . $from . "\r\n" .
+                   "Content-type: text/plain; charset=utf-8\r\n" .
                    "X-Mailer: PHP/" . phpversion();
     }
 
