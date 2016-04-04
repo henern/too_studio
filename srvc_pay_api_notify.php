@@ -23,7 +23,7 @@ function __verify_xml_SUCCESS($xml_arr)
 
 function __pay_notify_by_email($ttoken, $xml_json)
 {
-    $subject = "[Too塗支付单] " 。 $ttoken;
+    $subject = "[Too塗支付单] " . $ttoken;
     
     email_send_to_many(array(TOO_WX_MAIL_ADMIN_Y, TOO_WX_MAIL_ADMIN_W),
                        $subject,
@@ -42,7 +42,7 @@ if (__verify_xml_SUCCESS($xml))
     $ttoken = $xml["out_trade_no"];
     impl_srvc_pay_api_archive_notification($xml_json, $ttoken);
     
-    __pay_notify_by_email($ttoken， $xml_json);
+    __pay_notify_by_email($ttoken, $xml_json);
 }
 
 echo "<xml>
