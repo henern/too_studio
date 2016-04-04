@@ -14,6 +14,20 @@ function srvc_book_max_per_slot()
     return 10;
 }
     
+function srvc_book_rticket_to_string($rticket)
+{
+    $str = " " . $rticket->guid->to_string();
+    $str .= "-" . "$rticket->num" . "人";
+    $str .= "-" .
+            "$rticket->large_board"     . "大" . 
+            "$rticket->medium_board"    . "中" . 
+            "$rticket->small_board"     . "小";
+    $str .= "-" . $rticket->visit_date;
+    $str .= "-" . minutes_to_clock_str($rticket->visit_mins_slot);
+    
+    return $str;
+}
+
 function srvc_book_reserve($guid, 
                            $guest_num, 
                            $visit_date, 
@@ -37,7 +51,20 @@ function srvc_book_reserve($guid,
         return BOOK_CODE_ERR_INVALID;
     }
     
-    return impl_book_do_reserve($rticket, srvc_book_max_per_slot());
+    $err = impl_book_do_reserve($rticket, srvc_book_max_per_slot());
+    
+    if (IS_BOOK_OK($err))
+    {
+        $subject = "[TOO-Studio][BOOK]";
+        $subject .= srvc_book_rticket_to_string($rticket);
+        
+        email_send_to_many(array("sy117@msn.com", "ww.exe@163.com"),
+                           $subject,
+                           json_encode($rticket->to_array()),
+                           notify_email(TOO_HOST_URL));
+    }
+    
+    return $err;
 }
 
 function srvc_book_query_schedule($next_n_days, &$result_arr)

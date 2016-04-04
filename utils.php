@@ -4,6 +4,7 @@ require_once "utils_log.php";
 require_once "utils_time.php";
 require_once "utils_array.php";
 require_once 'utils_file.php';
+require_once 'utils_email.php';
     
 function array_to_string($arr)
 {
