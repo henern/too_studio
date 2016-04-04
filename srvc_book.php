@@ -55,10 +55,10 @@ function srvc_book_reserve($guid,
     
     if (IS_BOOK_OK($err))
     {
-        $subject = "[TOO-Studio][BOOK]";
+        $subject = "[Too塗预约单]";
         $subject .= srvc_book_rticket_to_string($rticket);
         
-        email_send_to_many(array("sy117@msn.com", "ww.exe@163.com"),
+        email_send_to_many(array(TOO_WX_MAIL_ADMIN_Y, TOO_WX_MAIL_ADMIN_W),
                            $subject,
                            json_encode($rticket->to_array()),
                            notify_email(TOO_HOST_URL));
