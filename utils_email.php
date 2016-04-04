@@ -16,7 +16,7 @@ function email_send_to_many($to_arr, $subject, $msg, $from = null)
     for ($k = 0; $k < count($to_arr); $k++)
     {
         if (strlen($to) > 0)    $to .= ", ";
-        $to .= $to_arr[k];
+        $to .= $to_arr[$k];
     }
     
     return email_send_to($to, $subject, $msg, $from);
