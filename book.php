@@ -15,7 +15,10 @@ $open_hour_end = 20 * 60 + 0;       # 20:00
 $open_hour_slot = 30;
 $open_hour_day = 7;
     
-$right_now_day = full_date();
+// user can make a reservation from tommorrow
+$FIRST_OPEN_AFTER_TODAY = 1;
+$TIME_OF_FIRST_OPEN_DAY = time() + $FIRST_OPEN_AFTER_TODAY * SEC_PER_DAY;
+$right_now_day = full_date($TIME_OF_FIRST_OPEN_DAY);
 
 // try to get wx-openid
 $wx_oid = "";
@@ -197,7 +200,7 @@ if ($wx_oid == null)	$wx_oid = "";
                     <select class="select-overlay" id="J-date-select" onchange="javascript:on_select_changed('J-date-select', 'J-input-date')">
                         <?php
                             
-                        $clock_cur = time();
+                        $clock_cur = $TIME_OF_FIRST_OPEN_DAY;
                         for ($k = 0; $k < $open_hour_day; $k++)
                         {
                             $ts = $clock_cur + $k * SEC_PER_DAY;
