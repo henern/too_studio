@@ -36,11 +36,9 @@ if ($wx_code != null && $wx_state == TOO_WX_STATE_DEFAULT)
 	
 	exit();
 }
-else
-{
-	$wx_oid = $_COOKIE[KEY_COOKIE_TOO_WX_OID];
-	if ($wx_oid == null)	$wx_oid = "";
-}
+
+$wx_oid = array_string4key($_COOKIE, KEY_COOKIE_TOO_WX_OID);
+if ($wx_oid == null)	$wx_oid = "";
 
 ?>
 
