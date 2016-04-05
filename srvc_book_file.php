@@ -13,6 +13,30 @@ function __impl_book_file_dir_4_name($subdir)
     return __impl_book_file_base_dir() . "/" . $subdir;
 }
 
+function __impl_book_setting_path($vdate, $setting_name)
+{
+    $date_str = "$vdate"
+    if (strlen($date_str) != 8)
+    {
+        return "";
+    }
+    
+    $dir = __impl_book_file_dir_4_name($date_str);
+    
+    if (!is_dir($dir))
+    {
+        mkdir($dir);
+    }
+    
+    $path = $dir . "/config_" . $setting_name . ".json";
+    return $path;
+}
+
+function __impl_book_lock_setting_path($vdate)
+{
+    return __impl_book_setting_path($vdate, "lock");
+}
+
 function __impl_book_file_rticket_path($rticket)
 {
     $dir = __impl_book_file_dir_4_name($rticket->visit_date);
@@ -31,6 +55,12 @@ define("KEY_FILE_JSON_RTICKET_LIST",            "ALL");
 function impl_book_do_reserve($rticket, $max_per_slot=10)
 {
     $path = __impl_book_file_rticket_path($rticket);
+    
+    // it's locked
+    if (impl_book_date_is_locked($rticket->visit_date))
+    {
+        return BOOK_CODE_ERR_BLOCK;
+    }
     
     // read json from file
     if (file_exists($path))
@@ -205,6 +235,47 @@ function impl_book_query_schedule($prev_n, $next_n, &$result_arr)
     }
     
     return BOOK_CODE_OK;
+}
+
+function impl_book_lock_date($vdate)
+{
+    $path = __impl_book_lock_setting_path($vdate);
+    
+    if (file_exists($path))
+    {
+        return BOOK_CODE_OK;
+    }
+    
+    $json_str = json_encode(array());
+    $handle_f = fopen($path, "w") or die ("ERROR to open $path!");
+    $wouldLock = 1;
+    if (!lock_file_until_ms($handle_f, 100))
+    {
+        fclose($handle_f);
+        return BOOK_CODE_ERR_UNKNOWN;
+    }
+    
+    fwrite($handle_f, $json_str);
+    fclose($handle_f);
+    
+    return BOOK_CODE_OK;
+}
+
+function impl_book_unlock_date($vdate)
+{
+    $path = __impl_book_lock_setting_path($vdate);
+    if (file_exists($path))
+    {
+        unlink($path);
+    }
+    
+    return BOOK_CODE_OK;
+}
+
+function impl_book_date_is_locked($vdate)
+{
+    $path = __impl_book_lock_setting_path($vdate);
+    return file_exists($path);
 }
 
 ?>

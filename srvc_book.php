@@ -28,6 +28,18 @@ function srvc_book_rticket_to_string($rticket)
     return $str;
 }
 
+function srvc_book_block($vdate)
+{
+    $err = impl_book_lock_date($vdate);
+    return $err;
+}
+
+function srvc_book_unblock($vdate)
+{
+    $err = impl_book_unlock_date($vdate);
+    return $err;
+}
+
 function srvc_book_reserve($guid, 
                            $guest_num, 
                            $visit_date, 
@@ -133,6 +145,16 @@ function srvc_book_query_schedule($next_n_days, &$result_arr)
     {
         // by default, query the reservations for the next 2 weeks
         $err = srvc_book_query_schedule(7 * 2, $result_arr);
+    }
+    else if ($action == "block")
+    {
+        $visit_date = array_number4key($_GET, "vdate");
+        $err = impl_srvc_book_block($visit_date);
+    }
+    else if ($action == "unblock")
+    {
+        $visit_date = array_number4key($_GET, "vdate");
+        $err = impl_srvc_book_unblock($visit_date);
     }
     else
     {
