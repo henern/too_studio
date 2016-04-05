@@ -104,7 +104,7 @@ if ($count > 0 &&
     <section class="content">
         <div align=center>
             <label id="label_trade_token">订单号：<?php echo "$ttoken" ?></label>
-            </br>如果您计划有变，请联系<a href="tel:18050786135">客服小妹</a>全额退款</span>
+            </br>如果您计划有变，请联系<a href="tel:<?php echo TOO_WX_TEL_KEFU_A ?>">客服小妹</a>全额退款</span>
             <img src='./img/too-icon.jpeg'/>
         </div>
     </section>
