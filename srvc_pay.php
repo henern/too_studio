@@ -111,7 +111,7 @@ if ($count > 0 &&
 	
     <section class="content">
         <div align=center>
-            <label id="label_trade_token">订单号：<?php echo "$ttoken" ?></label>
+            </br><label id="label_trade_token">订单号：<?php echo "$ttoken" ?></label>
             <img src='./img/too-icon.jpeg'/>
 		</div>
 	</section>

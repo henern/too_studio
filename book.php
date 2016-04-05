@@ -123,6 +123,7 @@ if ($wx_code != null)
                     if (result_code >= 0)
                     {
                         btn_reserve.innerHTML = "预定成功，恭候大驾";
+						btn_reserve.href="javascript:void";
                         confirm_to_pay(function(){
                             window.location.assign("./srvc_pay_auth.php?count=" + g_num + 
                                                    "&visit_day=" + v_date + 
@@ -338,6 +339,7 @@ if ($wx_code != null)
 		<!--内容 end-->
 <footer class="footer">
     <p class="copyright">Copyright ©2016 Too塗Studio</p>
+	<a href="<?php echo TOO_WX_MAP_URL ?>"><?php echo TOO_WX_ADDRESS ?></a>
 </footer>     
 <script type="text/javascript">
 
