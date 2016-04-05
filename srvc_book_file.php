@@ -274,8 +274,32 @@ function impl_book_unlock_date($vdate)
 
 function impl_book_date_is_locked($vdate)
 {
+    $dir = __impl_book_file_dir_4_name("$vdate");
+    if (!is_dir($dir))
+    {
+        return false;
+    }
+    
     $path = __impl_book_lock_setting_path($vdate);
     return file_exists($path);
+}
+
+function impl_book_query_lock($prev_n, $next_n, &$result_arr)
+{
+    $begin_day = time() - $prev_n * SEC_PER_DAY;
+    
+    for ($k = 0; $k < $prev_n + $next_n; $k++)
+    {
+        $cur = $begin_day + $k * SEC_PER_DAY;
+        $vdate = date("Ymd", $cur);
+        
+        if (impl_book_date_is_locked($vdate))
+        {
+            $result_arr[] = $vdate;
+        }
+    }
+    
+    return BOOK_CODE_OK;
 }
 
 ?>

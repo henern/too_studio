@@ -40,6 +40,16 @@ function srvc_book_unblock($vdate)
     return $err;
 }
 
+function srvc_book_query_block($next_n_days, &$result_arr)
+{
+    if ($next_n_days >= 0)
+    {
+        return impl_book_query_lock(1, $next_n_days, $result_arr);
+    }
+    
+    return BOOK_CODE_ERR_INVALID;
+}
+
 function srvc_book_reserve($guid, 
                            $guest_num, 
                            $visit_date, 
@@ -155,6 +165,10 @@ function srvc_book_query_schedule($next_n_days, &$result_arr)
     {
         $visit_date = array_number4key($_GET, "vdate");
         $err = srvc_book_unblock($visit_date);
+    }
+    else if ($action == "query_block")
+    {
+        $err = srvc_book_query_block(7 * 4, $result_arr);
     }
     else
     {
