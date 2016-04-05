@@ -31,7 +31,7 @@ if ($wx_code != null && $wx_state == TOO_WX_STATE_DEFAULT)
 		setcookie(KEY_COOKIE_TOO_WX_OID, $wx_oid, time() + 3600);
 	}
 	
-    $redirect_url = TOO_HOME_URL . "/wx/book.php#wechat_redirect';
+    $redirect_url = TOO_HOME_URL . "/wx/book.php#wechat_redirect";
     header("Location:" . $redirect_url);
 	
 	exit();
