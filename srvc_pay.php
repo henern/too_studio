@@ -38,9 +38,9 @@ $medium_board   = array_number4key($_GET, "medium_b");
 $large_board    = array_number4key($_GET, "large_b");
 $board_count    = $small_board + $medium_board + $large_board;
 
-$small_price    = TOO_WX_PRICE_PER_PERSON_DEFAULT;
-$medium_price   = TOO_WX_PRICE_PER_PERSON_DEFAULT;
-$large_price    = TOO_WX_PRICE_PER_PERSON_DEFAULT;
+$small_price    = TOO_WX_PRICE_PER_PERSON_SMALL;
+$medium_price   = TOO_WX_PRICE_PER_PERSON_MED;
+$large_price    = TOO_WX_PRICE_PER_PERSON_BIG;
 
 $js_pay = "";
 if ($count > 0 && 
