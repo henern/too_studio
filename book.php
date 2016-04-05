@@ -20,10 +20,21 @@ $right_now_day = full_date();
 // try to get wx-openid
 $wx_oid = "";
 $wx_code = array_string4key($_GET, "code");
-if ($wx_code != null)
+$wx_state = array_string4key($_GET, "state");
+if ($wx_code != null && $wx_state == TOO_WX_STATE_DEFAULT)
 {
 	$wx_access_token = "";
     wx_openid_from_code($wx_code, $wx_access_token, $wx_oid);
+	
+    $redirect_url = TOO_HOME_URL . "?oid=" . $wx_oid . '#wechat_redirect';
+    header("Location:" . $redirect_url);
+	
+	exit();
+}
+else
+{
+	$wx_oid = array_string4key($_GET, "oid");
+	if ($wx_oid == null)	$wx_oid = "";
 }
 
 ?>

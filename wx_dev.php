@@ -162,7 +162,7 @@ function redirect_to_path_with_wx_auth($target_uri_path)
     $query_str = $_SERVER["QUERY_STRING"];
     $redirect_uri = TOO_HOME_URL . "/" . $target_uri_path . "?" . $query_str;
     $scope = "snsapi_base";   // 'snsapi_userinfo';
-    $state = "TOO-WX";
+    $state = TOO_WX_STATE_DEFAULT;
 
     $auth_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' . TOO_WX_APPID .
                 '&redirect_uri=' . urlencode($redirect_uri) . 
