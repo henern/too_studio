@@ -137,6 +137,11 @@ class PayInfo
         $xml .= "<sign>$sign_ret</sign></xml>";
         return $xml;
     }
+    
+    function is_valid()
+    {
+        return ($this->openid() != "");
+    }
 }
 
 function srvc_pay_api_invoke_js($appid, $prepay_id, $nonceStr, $ttoken)
@@ -213,6 +218,11 @@ function srvc_pay_api_order($body, $fee_CNY, $trade_token, $openid = "", $attach
     $pay_inf->notify_url = $notify_url;
     
     $req_xml = $pay_inf->to_xml_str();
+    
+    if ($pay_inf->is_valid() == false)
+    {
+        return "";
+    }
     
     $err = null;
     $resp_xml = __curl_post_ssl(PAY_API_ORDER_URL, $req_xml, $err);

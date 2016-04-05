@@ -182,7 +182,9 @@ function wx_openid_from_code($code, &$access_token, &$oid)
     $ret = __curl_get_ssl($get_token_url, $err);
     
     $json = json_decode($ret, true); 
-    if (is_array($json))
+    if (is_array($json) && 
+        array_key_exists("access_token", $json) &&
+        array_key_exists("openid", $json))
     {
         //根据openid和access_token查询用户信息 
         $access_token = $json['access_token']; 
