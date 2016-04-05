@@ -149,12 +149,12 @@ function srvc_book_query_schedule($next_n_days, &$result_arr)
     else if ($action == "block")
     {
         $visit_date = array_number4key($_GET, "vdate");
-        $err = impl_srvc_book_block($visit_date);
+        $err = srvc_book_block($visit_date);
     }
     else if ($action == "unblock")
     {
         $visit_date = array_number4key($_GET, "vdate");
-        $err = impl_srvc_book_unblock($visit_date);
+        $err = srvc_book_unblock($visit_date);
     }
     else
     {
