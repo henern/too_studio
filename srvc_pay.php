@@ -103,10 +103,17 @@ if ($count > 0 &&
 
     <section class="content">
         <div align=center>
-            <label id="label_trade_token">订单号：<?php echo "$ttoken" ?></label>
-            </br>如果您计划有变，请联系<a href="tel:<?php echo TOO_WX_TEL_KEFU_A ?>">客服小妹</a>全额退款</span>
-            <img src='./img/too-icon.jpeg'/>
+            </br>如果您计划有变，请联系<a href="tel:<?php echo TOO_WX_TEL_KEFU_A ?>">客服小妹</a>全额退款
+            </br>我们在<a href="<?php echo TOO_WX_MAP_URL ?>"><?php echo TOO_WX_ADDRESS ?></a>恭候大驾
+            </br>
         </div>
     </section>
+	
+    <section class="content">
+        <div align=center>
+            <label id="label_trade_token">订单号：<?php echo "$ttoken" ?></label>
+            <img src='./img/too-icon.jpeg'/>
+		</div>
+	</section>
 </bdoy>
 </html>
