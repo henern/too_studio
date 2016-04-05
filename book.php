@@ -26,7 +26,7 @@ if ($wx_code != null && $wx_state == TOO_WX_STATE_DEFAULT)
 	$wx_access_token = "";
     wx_openid_from_code($wx_code, $wx_access_token, $wx_oid);
 	
-    $redirect_url = TOO_HOME_URL . "?oid=" . $wx_oid . '#wechat_redirect';
+    $redirect_url = TOO_HOME_URL . "/wx/book.php?oid=" . $wx_oid . '#wechat_redirect';
     header("Location:" . $redirect_url);
 	
 	exit();
