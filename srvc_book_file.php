@@ -15,7 +15,7 @@ function __impl_book_file_dir_4_name($subdir)
 
 function __impl_book_setting_path($vdate, $setting_name)
 {
-    $date_str = "$vdate"
+    $date_str = "$vdate";
     if (strlen($date_str) != 8)
     {
         return "";
