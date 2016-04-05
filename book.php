@@ -26,14 +26,19 @@ if ($wx_code != null && $wx_state == TOO_WX_STATE_DEFAULT)
 	$wx_access_token = "";
     wx_openid_from_code($wx_code, $wx_access_token, $wx_oid);
 	
-    $redirect_url = TOO_HOME_URL . "/wx/book.php?oid=" . $wx_oid . '#wechat_redirect';
+	if ($wx_oid != null)
+	{
+		setcookie(KEY_COOKIE_TOO_WX_OID, $wx_oid, time() + 3600);
+	}
+	
+    $redirect_url = TOO_HOME_URL . "/wx/book.php#wechat_redirect';
     header("Location:" . $redirect_url);
 	
 	exit();
 }
 else
 {
-	$wx_oid = array_string4key($_GET, "oid");
+	$wx_oid = $_COOKIE[KEY_COOKIE_TOO_WX_OID];
 	if ($wx_oid == null)	$wx_oid = "";
 }
 
