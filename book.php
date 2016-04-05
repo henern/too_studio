@@ -18,10 +18,12 @@ $open_hour_day = 7;
 $right_now_day = full_date();
 
 // try to get wx-openid
+$wx_oid = "";
 $wx_code = array_string4key($_GET, "code");
-if ($wx_code == null)
+if ($wx_code != null)
 {
-    $wx_code = "";
+	$wx_access_token = "";
+    wx_openid_from_code($wx_code, $wx_access_token, $wx_oid);
 }
 
 ?>
@@ -109,7 +111,7 @@ if ($wx_code == null)
                 
                 book_do_reserve(g_phone, 
                                 g_num, 
-                                <?php echo "\"" . "$wx_code" . "\"" ?>,
+                                <?php echo "\"" . "$wx_oid" . "\"" ?>,
                                 v_date, 
                                 v_slot, 
                                 v_board_small, 

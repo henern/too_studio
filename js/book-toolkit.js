@@ -1,6 +1,6 @@
 function book_do_reserve(phone, 
                          num, 
-                         code,
+                         openid,
                          vdate, 
                          vmins_slot, 
                          small_board, 
@@ -15,7 +15,7 @@ function book_do_reserve(phone,
               "&vdate=" + vdate + 
               "&vmins=" + vmins_slot + 
               "&phone=" + phone +
-              "&code=" + code +
+              "&oid=" + openid +
               "&small_b=" + small_board +
               "&medium_b=" + medium_board +
               "&large_b=" + large_board;

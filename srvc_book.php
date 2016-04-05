@@ -109,14 +109,7 @@ function srvc_book_query_schedule($next_n_days, &$result_arr)
         }
         
         // wx-openid is required
-        $code = array_string4key($_GET, "code"); 
-        $access_token = "";
-        $oid = "";
-        wx_openid_from_code($code, $access_token, $oid);
-        if (strlen($oid) <= 0)
-        {
-            goto ERROR;
-        }
+        $oid = array_string4key($_GET, "oid"); 
         $guid->oid = $oid;
         
         $guest_num = array_number4key($_GET, "gnum");
