@@ -2,8 +2,6 @@
 require_once "wx_dev.php";
 utils_init();
 log_visitor_info();     # trace the visitor
-    
-require_once 'srvc_book.php';
 
 ?>
 <html>
@@ -20,6 +18,21 @@ require_once 'srvc_book.php';
         <link rel="stylesheet" href="./css/book-default.css" type="text/css"/>
 
         <script>
+        book_do_query_block(function(code, description, date_list){
+            
+            var k;
+            for (k = 0; k < date_list.length; k++)
+            {
+                var date_str = date_list[k];
+                var S_label_name = "S_label_" + date_str;
+                var S_label_ref = document.getElementById(S_label_name);
+                
+                if (S_label_ref != null)
+                {
+                    S_label_ref.style = "text-decoration:line-through";
+                }
+            }
+        });
         </script>
     </head>
     <body>
@@ -29,16 +42,7 @@ require_once 'srvc_book.php';
         {
             $clock_cur = time() + $k * SEC_PER_DAY;
             $date_str = date("Ymd", $clock_cur);
-            
-            if (srvc_book_is_blocked($date_str))
-            {
-                echo "<s>" . $date_str . "</s>";
-            }
-            else
-            {
-                echo "<b>" . $date_str . "</b>";
-            }
-            
+            echo "<span id=\"S_label_$date_str\">" . $date_str . "</span>";
             echo "  " . 
                  "<a href=\"javascript:book_do_block('$date_str',null)\">锁定</a>" . 
                  " | " . 
