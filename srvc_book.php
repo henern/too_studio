@@ -40,6 +40,12 @@ function srvc_book_unblock($vdate)
     return $err;
 }
 
+function srvc_book_is_blocked($vdate)
+{
+    $err = impl_book_date_is_locked($vdate);
+    return $err;
+}
+
 function srvc_book_query_block($next_n_days, &$result_arr)
 {
     if ($next_n_days >= 0)

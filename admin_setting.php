@@ -3,6 +3,8 @@ require_once "wx_dev.php";
 utils_init();
 log_visitor_info();     # trace the visitor
     
+require_once 'srvc_book.php';
+
 ?>
 <html>
     <head>
@@ -22,5 +24,27 @@ log_visitor_info();     # trace the visitor
     </head>
     <body>
         <h3>休业日期</h3>
+        <?php
+        for ($k = 0; $k < 7 * 4; $k++)
+        {
+            $clock_cur = time() + $k * SEC_PER_DAY;
+            $date_str = date("Ymd", $clock_cur);
+            
+            if (srvc_book_is_blocked($date_str))
+            {
+                echo "<s>" . $date_str . "</s>";
+            }
+            else
+            {
+                echo "<b>" . $date_str . "</b>";
+            }
+            
+            echo "  " . 
+                 "<a href=\"javascript:book_do_block('$date_str',null)\">锁定</a>" . 
+                 " | " . 
+                 "<a href=\"javascript:book_do_unblock('$date_str',null)\">恢复</a>" . 
+                 "</br>";
+        }
+        ?>
     </body>
 </html>

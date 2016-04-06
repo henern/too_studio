@@ -68,3 +68,62 @@ function verify_mobile(phone_num)
     return false;
 } 
 
+function book_do_query_block(callback)
+{
+    var xhr = new XMLHttpRequest();
+    
+    var url = "srvc_book.php?action=query_block";
+    
+    xhr.onreadystatechange = function() {
+        
+        if (xhr.readyState == 4 && xhr.status == 200)
+        {
+            var json = JSON.parse(xhr.responseText);
+            var code = json["ERROR"];
+            var description = json["DESC"];
+            var results = json["RESULT"];
+            
+            callback(code, description, results);
+        }
+    };
+    xhr.open("GET", url, true);
+    xhr.send(null);
+}
+
+function book_do_block(vdate, callback)
+{
+    var xhr = new XMLHttpRequest();
+    
+    var url = "srvc_book.php?action=block&vdate=" + vdate;
+    
+    xhr.onreadystatechange = function() {
+        
+        if (xhr.readyState == 4 && xhr.status == 200)
+        {
+            var json = JSON.parse(xhr.responseText);
+            var code = json["ERROR"];
+            var description = json["DESC"];
+        }
+    };
+    xhr.open("GET", url, true);
+    xhr.send(null);
+}
+
+function book_do_unblock(vdate, callback)
+{
+    var xhr = new XMLHttpRequest();
+    
+    var url = "srvc_book.php?action=unblock&vdate=" + vdate;
+    
+    xhr.onreadystatechange = function() {
+        
+        if (xhr.readyState == 4 && xhr.status == 200)
+        {
+            var json = JSON.parse(xhr.responseText);
+            var code = json["ERROR"];
+            var description = json["DESC"];
+        }
+    };
+    xhr.open("GET", url, true);
+    xhr.send(null);
+}
