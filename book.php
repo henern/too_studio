@@ -212,15 +212,9 @@ if ($wx_oid == null)	$wx_oid = "";
                             // skip the day if blocked
                             if (srvc_book_is_blocked($date_val))    continue;
                             
-                            if ($str == $right_now_day)
-                            {
-                                echo "<option value='$date_val' selected>$str</option>";
-                            }
-                            else
                             {
                                 echo "<option value='$date_val'>$str</option>";
                             }
-                            
                         }
                         
                         ?>
@@ -258,17 +252,6 @@ if ($wx_oid == null)	$wx_oid = "";
                         
         <section class="contact">
             <div class="row-group">
-                <!--
-                <div class="row">
-                    <div class="radio-group">
-                        <span id="J-input-female" class="radio checked">女士</span>
-                        <span id="J-input-male" class="radio ">先生</span>
-                    </div>
-                    <div class="input">
-                        <input id="J-input-name" type="text" placeholder="您贵姓" />
-                    </div>
-                </div>
-                -->
                 <div class="row">
                     <div class="input">
                         <input id="J-input-phone" type="tel" placeholder="请输入手机号" />
@@ -363,8 +346,7 @@ if ($wx_oid == null)	$wx_oid = "";
     <p class="copyright">Copyright ©2016 Too塗Studio</p>
 	<a href="<?php echo TOO_WX_MAP_URL ?>"><?php echo TOO_WX_ADDRESS ?></a>
 </footer>     
-<script type="text/javascript">
-
+        <script type="text/javascript">
 		//得到焦点触发事件
 		function OnfocusFun(element,elementvalue)
 		{
@@ -381,6 +363,7 @@ if ($wx_oid == null)	$wx_oid = "";
 		        element.value=elementvalue;
 		    }
 		}
+        on_select_changed('J-date-select', 'J-input-date');     // refresh the J-date-select
 		</script>
 		
 	</body>
