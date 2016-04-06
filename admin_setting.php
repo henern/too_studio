@@ -29,7 +29,7 @@ log_visitor_info();     # trace the visitor
                 
                 if (S_label_ref != null)
                 {
-                    S_label_ref.style = "text-decoration:line-through";
+                    S_label_ref.style.textDecoration = "line-through";
                 }
             }
         });
