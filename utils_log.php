@@ -41,7 +41,7 @@ function log_visitor_info($extra_arr=array())
     $v_info = visitor_info($extra_arr);
     
     $today_str = date("Ymd");
-    $log_fname = log_visitor_path("log_vistor_$today_str.txt");
+    $log_fname = log_visitor_path("log_visitor_$today_str.txt");
     
     $handle_file = fopen($log_fname, "a") or die("ERROR TO OPEN $log_fname!");
     
