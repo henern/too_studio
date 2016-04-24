@@ -130,7 +130,7 @@ if ($wx_oid == null)	$wx_oid = "";
                 
                 var str_reseration = str_date + " " + str_slot + "\n" +
                                      "画板: "+v_board_large+"大"+v_board_medium+"中"+v_board_small+"小（"+g_num+"人）\n"+
-                                     "亲，确认预定吗？";
+                                     "亲，确认预订吗？";
                 if (!confirm(str_reseration))   return;
                 
                 var btn_reserve = document.getElementById("J_submit");
