@@ -125,12 +125,11 @@ if ($wx_oid == null)	$wx_oid = "";
                     return;
                 }
                 
-                var str_date  = document.getElementById("J-input-date").innerText();
-                var str_slot  = document.getElementById("J-input-time").innerText();
+                var str_date  = document.getElementById("J-input-date").innerText;
+                var str_slot  = document.getElementById("J-input-time").innerText;
                 
                 var str_reseration = str_date + " " + str_slot + "\n" +
-                                     "人数: " + g_num + "人\n" +
-                                     "画板: " + v_board_large + "大" + v_board_medium + "中" + v_board_small + "小\n" +
+                                     "画板: "+v_board_large+"大"+v_board_medium+"中"+v_board_small+"小（"+g_num+"人）\n"+
                                      "亲，确认预定吗？";
                 if (!confirm(str_reseration))   return;
                 
