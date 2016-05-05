@@ -8,7 +8,7 @@ log_visitor_info();
 
 require_once "srvc_book_abstract.php";
 
-$guest_num_max = 10;
+$guest_num_max = 20;
 $guest_num_default = 2;
 $BOARD_M_DEFAULT = $guest_num_default;
     
