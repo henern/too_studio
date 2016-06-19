@@ -122,7 +122,7 @@ for ($k = 0; $k < $open_hour_day; $k++)
                 }
             };
             
-            var str_days = <?php echo json_encode($available_days); ?>
+            var str_days = '<?php echo json_encode($available_days); ?>';
             var json_days = JSON.parse(str_days);
             function on_date_changed(date_select_id,time_select_id)
             {
@@ -133,12 +133,15 @@ for ($k = 0; $k < $open_hour_day; $k++)
                 time_select.options.length = 0;
                 for (var timeslot in json_days[date_val])
                 {
+                    var timeslot_val = json_days[date_val][timeslot];
+                    var timeslot_str = timeslot_val / 60 + ":" + timeslot_val % 60;
                     var opt = document.createElement('option');
-                    opt.text = json_days[date_val][timeslot];
-                    opt.value = timeslot;
+                    opt.text = timeslot_str;
+                    opt.value = timeslot_val;
                     time_select.add(opt,null);
                 }
                 time_select.selectedIndex = 0;
+                on_select_changed('J-time-select', 'J-input-time');
             }
             
             function on_select_changed(select_id, binding2_id)
