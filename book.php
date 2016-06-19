@@ -143,9 +143,9 @@ for ($cur_hour = $open_hour_begin;
                 time_select.options.length = 0;
                 for (var timeslot in json_days[date_val])
                 {
-                    var timeslot_val = ""+json_days[date_val][timeslot];
+                    var timeslot_val = json_days[date_val][timeslot];
                     var opt = document.createElement('option');
-                    opt.text = str_tsmap[timeslot_val];
+                    opt.text = json_tsmap[timeslot_val];
                     opt.value = timeslot_val;
                     time_select.add(opt,null);
                 }
