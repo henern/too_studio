@@ -127,3 +127,41 @@ function book_do_unblock(vdate, callback)
     xhr.open("GET", url, true);
     xhr.send(null);
 }
+
+function book_do_block_ts(vdate, ts, callback)
+{
+    var xhr = new XMLHttpRequest();
+    
+    var url = "srvc_book.php?action=blockts&vdate=" + vdate + "&ts=" + ts;
+    
+    xhr.onreadystatechange = function() {
+        
+        if (xhr.readyState == 4 && xhr.status == 200)
+        {
+            var json = JSON.parse(xhr.responseText);
+            var code = json["ERROR"];
+            var description = json["DESC"];
+        }
+    };
+    xhr.open("GET", url, true);
+    xhr.send(null);
+}
+
+function book_do_unblock_ts(vdate, ts, callback)
+{
+    var xhr = new XMLHttpRequest();
+    
+    var url = "srvc_book.php?action=unblockts&vdate=" + vdate + "&ts=" + ts;
+    
+    xhr.onreadystatechange = function() {
+        
+        if (xhr.readyState == 4 && xhr.status == 200)
+        {
+            var json = JSON.parse(xhr.responseText);
+            var code = json["ERROR"];
+            var description = json["DESC"];
+        }
+    };
+    xhr.open("GET", url, true);
+    xhr.send(null);
+}

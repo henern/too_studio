@@ -79,6 +79,18 @@ log_visitor_info();
     {
         $err = srvc_book_query_block(7 * 4, $result_arr);
     }
+    else if ($action == "blockts")
+    {
+        $visit_date = array_number4key($_GET, "vdate");
+        $visit_ts = array_number4key($_GET, "ts");
+        $err = srvc_book_block_timeslot($visit_date,$visit_ts);
+    }
+    else if ($action == "unblockts")
+    {
+        $visit_date = array_number4key($_GET, "vdate");
+        $visit_ts = array_number4key($_GET, "ts");
+        $err = srvc_book_unblock_timeslot($visit_date,$visit_ts);
+    }
     else
     {
         // NO_IMPL
