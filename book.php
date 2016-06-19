@@ -88,7 +88,7 @@ for ($cur_hour = $open_hour_begin;
      $cur_hour <= $open_hour_end; 
      $cur_hour += $open_hour_slot)
 {
-    $timeslot_map[$cur_hour] = minutes_to_clock_str($cur_hour);
+    $timeslot_map[$cur_hour+0] = minutes_to_clock_str($cur_hour);
 }
 ?>
 <html>
