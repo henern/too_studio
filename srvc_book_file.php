@@ -293,7 +293,7 @@ function impl_book_date_is_locked($vdate)
 // lock one slot
 function impl_book_lock_timeslot($vdate, $timeslot)
 {
-    $path = __impl_book_lock_timeslot_setting_path($vdate, $timeslot)
+    $path = __impl_book_lock_timeslot_setting_path($vdate, $timeslot);
     
     if (file_exists($path))
     {
@@ -317,7 +317,7 @@ function impl_book_lock_timeslot($vdate, $timeslot)
 
 function impl_book_unlock_timeslot($vdate, $timeslot)
 {
-    $path = __impl_book_lock_timeslot_setting_path($vdate, $timeslot)
+    $path = __impl_book_lock_timeslot_setting_path($vdate, $timeslot);
     if (file_exists($path))
     {
         unlink($path);
