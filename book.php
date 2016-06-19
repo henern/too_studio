@@ -49,7 +49,7 @@ if ($wx_oid == null)	$wx_oid = "";
 
 <?php
     
-$available_days = array[];
+$available_days = [];
 $cur_day = $TIME_OF_FIRST_OPEN_DAY;
 for ($k = 0; $k < $open_hour_day; $k++)
 {
@@ -61,7 +61,7 @@ for ($k = 0; $k < $open_hour_day; $k++)
     if (srvc_book_is_blocked($val_date))    continue;
     
     $len_avaible_hours = 0;
-    $avaible_hours = array[];
+    $avaible_hours = [];
     for ($cur_hour = $open_hour_begin; 
          $cur_hour <= $open_hour_end; 
          $cur_hour += $open_hour_slot)
