@@ -48,7 +48,6 @@ if ($wx_oid == null)	$wx_oid = "";
 ?>
 
 <?php
-    
 $available_days = [];
 $available_days_display = [];
 $cur_day = $TIME_OF_FIRST_OPEN_DAY;
@@ -81,6 +80,15 @@ for ($k = 0; $k < $open_hour_day; $k++)
         $available_days_display[$val_date] = $str_date;
         $available_days[$val_date] = $avaible_hours;
     }
+}
+?>
+<?php
+$timeslot_map = [];
+for ($cur_hour = $open_hour_begin; 
+     $cur_hour <= $open_hour_end; 
+     $cur_hour += $open_hour_slot)
+{
+    $timeslot_map[$cur_hour] = minutes_to_clock_str($cur_hour);
 }
 ?>
 <html>
@@ -122,6 +130,8 @@ for ($k = 0; $k < $open_hour_day; $k++)
                 }
             };
             
+            var str_tsmap = '<?php echo json_encode($timeslot_map); ?>';
+            var json_tsmap = JSON.parse(str_tsmap);
             var str_days = '<?php echo json_encode($available_days); ?>';
             var json_days = JSON.parse(str_days);
             function on_date_changed(date_select_id,time_select_id)
@@ -134,9 +144,8 @@ for ($k = 0; $k < $open_hour_day; $k++)
                 for (var timeslot in json_days[date_val])
                 {
                     var timeslot_val = json_days[date_val][timeslot];
-                    var timeslot_str = timeslot_val / 60 + ":" + timeslot_val % 60;
                     var opt = document.createElement('option');
-                    opt.text = timeslot_str;
+                    opt.text = str_tsmap[timeslot_val];
                     opt.value = timeslot_val;
                     time_select.add(opt,null);
                 }
