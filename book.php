@@ -130,10 +130,8 @@ for ($cur_hour = $open_hour_begin;
                 }
             };
             
-            var str_tsmap = '<?php echo json_encode($timeslot_map); ?>';
-            var json_tsmap = JSON.parse(str_tsmap);
-            var str_days = '<?php echo json_encode($available_days); ?>';
-            var json_days = JSON.parse(str_days);
+            var json_tsmap = JSON.parse('<?php echo json_encode($timeslot_map); ?>');
+            var json_days = JSON.parse('<?php echo json_encode($available_days); ?>');
             function on_date_changed(date_select_id,time_select_id)
             {
                 var date_select = document.getElementById(date_select_id);
@@ -157,7 +155,6 @@ for ($cur_hour = $open_hour_begin;
             {
                 var element_select = document.getElementById(select_id);
                 var indx_selected = element_select.selectedIndex;
-                
                 var element_bind2 = document.getElementById(binding2_id);
                 
                 element_bind2.innerHTML = element_select.options[indx_selected].innerHTML;
@@ -241,12 +238,10 @@ for ($cur_hour = $open_hour_begin;
         <div style='display:none;'>
             <img src='./img/too-icon.jpeg'/>
         </div>
-        
         <header>
             <div class="placeholder"></div>
             <div class="title">我要预定</div>
         </header>
-
         <section class="info">
             <div class="people-sel J-person-trigger">
                 <label>人数</label>
