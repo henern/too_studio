@@ -51,8 +51,15 @@ log_visitor_info();     # trace the visitor
             echo "  " . 
                  "<a href=\"javascript:book_do_block('$date_str',try_to_reload())\">锁定</a>" . 
                  " | " . 
-                 "<a href=\"javascript:book_do_unblock('$date_str',try_to_reload())\">恢复</a>" . 
-                 "</br>";
+                 "<a href=\"javascript:book_do_unblock('$date_str',try_to_reload())\">恢复</a>";
+            for ($cur_hour = $open_hour_begin; 
+                 $cur_hour <= $open_hour_end; 
+                 $cur_hour += $open_hour_slot)
+            {
+                $ts_str = minutes_to_clock_str($cur_hour);
+                echo "<a href=\"javascript:void\" id=\"A_$date_str_$cur_hour\">$ts_str</a> | ";
+            }
+            echo "</br>";
         }
         ?>
     </body>
