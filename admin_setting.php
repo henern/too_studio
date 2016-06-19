@@ -59,7 +59,7 @@ require_once "srvc_book_common.php";
                  $cur_hour += $open_hour_slot)
             {
                 $ts_str = minutes_to_clock_str($cur_hour);
-                echo "<a href=\"javascript:void\" id=\"A_$date_str_$cur_hour\">$ts_str</a> | ";
+                echo "<a href=\"javascript:void\" id=\"A_$date_str" . "_" . "$cur_hour\">$ts_str</a> | ";
             }
             echo "</br>";
         }
