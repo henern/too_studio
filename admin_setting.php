@@ -3,6 +3,8 @@ require_once "wx_dev.php";
 utils_init();
 log_visitor_info();     # trace the visitor
 
+require_once "srvc_book_common.php";
+
 ?>
 <html>
     <head>
