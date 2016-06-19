@@ -1,6 +1,8 @@
 <?php
     
 define("SEC_PER_DAY", 24 * 60 * 60);
+define("SEC_PER_HOUR", 60 * 60);
+define("MIN_PER_HOUR", 60);
 
 function minutes_to_clock_str($mins)
 {

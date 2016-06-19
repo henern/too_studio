@@ -18,7 +18,7 @@ $open_hour_slot = 30;
 $open_hour_day = 7 * 2;
     
 // user can make a reservation from tommorrow
-$FIRST_OPEN_AFTER_TODAY = 1;
+$FIRST_OPEN_AFTER_TODAY = 0;
 $TIME_OF_FIRST_OPEN_DAY = time() + $FIRST_OPEN_AFTER_TODAY * SEC_PER_DAY;
 $right_now_day = full_date($TIME_OF_FIRST_OPEN_DAY);
 
@@ -47,6 +47,45 @@ if ($wx_oid == null)	$wx_oid = "";
 
 ?>
 
+<?php
+    
+$available_days = array[];
+$cur_day = $TIME_OF_FIRST_OPEN_DAY;
+for ($k = 0; $k < $open_hour_day; $k++)
+{
+    $ts = $cur_day + $k * SEC_PER_DAY;
+    $str_date = full_date($ts);
+    $val_date = date("Ymd", $ts);
+    
+    // skip the day if blocked
+    if (srvc_book_is_blocked($val_date))    continue;
+    
+    $len_avaible_hours = 0;
+    $avaible_hours = array[];
+    for ($cur_hour = $open_hour_begin; 
+         $cur_hour <= $open_hour_end; 
+         $cur_hour += $open_hour_slot)
+    {
+        if (srvc_book_is_timeslot_blocked($val_date, $cur_hour))
+        {
+            continue;
+        }
+        
+        $avaible_hours[] = $cur_hour;
+        $len_avaible_hours++;
+    }
+    
+    if ($len_avaible_hours > 0)
+    {
+        $available_days[$str_date] = array("vdate" => $val_date, 
+                                           "hours" => $avaible_hours);
+    }
+}
+    
+// test!!!
+echo "$available_days";
+exit();
+?>
 <html>
 	<head>
 		<title>Too塗画室在线预定</title>

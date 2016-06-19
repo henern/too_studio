@@ -22,6 +22,7 @@ function srvc_book_rticket_to_string($rticket)
     return $str;
 }
 
+// lock one day
 function srvc_book_block($vdate)
 {
     $err = impl_book_lock_date($vdate);
@@ -40,6 +41,44 @@ function srvc_book_is_blocked($vdate)
     return $err;
 }
 
+// lock one slot
+function srvc_book_block_timeslot($vdate, $timeslot)
+{
+    $err = impl_book_lock_timeslot($vdate, $timeslot);
+    return $err;
+}
+
+function srvc_book_unblock_timeslot($vdate, $timeslot)
+{
+    $err = impl_book_unlock_timeslot($vdate, $timeslot);
+    return $err;
+}
+
+define("HOUR_BUFFER_4_BOOK", 2);
+function srvc_book_is_timeslot_blocked($vdate, $timeslot)
+{
+    $cur_date = date("Ymd", time());
+    if ($cur_date - $vdate > 0)
+    {
+        // before today
+        return true;
+    }
+    else if ($cur_date == $vdate)
+    {
+        // only the hours after HOUR_BUFFER_4_BOOK is available
+        $bar_time = time() + SEC_PER_HOUR * HOUR_BUFFER_4_BOOK;
+        $bar_timeslot = date("H", $bar_time) * MIN_PER_HOUR + date("i", $bar_time);
+        if ($bar_timeslot - $timeslot > 0)
+        {
+            return true;
+        }
+    }
+    
+    $err = impl_book_timeslot_is_locked($vdate, $timeslot);
+    return $err;
+}
+
+// query
 function srvc_book_query_block($next_n_days, &$result_arr)
 {
     if ($next_n_days >= 0)

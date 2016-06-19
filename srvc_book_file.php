@@ -37,6 +37,11 @@ function __impl_book_lock_setting_path($vdate)
     return __impl_book_setting_path($vdate, "lock");
 }
 
+function __impl_book_lock_timeslot_setting_path($vdate, $timeslot)
+{
+    return __impl_book_setting_path($vdate, "lock_" . $timeslot);
+}
+
 function __impl_book_file_rticket_path($rticket)
 {
     $dir = __impl_book_file_dir_4_name($rticket->visit_date);
@@ -237,6 +242,7 @@ function impl_book_query_schedule($prev_n, $next_n, &$result_arr)
     return BOOK_CODE_OK;
 }
 
+// lock one day
 function impl_book_lock_date($vdate)
 {
     $path = __impl_book_lock_setting_path($vdate);
@@ -281,6 +287,54 @@ function impl_book_date_is_locked($vdate)
     }
     
     $path = __impl_book_lock_setting_path($vdate);
+    return file_exists($path);
+}
+
+// lock one slot
+function impl_book_lock_timeslot($vdate, $timeslot)
+{
+    $path = __impl_book_lock_timeslot_setting_path($vdate, $timeslot)
+    
+    if (file_exists($path))
+    {
+        return BOOK_CODE_OK;
+    }
+    
+    $json_str = json_encode(array());
+    $handle_f = fopen($path, "w") or die ("ERROR to open $path!");
+    $wouldLock = 1;
+    if (!lock_file_until_ms($handle_f, 100))
+    {
+        fclose($handle_f);
+        return BOOK_CODE_ERR_UNKNOWN;
+    }
+    
+    fwrite($handle_f, $json_str);
+    fclose($handle_f);
+    
+    return BOOK_CODE_OK;
+}
+
+function impl_book_unlock_timeslot($vdate, $timeslot)
+{
+    $path = __impl_book_lock_timeslot_setting_path($vdate, $timeslot)
+    if (file_exists($path))
+    {
+        unlink($path);
+    }
+    
+    return BOOK_CODE_OK;
+}
+
+function impl_book_timeslot_is_locked($vdate, $timeslot)
+{
+    $dir = __impl_book_file_dir_4_name("$vdate");
+    if (!is_dir($dir))
+    {
+        return false;
+    }
+    
+    $path = __impl_book_lock_timeslot_setting_path($vdate, $timeslot);
     return file_exists($path);
 }
 
