@@ -81,10 +81,6 @@ for ($k = 0; $k < $open_hour_day; $k++)
                                            "hours" => $avaible_hours);
     }
 }
-    
-// test!!!
-var_dump($available_days);
-exit();
 ?>
 <html>
 	<head>
