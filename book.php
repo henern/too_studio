@@ -15,7 +15,7 @@ $BOARD_M_DEFAULT = $guest_num_default;
 $open_hour_begin = 14 * 60 + 0;     # 14:00
 $open_hour_end = 20 * 60 + 0;       # 20:00
 $open_hour_slot = 30;
-$open_hour_day = 7 * 2;
+$open_hour_day = 7;
     
 // user can make a reservation from tommorrow
 $FIRST_OPEN_AFTER_TODAY = 0;
@@ -50,6 +50,7 @@ if ($wx_oid == null)	$wx_oid = "";
 <?php
     
 $available_days = [];
+$available_days_display = [];
 $cur_day = $TIME_OF_FIRST_OPEN_DAY;
 for ($k = 0; $k < $open_hour_day; $k++)
 {
@@ -77,8 +78,8 @@ for ($k = 0; $k < $open_hour_day; $k++)
     
     if ($len_avaible_hours > 0)
     {
-        $available_days[$str_date] = array("vdate" => $val_date, 
-                                           "hours" => $avaible_hours);
+        $available_days_display[$val_date] = $str_date;
+        $available_days[$val_date] = $avaible_hours;
     }
 }
 ?>
@@ -121,6 +122,25 @@ for ($k = 0; $k < $open_hour_day; $k++)
                 }
             };
             
+            var str_days = <?php echo json_encode($available_days); ?>
+            var json_days = JSON.parse(str_days);
+            function on_date_changed(date_select_id,time_select_id)
+            {
+                var date_select = document.getElementById(date_select_id);
+                var date_indx_selected = date_select.selectedIndex;
+                var date_val = date_select.options[date_indx_selected].value;
+                var time_select = document.getElementById(time_select_id);
+                time_select.options.length = 0;
+                for (var timeslot in json_days[date_val])
+                {
+                    var opt = document.createElement('option');
+                    opt.text = json_days[date_val][timeslot];
+                    opt.value = timeslot;
+                    time_select.add(opt,null);
+                }
+                time_select.selectedIndex = 0;
+            }
+            
             function on_select_changed(select_id, binding2_id)
             {
                 var element_select = document.getElementById(select_id);
@@ -134,12 +154,10 @@ for ($k = 0; $k < $open_hour_day; $k++)
             function confirm_to_pay(callback, timeout)
             {
                 setTimeout(function(){
-                    
                     if (confirm("预订成功啦！在线支付更享95折喔，到店支付也行，试试在线支付？"))
                     {
                         callback();
                     }
-                    
                 }, timeout);
             }
             
@@ -242,24 +260,12 @@ for ($k = 0; $k < $open_hour_day; $k++)
                 <div class="date-sel J-date-trigger">
                     <span class="value" id="J-input-date"><?php echo $right_now_day; ?></span>
                     <i class="caret"></i>
-                    <select class="select-overlay" id="J-date-select" onchange="javascript:on_select_changed('J-date-select', 'J-input-date')">
+                    <select class="select-overlay" id="J-date-select" onchange="javascript:on_select_changed('J-date-select', 'J-input-date');on_date_changed('J-date-select','J-time-select');">
                         <?php
-                            
-                        $clock_cur = $TIME_OF_FIRST_OPEN_DAY;
-                        for ($k = 0; $k < $open_hour_day; $k++)
+                        foreach ($available_days_display as $date_val => $str)
                         {
-                            $ts = $clock_cur + $k * SEC_PER_DAY;
-                            $str = full_date($ts);
-                            $date_val = date("Ymd", $ts);
-                            
-                            // skip the day if blocked
-                            if (srvc_book_is_blocked($date_val))    continue;
-                            
-                            {
-                                echo "<option value='$date_val'>$str</option>";
-                            }
+                            echo "<option value='$date_val'>$str</option>";
                         }
-                        
                         ?>
                     </select>
                 </div>
@@ -267,26 +273,6 @@ for ($k = 0; $k < $open_hour_day; $k++)
                     <span class="value" id="J-input-time"><?php echo minutes_to_clock_str($open_hour_begin); ?></span>
                     <i class="caret"></i>
                     <select class="select-overlay" id="J-time-select" onchange="javascript:on_select_changed('J-time-select', 'J-input-time')">
-                        <?php
-                            
-                        $right_now_hour = $open_hour_begin; // TODO: should be in the future
-                        
-                        for ($cur = $open_hour_begin; $cur <= $open_hour_end; $cur += $open_hour_slot)
-                        {
-                            $clock_str = minutes_to_clock_str($cur);
-                            
-                            if ($cur == $right_now_hour)
-                            {
-                                echo "<option value='$cur' selected>$clock_str</option>";
-                            }
-                            else
-                            {
-                                echo "<option value='$cur'>$clock_str</option>";
-                            }
-                            
-                        }
-                        
-                        ?>
                     </select>
                 </div>
             </div>
@@ -406,6 +392,7 @@ for ($k = 0; $k < $open_hour_day; $k++)
 		        element.value=elementvalue;
 		    }
 		}
+        on_date_changed('J-date-select','J-time-select');
         on_select_changed('J-date-select', 'J-input-date');     // refresh the J-date-select
 		</script>
 		
