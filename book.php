@@ -83,7 +83,7 @@ for ($k = 0; $k < $open_hour_day; $k++)
 }
     
 // test!!!
-echo "$available_days";
+var_dump($available_days);
 exit();
 ?>
 <html>
