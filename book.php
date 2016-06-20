@@ -272,7 +272,7 @@ for ($cur_hour = OPEN_HOUR_BEGIN;
                     </select>
                 </div>
                 <div class="time-sel J-time-trigger">
-                    <span class="value" id="J-input-time"><?php echo minutes_to_clock_str($open_hour_begin); ?></span>
+                    <span class="value" id="J-input-time"><?php echo minutes_to_clock_str(OPEN_HOUR_BEGIN); ?></span>
                     <i class="caret"></i>
                     <select class="select-overlay" id="J-time-select" onchange="javascript:on_select_changed('J-time-select', 'J-input-time')">
                     </select>
