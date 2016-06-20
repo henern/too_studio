@@ -66,9 +66,9 @@ require_once "srvc_book_common.php";
             $date_str = date("Ymd", $clock_cur);
             echo "<span id=\"S_label_$date_str\">" . $date_str . "</span>";
             echo "  " . 
-                 "<a href=\"javascript:book_do_block('$date_str',try_to_reload())\">锁定</a>" . 
+                 "<a href=\"javascript:book_do_block('$date_str',try_to_reload())\">锁定全天</a>" . 
                  " | " . 
-                 "<a href=\"javascript:book_do_unblock('$date_str',try_to_reload())\">恢复</a>";
+                 "<a href=\"javascript:book_do_unblock('$date_str',try_to_reload())\">恢复全天</a>";
             for ($cur_hour = OPEN_HOUR_BEGIN; 
                  $cur_hour <= OPEN_HOUR_END; 
                  $cur_hour += OPEN_HOUR_SLOT)
