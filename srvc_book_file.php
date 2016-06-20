@@ -344,13 +344,27 @@ function impl_book_query_lock($prev_n, $next_n, &$result_arr)
     
     for ($k = 0; $k < $prev_n + $next_n; $k++)
     {
+        $blocked_slots = [];
+        
         $cur = $begin_day + $k * SEC_PER_DAY;
         $vdate = date("Ymd", $cur);
         
         if (impl_book_date_is_locked($vdate))
         {
-            $result_arr[] = $vdate;
+            $blocked_slots[] = "all";
         }
+        
+        for ($cur_hour = $open_hour_begin; 
+             $cur_hour <= $open_hour_end; 
+             $cur_hour += $open_hour_slot)
+        {
+            if (impl_book_timeslot_is_locked($vdate,$cur_hour))
+            {
+                $blocked_slots[] = $cur_hour;
+            }
+        }
+        
+        $result_arr[$vdate] = $blocked_slots;
     }
     
     return BOOK_CODE_OK;

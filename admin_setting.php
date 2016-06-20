@@ -21,17 +21,32 @@ require_once "srvc_book_common.php";
 
         <script>
         book_do_query_block(function(code, description, date_list){
-            
-            var k;
-            for (k = 0; k < date_list.length; k++)
+            for (var date_str in date_list)
             {
-                var date_str = date_list[k];
-                var S_label_name = "S_label_" + date_str;
-                var S_label_ref = document.getElementById(S_label_name);
-                
-                if (S_label_ref != null)
+                var blocked_arr = date_list[date_str];
+                for (var k in blocked_arr)
                 {
-                    S_label_ref.style.textDecoration = "line-through";
+                    var bts = blocked_arr[k];
+                    if (bts == "all")
+                    {
+                        var S_label_name = "S_label_" + date_str;
+                        var S_label_ref = document.getElementById(S_label_name);
+                
+                        if (S_label_ref != null)
+                        {
+                            S_label_ref.style.textDecoration = "line-through";
+                        }
+                    }
+                    else
+                    {
+                        var anchor_name = "A_" + date_str + "_" + bts;
+                        var anchor_ref = document.getElementById(anchor_name);
+                
+                        if (anchor_ref != null)
+                        {
+                            anchor_ref.style.textDecoration = "line-through";
+                        }
+                    }
                 }
             }
         });
