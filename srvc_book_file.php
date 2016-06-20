@@ -356,9 +356,9 @@ function impl_book_query_lock($prev_n, $next_n, &$result_arr)
             $blocked_slots_len++;
         }
         
-        for ($cur_hour = $open_hour_begin; 
-             $cur_hour <= $open_hour_end; 
-             $cur_hour += $open_hour_slot)
+        for ($cur_hour = OPEN_HOUR_BEGIN; 
+             $cur_hour <= OPEN_HOUR_END; 
+             $cur_hour += OPEN_HOUR_SLOT)
         {
             if (impl_book_timeslot_is_locked($vdate,$cur_hour))
             {

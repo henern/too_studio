@@ -69,9 +69,9 @@ require_once "srvc_book_common.php";
                  "<a href=\"javascript:book_do_block('$date_str',try_to_reload())\">锁定</a>" . 
                  " | " . 
                  "<a href=\"javascript:book_do_unblock('$date_str',try_to_reload())\">恢复</a>";
-            for ($cur_hour = $open_hour_begin; 
-                 $cur_hour <= $open_hour_end; 
-                 $cur_hour += $open_hour_slot)
+            for ($cur_hour = OPEN_HOUR_BEGIN; 
+                 $cur_hour <= OPEN_HOUR_END; 
+                 $cur_hour += OPEN_HOUR_SLOT)
             {
                 $ts_str = minutes_to_clock_str($cur_hour);
                 echo " | <a href=\"javascript:book_do_block_ts('$date_str','$cur_hour',try_to_reload())\" id=\"A_$date_str" . "_" . "$cur_hour\">$ts_str</a>";

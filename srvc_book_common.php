@@ -1,9 +1,9 @@
 <?php
     
-$open_hour_begin = 14 * 60 + 0;     # 14:00
-$open_hour_end = 20 * 60 + 0;       # 20:00
-$open_hour_slot = 30;
-$open_hour_day = 7;
+define("OPEN_HOUR_BEGIN",       14 * 60 + 0);       # 14:00
+define("OPEN_HOUR_END",         20 * 60 + 0);       # 20:00
+define("OPEN_HOUR_SLOT",        30);
+define("OPEN_HOUR_DAY",         7);
 
 define("BOOK_CODE_OK",              0);
 define("BOOK_CODE_ERR_UNKNOWN",     -10);

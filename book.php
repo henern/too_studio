@@ -46,7 +46,7 @@ if ($wx_oid == null)	$wx_oid = "";
 $available_days = [];
 $available_days_display = [];
 $cur_day = $TIME_OF_FIRST_OPEN_DAY;
-for ($k = 0; $k < $open_hour_day; $k++)
+for ($k = 0; $k < OPEN_HOUR_DAY; $k++)
 {
     $ts = $cur_day + $k * SEC_PER_DAY;
     $str_date = full_date($ts);
@@ -57,9 +57,9 @@ for ($k = 0; $k < $open_hour_day; $k++)
     
     $len_avaible_hours = 0;
     $avaible_hours = [];
-    for ($cur_hour = $open_hour_begin; 
-         $cur_hour <= $open_hour_end; 
-         $cur_hour += $open_hour_slot)
+    for ($cur_hour = OPEN_HOUR_BEGIN; 
+         $cur_hour <= OPEN_HOUR_END; 
+         $cur_hour += OPEN_HOUR_SLOT)
     {
         if (srvc_book_is_timeslot_blocked($val_date, $cur_hour))
         {
@@ -79,9 +79,9 @@ for ($k = 0; $k < $open_hour_day; $k++)
 ?>
 <?php
 $timeslot_map = [];
-for ($cur_hour = $open_hour_begin; 
-     $cur_hour <= $open_hour_end; 
-     $cur_hour += $open_hour_slot)
+for ($cur_hour = OPEN_HOUR_BEGIN; 
+     $cur_hour <= OPEN_HOUR_END; 
+     $cur_hour += OPEN_HOUR_SLOT)
 {
     $timeslot_map[$cur_hour] = minutes_to_clock_str($cur_hour);
 }
