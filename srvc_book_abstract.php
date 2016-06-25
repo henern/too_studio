@@ -54,7 +54,8 @@ function srvc_book_unblock_timeslot($vdate, $timeslot)
     return $err;
 }
 
-define("HOUR_BUFFER_4_BOOK", 2);
+define("HOUR_BUFFER_4_BOOK_WEEKDAY",    2);
+define("HOUR_BUFFER_4_BOOK_WEEKEND",    0);
 function srvc_book_is_timeslot_blocked($vdate, $timeslot)
 {
     $cur_date = date("Ymd", time());
@@ -65,8 +66,11 @@ function srvc_book_is_timeslot_blocked($vdate, $timeslot)
     }
     else if ($cur_date == $vdate)
     {
+        $dayOfWeek = date("N", time());
+        $hour_buffer = ($dayOfWeek == 6 || $dayOfWeek == 7) ? HOUR_BUFFER_4_BOOK_WEEKEND : HOUR_BUFFER_4_BOOK_WEEKDAY;
+        
         // only the hours after HOUR_BUFFER_4_BOOK is available
-        $bar_time = time() + SEC_PER_HOUR * HOUR_BUFFER_4_BOOK;
+        $bar_time = time() + SEC_PER_HOUR * $hour_buffer;
         $bar_timeslot = date("H", $bar_time) * MIN_PER_HOUR + date("i", $bar_time);
         if ($bar_timeslot - $timeslot > 0)
         {
